@@ -1,0 +1,145 @@
+label {
+	font-size: 10px;
+}
+
+.form td {
+	padding-bottom: 10px;
+}
+
+.mithadmin td.label {
+	width: 100px;
+	text-align: right;
+	padding-top: 5px;
+	vertical-align: top;
+}
+.mithadmin td input {
+	width: 450px;
+}
+.mithadmin td textarea {
+	font-size: 11px;
+	height: 100px;
+	width: 550px;
+}
+
+a.link_button {
+	text-decoration: none;
+}
+
+#staff_project {
+	width: 350px;
+	padding: 0;
+	height: 600px;
+	overflow-y: auto;
+}
+#staff_project li {
+}
+#staff_project li li {
+	font-weight: normal;
+	margin-left: 20px;
+	padding-bottom: 10px;
+	width: 280px;
+}
+
+#project_list {
+	margin: 0;
+	width: 300px; 
+	height: 400px; 
+}
+#project_list p {
+	background: #999;
+	color: #fff;
+	margin: 0;
+	padding: 5px;
+}
+
+#project_list li {
+	border-bottom: 1px solid #666;
+	font-weight: bold;
+	margin-bottom: 0;
+}
+
+
+#staff_list {
+	float: left; 
+	margin-right: 50px; 
+	width: 200px;
+}
+
+#staff_list li, #project_list li li {
+	background: #f4f4f4;
+	border-bottom: 1px solid #ccc;
+	cursor: move;
+	padding: 5px;
+	margin-bottom: 0;
+	width: 200px;
+}
+#project_list li li {
+	width: 270px;
+}
+
+#trash p {
+	background: #999 url('../images/trash.png') no-repeat 5px 5px;
+	color: #fff;
+	font-weight: bold;
+	padding: 5px;
+	padding-left: 25px;
+	width: 270px;
+}
+
+.ui-tabs .ui-tabs-hide {
+     display: none;
+}
+
+
+.admin_full {
+	background: #f4f4f4;
+	width: 660px;
+}
+#tabs ul {
+	background: #fff;
+	border-bottom: 1px solid #ccc;
+	padding: 4px;
+}
+#tabs li.tab {
+	background: #f4f4f4;
+	display: inline;
+	padding: 5px;
+	border-bottom: 1px solid black;
+}
+#tabs div {
+	clear: both;
+}
+
+
+.staff_members {
+	background: #f4f4f4;
+	border: 1px solid #ccc;
+	font-size: 11px;
+	display: inline-block;
+	padding: 2px 5px;
+	margin: 2px;
+	width: 140px;
+}
+#sortDrop, #relatedDrop {
+	background: #f7f7f7;
+	border: 1px solid #eee;
+	width: 500px;
+	padding: 5px;
+}
+#sortDrop li, #relatedDrop li {
+	list-style-type: none;
+}
+#sortDrop p, #relatedDrop p {
+	margin: 0;
+}
+
+
+#slide_sort fieldset {
+	background: #f4f4f4;
+	border: 1px solid #ddd; 
+	width: 675px;
+}
+#slide_sort legend {
+	font-weight: bold;
+	padding: 10px;
+}

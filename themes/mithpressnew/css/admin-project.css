@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+/* CSS Document */
+#menu-posts-project .wp-menu-image { background: url(../images/icons/icon-projects.png) no-repeat 6px -17px !important; }
+
+#menu-posts-project:hover .wp-menu-image,
+#menu-posts-project.wp-has-current-submenu .wp-menu-image { background-position:6px 7px!important; }
+
+#menu-posts-podcast .wp-menu-image { background: url(../images/icons/icon-podcasts.png) no-repeat 6px -17px !important; }
+
+#menu-posts-podcast:hover .wp-menu-image,
+#menu-posts-podcast.wp-has-current-submenu .wp-menu-image { background-position:6px 7px!important; }
+
+#editorcontainer #content { height: 100px; }
+
+#adminmenu #menu-posts-project div.wp-menu-image { background:transparent url(../images/icons/icon-projects.png) no-repeat center center; }
+
+#adminmenu #menu-posts-project:hover div.wp-menu-image,
+#adminmenu #menu-posts-project.wp-has-current-submenu div.wp-menu-image { background:transparent url(../images/icons/icon-projects.png) no-repeat center center; }
+
+#icon-edit { background:transparent url(../images/icons/icon-projects-head.png) no-repeat; }

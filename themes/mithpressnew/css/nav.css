@@ -1,0 +1,14 @@
+@charset "UTF-8";
+/* CSS Document */
+#navigation #primary-links #menu-main-menu a { background: url(../images/icon_grid.png) no-repeat 0px 0px; }
+#navigation li.home a { } 
+#navigation li.about a { background: transparent url(images/icon_grid.png) no-repeat scroll 20px ; }
+#navigation li.projects a {background:url("images/projects.png") no-repeat 0 0px transparent;display:block;padding-left:23px}
+#navigation li.staff a {background:url("images/staff.png") no-repeat 1px 2px transparent;display:block;padding-left:23px}
+#navigation li.blog a {background:url("images/blog.png") no-repeat 0 3px transparent;display:block;padding-left:23px}
+#navigation li.blog a {background:url("images/blog.png") no-repeat 0 3px transparent;display:block;padding-left:23px}
+#navigation li a:hover {background:-position:0 -16px;color:#535353;border-bottom:1px dotted #535353;}
+
+
+#navigation ul.links li a span.icon { background: transparent url(images/icon_grid.png) no-repeat scroll 0px 0px; float: left; height: 20px; width: 20px; margin-right: 5px; overflow: hidden; }
+#navigation ul.links li.active a.icon-sectors:hover span.icon, #navigation ul.links li.active a.icon-sectors span.icon {

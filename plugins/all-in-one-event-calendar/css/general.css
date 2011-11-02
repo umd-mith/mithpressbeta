@@ -1,0 +1,356 @@
+/* General button styling */
+a.ai1ec-button {
+	cursor: pointer;
+	font: 10pt/1.1em Tahoma, Geneva, sans-serif !important;
+	text-decoration: none !important;
+	color: #666 !important;
+	text-shadow: 0 1px 0 #fff;
+	-moz-text-shadow: 0 1px 0 #fff;
+	-webkit-text-shadow: 0 1px 0 #fff;
+	padding: 0.4em 0.5em;
+	margin: 0.1em;
+	background: #eee;
+	background: -moz-linear-gradient( #f8f8f8, #ddd );
+	background: -webkit-gradient( linear, 0% 0%, 0% 100%, from(#f8f8f8), to(#ddd) );
+	background: -webkit-linear-gradient( #f8f8f8, #ddd );
+	background: -o-linear-gradient( #f8f8f8, #ddd );
+	box-shadow: 0 2px 2px rgba(0,0,0,0.08);
+	-moz-box-shadow: 0 2px 2px rgba(0,0,0,0.08);
+	-webkit-box-shadow: 0 2px 2px rgba(0,0,0,0.08);
+	border-radius: 0.4em;
+	-moz-border-radius: 0.4em;
+	-webkit-border-radius: 0.4em;
+	text-align: center;
+	border: 1px solid #ccc;
+	border-width: 1px;
+	display: inline-block;
+	white-space: nowrap;
+}
+a.ai1ec-button:hover {
+	color: #444 !important;
+	background: #ddd;
+	background: -moz-linear-gradient( #eee, #ccc );
+	background: -webkit-gradient( linear, 0% 0%, 0% 100%, from(#eee), to(#ccc) );
+	background: -webkit-linear-gradient( #eee, #ccc );
+	background: -o-linear-gradient( #eee, #ccc );
+}
+a.ai1ec-button.ai1ec-selected {
+	color: #000 !important;
+	border-color: #909CE0;
+	background: #DDE6F8;
+	background: -moz-linear-gradient( #eDf6Ff, #C5D4F3 );
+	background: -webkit-gradient( linear, 0% 0%, 0% 100%, from(#eDf6Ff), to(#C5D4F3) );
+	background: -webkit-linear-gradient( #eDf6Ff, #C5D4F3 );
+	background: -o-linear-gradient( #eDf6Ff, #C5D4F3 );
+}
+a.ai1ec-button.ai1ec-active {
+	color: #000 !important;
+	background: #ddd;
+	background: -moz-linear-gradient( #ccc, #eee );
+	background: -webkit-gradient( linear, 0% 0%, 0% 100%, from(#ccc), to(#eee) );
+	background: -webkit-linear-gradient( #ccc, #eee );
+	background: -o-linear-gradient( #ccc, #eee );
+}
+a.ai1ec-button.ai1ec-active.ai1ec-selected {
+	background: #DDE6F8;
+	background: -moz-linear-gradient( #C5D4F3, #eDf6Ff );
+	background: -webkit-gradient( linear, 0% 0%, 0% 100%, from(#C5D4F3), to(#eDf6Ff) );
+	background: -webkit-linear-gradient( #C5D4F3, #eDf6Ff );
+	background: -o-linear-gradient( #C5D4F3, #eDf6Ff );
+}
+li > a.ai1ec-button {
+	display: block;
+	margin: 0;
+	border-radius: 0;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	border-left-width: 0;
+}
+li:first-child > a.ai1ec-button {
+	border-radius: 0.4em 0 0 0.4em;
+	-moz-border-radius: 0.4em 0 0 0.4em;
+	-webkit-border-radius: 0.4em 0 0 0.4em;
+	border-left-width: 1px;
+}
+li:last-child > a.ai1ec-button {
+	border-radius: 0 0.4em 0.4em 0;
+	-moz-border-radius: 0 0.4em 0.4em 0;
+	-webkit-border-radius: 0 0.4em 0.4em 0;
+}
+li:first-child:last-child > a.ai1ec-button {
+	border-radius: 0.4em;
+	-moz-border-radius: 0.4em;
+	-webkit-border-radius: 0.4em;
+}
+
+/* General AJAX */
+.ai1ec-loading {
+	position: absolute;
+	z-index: 9;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: url( ../img/ajax-loader.gif ) no-repeat center center;
+	display: none;
+}
+
+/* Label styling */
+label.ai1ec-label {
+	padding: 0 0.2em;
+	font-family: Tahoma, Geneva, sans-serif !important;
+	font-size: 9pt !important;
+	font-weight: bold;
+	color: #888 !important;
+}
+
+/* Categories */
+.ai1ec-category {
+	cursor: pointer;
+	font: 0.9em Tahoma, Geneva, sans-serif !important;
+	border: 1px solid #dcdcdc;
+	text-shadow: 0 1px 0 #fff;
+	-moz-text-shadow: 0 1px 0 #fff;
+	-webkit-text-shadow: 0 1px 0 #fff;
+	padding: 2pt 3pt !important;
+	margin: 0.2em !important;
+	text-decoration: none !important;
+	text-transform: uppercase;
+	letter-spacing: 1pt;
+	white-space: nowrap;
+	color: #666 !important;
+	background: #f0f0f0;
+	border-radius: 0.3em;
+	-moz-border-radius: 0.3em;
+	-webkit-border-radius: 0.3em;
+}
+.ai1ec-category:hover {
+	color: #222 !important;
+	background: #dcdcdc;
+}
+.ai1ec-category.ai1ec-selected {
+	background: #C5D4F3;
+	border-color: #7A86D9;
+}
+
+/* Tags */
+.ai1ec-tag {
+	color: #568 !important;
+	font-family: Tahoma, Geneva, sans-serif !important;
+	line-height: 1.3em !important;
+	cursor: pointer;
+	white-space: nowrap;
+	margin: 0.1em 0.2em;
+	padding: 0.1em 0.2em;
+	border-radius: 0.3em;
+	-moz-border-radius: 0.3em;
+	-webkit-border-radius: 0.3em;
+	display: inline-block;
+}
+.ai1ec-tag:hover {
+	color: #000 !important;
+	text-decoration: underline;
+}
+.ai1ec-tag.ai1ec-selected {
+	background: #CDDBF5;
+}
+
+/* Category color */
+.ai1ec-category-color {
+	display: inline-block;
+	width: 0.9em;
+	height: 0.9em;
+	margin: 0 1px;
+	border-radius: 0.2em;
+	-o-border-radius: 0.2em;
+	-moz-border-radius: 0.2em;
+	-webkit-border-radius: 0.2em;
+}
+
+/* Subscribe buttons */
+.ai1ec-subscribe-google img {
+	float: left;
+	width: 30px !important;
+	height: 32px !important;
+	margin: -10px 0.5em -8px 0 !important;
+	padding: 0 !important;
+	border: none !important;
+	background: none !important;
+}
+
+/* Widget views */
+.ai1ec-agenda-widget-view div {
+	margin: 0;
+}
+.ai1ec-agenda-widget-view {
+	font-size: 0.8em !important;
+	overflow: hidden;
+}
+.ai1ec-agenda-widget-view .ai1ec-no-results {
+	font-style: italic;
+	font-size: 1.4em !important;
+}
+.ai1ec-agenda-widget-view > ol {
+	margin: 0 !important;
+	padding: 0 !important;
+}
+.ai1ec-agenda-widget-view li {
+	list-style: none !important;
+	border: none !important;
+}
+.ai1ec-agenda-widget-view .ai1ec-date-events {
+	overflow: hidden;
+	margin: 0 0.5em 0 0 !important;
+	padding: 0 !important;
+}
+.ai1ec-agenda-widget-view .ai1ec-date {
+	overflow: hidden;
+	margin: 0 !important;
+	padding: 0 !important;
+	border-top: 1px solid #f2f2f2;
+	border-bottom: 1px solid #fff;
+	background: #f8f8f8;
+	background: -o-linear-gradient( #f2f2f2 1em, #fff );
+	background: -ms-linear-gradient( #f2f2f2 1em, #fff );
+	background: -moz-linear-gradient( #f2f2f2 1em, #fff );
+	background: -webkit-gradient( linear, 0 1em, 0 100%, from(#f2f2f2), to(#fff) );
+	background: -webkit-linear-gradient( #f2f2f2 1em, #fff );
+}
+.ai1ec-agenda-widget-view .ai1ec-date.ai1ec-today {
+	border-top: 1px solid #eec;
+	border-bottom: 1px solid #fff;
+	background: #ffd;
+	background: -o-linear-gradient( #f8f8ce 1em, #fff );
+	background: -ms-linear-gradient( #f8f8ce 1em, #fff );
+	background: -moz-linear-gradient( #f8f8ce 1em, #fff );
+	background: -webkit-gradient( linear, 0 1em, 0 100%, from(#f8f8ce), to(#fff) );
+	background: -webkit-linear-gradient( #f8f8ce 1em, #fff );
+	background: -o-linear-gradient( #f8f8ce 1em, #fff );
+}
+.ai1ec-agenda-widget-view h3.ai1ec-date-title {
+	width: 3.5em;
+	float: left;
+	margin: 0 0.5em 0.5em !important;
+	font: 1em/1.1em Tahoma, Geneva, sans-serif !important;
+	color: #444;
+	text-shadow: 0 1px 0 #fff;
+	-o-text-shadow: 0 1px 0 #fff;
+	-ms-text-shadow: 0 1px 0 #fff;
+	-moz-text-shadow: 0 1px 0 #fff;
+	-webkit-text-shadow: 0 1px 0 #fff;
+	line-height: 1.1em;
+	text-align: center;
+	border: 2px solid #7e9dbd;
+	border-radius: 0 0 5px 5px;
+	-o-border-radius: 0 0 0.5em 0.5em;
+	-moz-border-radius: 0 0 0.5em 0.5em;
+	-webkit-border-radius: 0 0 0.5em 0.5em;
+	box-shadow: 0 2px 2px rgba(0,0,0,0.08);
+	-o-box-shadow: 0 2px 2px rgba(0,0,0,0.08);
+	-ms-box-shadow: 0 2px 2px rgba(0,0,0,0.08);
+	-moz-box-shadow: 0 2px 2px rgba(0,0,0,0.08);
+	-webkit-box-shadow: 0 2px 2px rgba(0,0,0,0.08);
+	background: #fff;
+	background: -o-linear-gradient( #fff 1em, #eee );
+	background: -ms-linear-gradient( #fff 1em, #eee );
+	background: -moz-linear-gradient( #fff 1em, #eee );
+	background: -webkit-gradient( linear, 0% 1em, 0% 100%, from(#fff), to(#eee) );
+	background: -webkit-linear-gradient( #fff 1em, #eee );
+}
+.ai1ec-agenda-widget-view .ai1ec-month {
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.5);
+	-o-text-shadow: 0 -1px 0 rgba(0,0,0,0.5);
+	-ms-text-shadow: 0 -1px 0 rgba(0,0,0,0.5);
+	-moz-text-shadow: 0 -1px 0 rgba(0,0,0,0.5);
+	-webkit-text-shadow: 0 -1px 0 rgba(0,0,0,0.5);
+	background: #7e9dbd;
+	font-size: 0.9em !important;
+	padding: 0.1em 0 0.2em;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	color: #fff;
+}
+.ai1ec-agenda-widget-view .ai1ec-day {
+	font-size: 1.7em !important;
+	padding: 0.3em 0 0.2em !important;
+}
+.ai1ec-agenda-widget-view .ai1ec-weekday {
+	font-size: 0.9em !important;
+	line-height: 1.5em;
+}
+/* Agenda view events */
+.ai1ec-agenda-widget-view .ai1ec-event {
+	font-family: Tahoma, Geneva, sans-serif !important;
+	position: relative;
+	clear: right;
+	overflow: hidden;
+	font-size: 1.2em;
+	margin: 0.5em 0 !important;
+	padding: 0 !important;
+	line-height: 1.3em;
+}
+.ai1ec-agenda-widget-view .ai1ec-event a {
+	display: block;
+	background: #fff;
+	border: 1px solid #ddd;
+	border-radius: 0.4em;
+	-o-border-radius: 0.4em;
+	-ms-border-radius: 0.4em;
+	-moz-border-radius: 0.4em;
+	-webkit-border-radius: 0.4em;
+	padding: 0.2em 0.4em !important;
+	text-decoration: none !important;
+	color: #568;
+}
+.ai1ec-agenda-widget-view .ai1ec-event a:hover {
+	border-color: #aaa;
+	text-decoration: none !important;
+}
+.ai1ec-agenda-widget-view .ai1ec-event-time {
+	font-weight: bold;
+}
+.ai1ec-agenda-widget-view .ai1ec-event-title {
+	font-weight: normal;
+}
+.ai1ec-agenda-widget-view .ai1ec-event.ai1ec-allday a {
+	background: #568;
+	border: none;
+	color: #fff;
+}
+.ai1ec-agenda-widget-view .ai1ec-event.ai1ec-allday a:hover {
+	border: none;
+	background: #3b475f;
+}
+.ai1ec-agenda-widget-view .ai1ec-allday-label {
+	font-size: 8pt !important;
+	color: #b9c0ce;
+	padding-left: 0.2em;
+}
+.ai1ec-agenda-widget-view .ai1ec-allday .ai1ec-event-time {
+	color: #fff;
+}
+.ai1ec-agenda-widget-view .ai1ec-category-colors {
+	font-size: 0.9em;
+}
+.ai1ec-agenda-widget-view .ai1ec-category-colors .ai1ec-category-color {
+	margin: 0 0 -0.1em;
+	border: 1px solid rgba(255,255,255,0.7);
+}
+/* Widget view buttons */
+.ai1ec-agenda-widget-view .ai1ec-button {
+	font-size: 1em !important;
+	margin: 0.3em 0;
+}
+.ai1ec-agenda-widget-view .ai1ec-calendar-link {
+	font-size: 1.2em !important;
+	float: right;
+}
+.ai1ec-agenda-widget-view .ai1ec-subscribe-buttons {
+	float: left;
+	margin-top: 0.3em;
+}
+.ai1ec-agenda-widget-view .ai1ec-subscribe-google img {
+	width: 19px;
+	height: 20px;
+	margin: -5px 0.5em -5px 0;
+}

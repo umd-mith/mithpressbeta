@@ -1,0 +1,311 @@
+/*  
+Theme Name: MITH Theme
+Theme URI: 
+Description: A simple Wordpress theme based on the <a href="http://code.google.com/p/blueprintcss/">Blueprint CSS Framework</a>. Created specifically for MITH (http://mith.umd.edu) 
+Version: 1.0
+Author: Kirsten Keister
+Tags: Blueprint, theme, css, framework, clean, minimalistic 
+Author URI: 
+Credits:
+
+*/
+
+/*-----------------------------------------------------------------------------
+Custom MITH Styles
+-----------------------------------------------------------------------------*/
+
+
+@import url('css/fonts.css');
+
+/*-------------------------------------------------------------------------------------------*/
+/* Main
+/*-------------------------------------------------------------------------------------------*/
+
+html { background: #fff; color: #333;}
+body { font-family:'Vegur', 'Open Sans', Verdana, Tahoma, Geneva, sans-serif; font-weight:500; font-size:100%; line-height:1.125em; /* 16x1.125=18px */ margin: 0 auto; min-width: 950px; color:#222222; }
+body em {font-weight: 400; font-style:italic; }
+body strong {font-weight:700; }
+
+/* Links */
+
+a { text-decoration:none; color: #2E7BC6; }
+a:focus, a:hover { text-decoration:none; color:#20558A }
+
+/* Paragraphs & Lists */
+
+p { font-size: 0.75em; margin: 1em 0; color:#424242;}
+#content ul { font-size: 0.75em; padding-left: 1em; }
+#content ul li { list-style-position: outside; list-style-type: disc; padding-left:5px; margin: 5px 0;  }
+
+/* Headers */
+
+h1, h2, h3, h4, h5, h6 { font-weight:500; color:#232323; }
+h1 { font-size: 1.0625em; line-height: normal; font-weight:600; }
+h2 { font-size: ;  }
+/* 
+h3 { font-size:1.5em; line-height:1; margin-bottom:1em; }
+h4 { font-size:1.2em; line-height:1.25; margin-bottom:1.25em; }
+h5 { font-size:1em; font-weight:bold; margin-bottom:1.5em; }
+h6 { font-size:1em; font-weight:bold; }
+*/
+h1 img, h2 img, h3 img, h4 img, h5 img, h6 img { margin:0; }
+ol, ul, ul li { list-style: none outside none; padding:0; margin:0; }
+
+
+/*-------------------------------------------------------------------------------------------*/
+/* Top */
+/*-------------------------------------------------------------------------------------------*/
+
+#top-container { background: url(images/bg_header.png) left top; height:197px; border-bottom: 1px solid #9e9e9e; margin-bottom: 18px; } /* span-24 */
+#branding { padding: 36px 0 0; }
+#branding .width-limit { display:block; height:71px; background: #424242; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; padding: 20px; text-align: left; }
+
+/* Navigation */
+
+.navigation { height:18px; margin: 18px 0px; font-size: 0.75em; font-family:Vegur; font-weight:600; }
+.navigation .width-limit { height: 18px; }
+.navigation #primary-links { float:left; display:block;  }
+
+.navigation ul.links li, .navigation ul.links li a { float: left; margin-right:20px; overflow:auto; color:#424242; }
+/* .navigation ul.links li a { background: url(images/icon_grid.png) no-repeat 0px 0px; } */
+.navigation ul.links li.home a { background:transparent 20px top; display:block; padding-left:20px } 
+
+.navigation ul.links li a span.icon { background: transparent url(images/icon_grid.png) no-repeat scroll 0px 0px; float: left; height: 20px; width: 20px; margin-right: 12px; overflow: hidden; }
+.navigation ul.links li a span.label { height:20px; line-height:20px; }
+.navigation ul.links li.about a span.icon { background: transparent url(images/icon_grid.png) no-repeat scroll 0px 0px ; }
+.navigation ul.links li.research a span.icon { background: transparent url(images/icon_grid.png) no-repeat scroll -20px 0px ; }
+.navigation ul.links li.community a span.icon { background: transparent url(images/icon_grid.png) no-repeat scroll -20px 0px ; }
+.navigation ul.links li.staff a span.icon { background: transparent url(images/icon_grid.png) no-repeat scroll -40px 0px ; }
+.navigation ul.links li.blog a span.icon { background: transparent url(images/icon_grid.png) no-repeat scroll -60px 0px ; }
+.navigation ul.links li.ddialouges a span.icon { background: transparent url(images/icon_grid.png) no-repeat scroll -80px 0px ; }
+
+.navigation ul.links li.active a.icon-sectors:hover span.icon, .navigation ul.links li.active a.icon-sectors span.icon { }
+
+.navigation li.current_menu_item a,
+.navigation li a:hover { color: #999; }
+.navigation ul.links a { margin-right: 32px; }
+
+/* UMD Styles */
+
+#umd-wrapper { margin: 0; padding: 0; background: #000 url(http://www.umd.edu/images/site/body-bg.gif) repeat-x top left; text-align: center; }
+#umd-frame { width: 870px; }
+
+/* Assistive text */
+
+.assistive-text { position: absolute !important; clip: rect(1px 1px 1px 1px); /* IE6, IE7 */ clip: rect(1px, 1px, 1px, 1px); }
+#access a.assistive-text:active, #access a.assistive-text:focus { background: #e2e2e2; border-bottom: 1px solid #ddd; color: #1982d1; clip: auto !important; font-size: 12px; position: absolute; text-decoration: underline; top: 0; left: 7.6%; }
+
+
+/*-------------------------------------------------------------------------------------------*/
+/* Breadcrumbs */
+/*-------------------------------------------------------------------------------------------*/
+
+#crumbs { font-size: 0.7em; margin: 0px; padding: 0px; margin-bottom: 16px; line-height: normal; height:13px; }
+#curmbs a { color: #20558A; padding-bottom: 1px; }
+#crumbs a:hover { border-bottom: 1px solid #3C5F8A; }
+#crumbs .bc_home { background: url(images/icon_home.png) no-repeat left center; display:block; float:left; padding: 0 5px 0 0; width: 12px; height:12px;}
+#crumbs .bc_home i { display:none; }
+#crumbs .bc_delimiter { display:inline; padding: 0 5px; }
+#crumbs .current { }
+
+
+/*-------------------------------------------------------------------------------------------*/
+/* Page */
+/*-------------------------------------------------------------------------------------------*/
+#page-container { text-align: left; overflow:auto; padding-bototm: 50px; width: 910px; margin:0px auto }
+#content { padding: 0 0 50px 0; }
+
+#content article.podcast, #content article.people, #content article.project { width:390px; float:left; }
+
+
+#content .post { }
+#content .entry-content { }
+#content .entry-content p { }
+
+/* Staff */
+.staff .staff-member { display: inline-block; width:200px; }
+.staff .staff_img { width:50px; }
+.staff-member h4 { font-size: 1em; font-weight:normal; line-height: normal; margin-bottom: 0em; }
+.staff-member h5 { font-size:.9em; font-style:italic; font-weight:normal; }
+
+/* Page */
+
+
+/*--project page (each)*/
+.entry img.banner { width:200px; }
+#sidebar-right .staff-member { display:inline-block; width:175px; padding-top:4px;  }
+#sidebar-right .staff_img { width:50px; float:left; padding-right:10px; }
+.staff_name, .staff_title { display:block; float:left; padding:0px; margin:0px; line-height:normal; font-weight:normal; }
+.staff_title { font-style:italic; padding-top:3px; }
+
+/*-------------------------------------------------------------------------------------------*/
+/* Podcasts */
+/*-------------------------------------------------------------------------------------------*/
+.pods-speaker {}
+.pods-affiliation { font-style:italic; color: #656565; font-weight:500; font-size: 0.9em; }
+.pods-date { text-transform:uppercase; font-size: 0.8em; color: #555555; display: inline; padding:5px 0;}
+.pods-desc {}
+.pods-media {}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/* Blog */
+/*-------------------------------------------------------------------------------------------*/
+#blog { }
+
+/* Navigation */
+#nav-single { min-height: 50px; padding-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 15px; position: relative; width: 390px; }
+#nav-single a { color: #999999; display: block; font-size: 12px; line-height: normal; text-transform: uppercase; min-height:40px; line-height:40px; }
+#nav-single a:hover { text-decoration:none; }
+#nav-single a em { color: #AAA9A9; display: block; font-family: Georgia, Geneva, "Times New Roman", times; font-size: 11px; font-style: italic; margin-bottom: 3px; }
+#nav-single a:hover span { text-decoration:underline; }
+#nav-single .nav-previous a { background-image: url(images/post_prev.png); background-position: 0 50%; background-repeat: no-repeat; float: left; padding-left: 30px; text-align: left; }
+#nav-single .nav-next a { background-image: url(images/post_next.png); background-position: 100% 50%; background-repeat: no-repeat; float: right; padding-right: 30px; text-align: right; }
+
+
+/*-------------------------------------------------------------------------------------------*/
+/* Sidebars */
+/*-------------------------------------------------------------------------------------------*/
+
+#sidebar { float:right; }
+#sidebar .widget { border-bottom: 2px solid #E4E4E4; padding-bottom: 10px; margin-bottom: 25px; }
+#sidebar h3 { font-size: 0.9375em; font-family: "VegurMedium", Sans-serif; margin-bottom: 0.6875em; }
+#sidebar .widget-body { font-size: 0.625em; font-weight:normal; line-height: 1.5em; }
+#sidebar ul { font-size: inherit; padding:0px; margin:0; }
+#sidebar ul li { font-size: inherit; padding-left: 0; list-style:none; }
+#sidebar p { font-size: inherit; }
+
+/* Left: Subnav */
+#subnav { text-align:left; }
+#subnav h1 {  margin: 0; padding: 0; height:17px; padding-bottom:16px; margin-bottom: 2px; border-bottom: 1px dashed #b1b1b1; font-weight:700; color:#424242; }
+#subnav ul { margin:0px; padding:0px; list-style-type: none; border-top: 1px dashed #b1b1b1; font-size: .8125em; }
+#subnav li { margin:0px; padding:0px;}
+#subnav li a { display:block; border-bottom: 1px solid #E7E7E7; padding: 0.8125em 0; text-decoration: none; color:#20558A; line-height:normal;}
+#subnav li a:hover, #subnav li.current-menu-item a { color:#424242 !important; }
+/*#subnav li a:hover { background-color:#EAEAEA !important; }*/
+
+/* Right: Podcast 
+--------------------------*/
+
+/* Right: Widgets */
+#sidebar-right { float:right !important; }
+#secondary {  }
+#secondary h3, #secondary .sidebox h3, h3.widget-title { color:#424242; font-size: 0.9375em; font-weight: 600; margin: 0px 0px 0.6em 0px; }
+#secondary p, aside.widget p { font-size: 0.75; }
+
+#sidebar-right .sidebox {margin-bottom: 20px; line-height:140% }
+#sidebar-right .sidebox p { font-size: .9em; margin: 0px 0px 8px 0px; padding:0px;  }
+
+.widget a, .widget-small a { color: #000000; text-decoration: none; }
+
+
+
+/*sidebar*/
+#sidebar-blog { background: #fff; float: right; width: 180px; margin: 35px 35px 35px 0px; padding-top:0px; }
+#sidebar-blog .widgettitle {  }
+#sidebar-blog h3 { font-size:13px; font-weight:normal; font-family: "VegurMedium", Sans-serif; text-transform:uppercase; margin-top: 10px; margin-bottom:5px; padding-bottom:2px; font-size: 14px; }
+#sidebar-blog ul { background: none; margin-top: 10px; padding: 20px 20px 20px 0px; }
+#sidebar-blog ul ul { margin: 0; padding: 0; }
+#sidebar-blog ul li.staff { border-bottom: 1px solid #d9d9d9; margin-bottom: 20px; }
+#sidebar-blog ul ul li { margin-top: 5px; margin-bottom: 0; }
+#sidebar-blog ul ul li a { color: #22689f; display: block; font-weight: bold; padding: 5px; text-decoration: none; }
+#sidebar-blog ul ul li a:hover { background: #d6d6d6; }
+#sidebar-blog ul ul li ul li { margin-left: 10px; }
+/*rss*/
+.widget_getconnected .widget-body div {  min-height: 40px; padding-bottom: 16px; width: 50%; }
+.getconnected_rss a { background: transparent url(images/icon_rss.png) no-repeat scroll 0 2px; display:block; height:35px; }
+.getconnected_rss a:hover { background: transparent url(images/icon_rss2.png) no-repeat scroll 0 2px; }
+/*recent-posts*/
+.widget .rpthumb { border-bottom: 1px dotted #D9D9D9; display: block; margin-top: 15px; padding-bottom: 15px; }
+.widget .rpthumb-title { display: block; font-size:11px; margin-bottom: 6px; line-height:125%; }
+.widget .rpthumb-date { color: #AAA9A9; display: block; font-size: 11px; font-family:Georgia,Geneva,"Times New Roman",times;}
+/*calendar*/
+#calendar_wrap { margin-top:15px; }
+.widget_calendar table { width: 75%; }
+.widget_calendar caption { font-size: 10px; padding-bottom: 8px; text-align: left; padding-left:4px;}
+.widget_calendar th, .widget_calendar td { font-size: 9px; padding: 4px 0; text-align:center !important; }
+.widget_calendar tbody a { text-decoration: underline; }
+.widget_calendar tbody a:hover { text-decoration: none; }
+.widget_calendar tfoot {font-size:9px; }
+
+/*--podcast page--*/
+a.project-website { float:right; clear:both; display:block; width:100%; font-size: 9px; text-transform:uppercase; text-align:right; font-family: Arial, Helvetica, sans-serif; padding-right: 10px; background: url(images/arrow-blue-next.gif) no-repeat right center; }
+
+/*-------------------------------------------------------------------------------------------*/
+/* Footer */
+/*-------------------------------------------------------------------------------------------*/
+
+#footer { }
+#footer a { color: #F8F8F8; }
+#footer a:hover { color: #54B1FF; text-decoration:none; }
+#footer h3 { font-size: 0.8125em; color: #888888; margin:0; padding:0; margin-bottom: 20px; letter-spacing: 0.1em; font-weight:600; }
+#footer .width-limit {  }
+#footer p { color: #F8F8F8; font-size: inherit; margin: 0 0 0 0; } 
+
+#footer-top { background: #343434; color: #F1F1F1; text-align:left; padding: 23px 20px 40px 20px; overflow: auto; }
+#footer-top .widget-body { font-size: 0.7em; }
+#footer-top .widget { float:left; display: block; margin: 0 20px; }
+#footer-top ul li a { line-height: 2em; display: block; text-decoration: none; }
+#footer-top .widget i { font-weight: 600; color: #54B1FF; display:inline-block; margin-right:3px; font-style:normal; }
+
+#footer-bottom { background: #2A2A2A; font-size: 0.625em; color: #DDD; min-height: 50px; padding: 23px 20px 40px 20px; overflow: auto}
+#footer-bottom ul li { display:inline; margin-left:10px; }
+#footer .left { float:left; width: 45%; text-align:left; }
+#footer .right { float:right; width: 45%; text-align:right; }
+
+/*--second level--*/
+#sitemap li li { font-size: .9em; font-weight:normal; margin-right:0px; float:none; padding:0px;}
+#sitemap li li a {  color:#FFF; display: block; margin-bottom: 0px; padding: 5px 0 5px 5px; text-decoration: none; }
+#sitemap li li a:hover { background: #333; }
+
+/*--header/first level--*/
+#sitemap li { font-size: 1em; font-weight:bold; margin-right:10px; float: left; width: 110px; }
+#sitemap li a { color: #888; display: block; margin-bottom: 5px; padding: 40px 0 15px 5px; }
+
+#sitemap #menu-contact-menu li.menu-item { line-height: 21px; width: 175px; float:right }
+#sitemap #menu-contact-menu li { width:175px; }
+#sitemap #menu-contact-menu p { margin-left: 40px; }
+#sitemap small { color: #888; display: block; float: left; font-size: 10px; width: 40px; }
+
+#copyright { position: absolute; top: 200px; clear:left; }
+#copyright a { color: #ccc; }
+.footer_link_img { text-indent: -1000em; display: block; position: absolute; }
+#footer_umd { background: url(images/footer_umd.gif) no-repeat left top; top: 65px; left: 20px; width: 183px; height: 30px; }
+#footer_arhu { display: block; background: url(images/footer_arhu.gif) no-repeat top left; top: 65px; left: 20px; width: 220px; height: 35px; }
+#footer_mith { background: url(images/footer_mith.gif) no-repeat top left; top: 58px; left: 890px; width: 50px; height: 41px; }
+#copyright_text { color: #999; text-align: center; line-height: 140%; position: absolute; top: 65px; width: 960px; }
+
+/* READ MORE */
+.readmore { float:right; clear:both; display:block; width:100%; font-size: 9px; text-transform:uppercase; text-align:right; font-family: Arial, Helvetica, sans-serif; padding-right: 10px; background: url(images/arrow-blue-next.gif) no-repeat right center; }
+
+
+/* --------------MISC STYLES--------------*/
+div.width-limit { width:870px; height: 32px; }
+.width-limit { margin:0px auto; }
+div.prepend-top, .prepend-top {margin-top:16px;}
+div.append-bottom, .append-bottom {margin-bottom:16px;}
+.prepend-top-2 {margin-top:36px;}
+.append-bottom-2 {margin-bottom:36px;}
+.clear { clear:both !important; }
+.clear-block { display:block; }
+.last { margin-right:0; }
+
+blockquote { margin:1.5em; color:#666; font-style:italic; }
+strong, dfn { font-weight:bold; }
+em, dfn { font-style:italic; }
+sup, sub { line-height:0; }
+abbr, acronym { border-bottom:1px dotted #666; }
+address { margin:0 0 1.5em; font-style:italic; }
+del { color:#666; }
+pre { margin:1.5em 0; white-space:pre; }
+pre, code, tt { font:1em 'andale mono', 'lucida console', monospace; line-height:1.5; }
+
+
+/*--images--*/
+.aligncenter { display: block; margin-left: auto; margin-right: auto; }
+.alignright { float: right; }
+.alignleft { float: left; }
+img.centered { display: block; margin-left: auto; margin-right: auto; }
+img.alignright { padding: 4px; margin: 0 0 2px 7px; display: inline; }
+img.alignleft { padding: 4px; margin: 0 7px 2px 0; display: inline; }
+

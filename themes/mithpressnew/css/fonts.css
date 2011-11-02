@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'Vegur';
+    src: url('fonts/vegur-bold-wfont.eot');
+    src: url('fonts/vegur-bold-wfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/vegur-bold-wfont.woff') format('woff'),
+         url('fonts/vegur-bold-wfont.ttf') format('truetype'),
+         url('fonts/vegur-bold-wfont.svg#VegurBold') format('svg');
+    font-weight: 700;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Vegur';
+    src: url('fonts/vegur-medium-wfont.eot');
+    src: url('fonts/vegur-medium-wfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/vegur-medium-wfont.woff') format('woff'),
+         url('fonts/vegur-medium-wfont.ttf') format('truetype'),
+         url('fonts/vegur-medium-wfont.svg#VegurMedium') format('svg');
+    font-weight: 600;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Vegur';
+    src: url('fonts/vegur-regular-wfont.eot');
+    src: url('fonts/vegur-regular-wfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/vegur-regular-wfont.woff') format('woff'),
+         url('fonts/vegur-regular-wfont.ttf') format('truetype'),
+         url('fonts/vegur-regular-wfont.svg#VegurRegular') format('svg');
+    font-weight: 500;
+    font-style: normal;
+
+}

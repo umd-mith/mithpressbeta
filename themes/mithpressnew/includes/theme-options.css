@@ -1,0 +1,98 @@
+
+
+/* #wpcontent select option {
+	padding-right: 5px;
+}
+.image-radio-option td {
+	padding-top: 15px;
+}
+.image-radio-option label {
+	display: block;
+	float: left;
+	margin: 0 30px 20px 2px;
+	position: relative;
+}
+.image-radio-option input {
+	margin: 0 0 10px;
+}
+.image-radio-option span {
+	display: block;
+	width: 136px;
+}
+.image-radio-option img {
+	margin: 0 0 0 -2px;
+}
+#link-color-example {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	border: 1px solid #dfdfdf;
+	margin: 0 7px 0 3px;
+	padding: 4px 14px;
+}
+
+body.rtl .image-radio-option label {
+	float: right;
+	margin: 0 2px 20px 30px;
+}
+
+.mith-options .form-table h3 {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+*/
+
+fieldset.mith-options {
+	border:1px solid #ddd; padding-bottom:20px; margin-top:20px;
+}
+
+fieldset.mith-options legend {
+	margin-left:5px;
+	padding:0 5px;
+	color:#2481C6;
+	text-transform:uppercase;
+	font-size: 1.1em;
+}
+
+.mith-options .form-table h3 {
+	font-size: 1.05em;
+	color: #333;
+	border-bottom: 1px dashed #DDD;
+	padding-bottom: 4px;
+}
+.mith-options .form-table {
+	margin-left: 2em;
+	margin-right: 2em; 
+}
+
+.mith-options .form-table .form-row {
+	clear: both;
+	padding: 10px;
+	overflow:auto;
+	border: 1px solid #DDD;
+	width: 700px;
+}
+.mith-options .form-table label {
+	clear: left;
+    display: inline-block;
+    font-size: 11px;
+    height: 20px;
+    padding: 8px 0;
+    width: 100px;
+}
+.mith-options .form-table label.subheader {
+	clear: both;
+    font-size: 11px;
+    height: 20px;
+    padding: 3px 5px 0px 5px;
+	display:block;
+	font-size:13px;
+	width:200px;
+	background: #DDD;
+	
+}
+.mith-options span { 
+	display: block;
+	float:lef;
+	clear:both;
+}

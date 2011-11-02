@@ -1,0 +1,32 @@
+/*
+Gigpress styles
+*/
+
+/* */
+span.gigpress-sidebar-artist {
+	font-weight:600;
+}
+
+
+/* speaker affiliation */
+span.gigpress-info-item em {
+	display: inline;
+	color: #555;
+	font-style:italic;
+	font-weight:400;
+	line-height:1.3em;
+}
+/* talk title */
+span.gigpress-info-item span {
+	display: block;
+	margin-top:2px;
+	font-weight:600;
+}
+
+
+/* Stop Firefox from underlining our abbreviated dates */
+abbr {
+	border: none !important;
+	text-decoration: none;
+	font-size: 100%;
+}

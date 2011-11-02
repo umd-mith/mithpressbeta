@@ -1,0 +1,27 @@
+.project_details_panel {
+	overflow:auto;
+}
+.project_details_column.left {float:left; width:49%;
+}
+.project_details_column.right { float:right; width:49%; }
+
+.project_details_panel .description
+{ display:none; }
+
+.project_details_panel label
+{ display:block; font-weight:bold; margin-bottom:0; margin-top:12px; clear: both; }
+
+.project_details_panel label span
+{ display:inline; font-weight:normal; }
+
+.project_details_panel span
+{ color:#999; display:inline; width: 100px; float: left; margin-left: 6px; }
+
+.project_details_panel textarea, .project_details_panel input[type='text']
+{ margin-bottom:3px; width:250px; float: left; display:inline;}
+
+.project_details_panel h4
+{ color:#999; font-size:1em; margin:15px 6px; text-transform:uppercase; }
+.project_details_column p { clear: both; }
+
+.project_details_column .upload_button { margin-left:106px; }
