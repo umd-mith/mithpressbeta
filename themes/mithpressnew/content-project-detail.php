@@ -7,39 +7,50 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<header class="entry-header">
-		<h1 class="entry-title append-bottom prepend-top"><a href="<?php the_permalink(); ?>" ><?php the_title(); ?></a></h1>
+		<h1 class="entry-title append-bottom prepend-top"><?php the_title(); ?></h1>
 	</header>
     <!-- /entry-header -->
 
 	<div class="entry-content">
+		<?php 
+			$people = get_post_meta(get_the_ID(), 'project-people', true);
+			$links = get_post_meta(get_the_ID(), 'project-links', true);
+			$date = get_post_meta(get_the_ID(), 'project-launchdate', true);
+			$screenshot = get_post_meta($post->ID, 'project-screenshot', true); 
+	?>
 		<div class="project-desc"><?php the_content(); ?></div>
         
+        <!-- #project details -->
+        <aside id="project-details" class="widget">
+			<h3><?php _e( 'Project Details', 'mithpress' ); ?></h3>
+			<p>Launch Date: <span><?php echo $date; ?></span></p>
+            <p></p>
+        </aside>
+        <!-- /#project details -->
+        
 		<?php // start project images
-			$thumbnail = get_post_meta($post->ID, 'project-thumb', true); 
-			if ($thumbnail) : ?>
-        <aside id="project-thumb" class="widget">
+			if ($screenshot) : ?>
+        <aside id="project-screenshot" class="widget">
 			<h3><?php _e( 'Project Images', 'mithpress' ); ?></h3>
         	<p><a href="<?php the_permalink() ?>" rel="bookmark">
-            	<img class="thumb" src="<?php echo $thumbnail ?>" alt="<?php the_title() ?>" />
+            	<img class="thumb" src="<?php echo $screenshot; ?>" alt="<?php the_title() ?>" />
             </a>
             </p>
         </aside>
         <?php endif ?>
 
 		<?php // start project participants
-			$project_people = get_post_meta($post->ID, 'project-people', true); 
-            if ($project_people) : ?> 
-        <aside id="project-thumb" class="widget">
+            if ($people) : ?> 
+        <aside id="project-people" class="widget">
 			<h3><?php _e( 'Project Participants', 'mithpress' ); ?></h3>
+            <?php //foreach statement needs to go here ?>
+            <?php echo $people; ?>
             <ul>
             	<li></li>
             </ul>        
         </aside>
         <?php endif ?>
 
-        <div class="project-people"></div>
-        <div class="project-links"></div>
-		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'mithpress' ) . '</span>', 'after' => '</div>' ) ); ?>
 	</div><!-- .entry-content -->
 
 </article><!-- #post-<?php the_ID(); ?> -->
