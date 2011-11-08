@@ -1,7 +1,7 @@
 <?php
 /* PROJECT Metaboxes */
 
-$project_mb = new WPAlchemy_MetaBox(
+$mith_mb = new WPAlchemy_MetaBox(
 	array(
 		'id' => '_project_details',
 		'title' => 'Project Details',
@@ -9,7 +9,9 @@ $project_mb = new WPAlchemy_MetaBox(
 		'context' => 'normal', // same as above, defaults to "normal"
 		'priority' => 'high', // same as above, defaults to "high"
 		'template' => get_stylesheet_directory() . '/metaboxes/project-meta.php'
-	),
+));
+
+$mith_mb = new WPAlchemy_MetaBox(
 	array(
 		'id' => '_project_status',
 		'title' => 'Project Status',
@@ -17,14 +19,15 @@ $project_mb = new WPAlchemy_MetaBox(
 		'context' => 'side', 
 		'priority' => 'default', 
 		'template' => get_stylesheet_directory() . '/metaboxes/project-meta-side.php'
-	),
+));
+
+$mith_mb = new WPAlchemy_MetaBox(
 	array(
-	'id' => '_project_files',
-	'title' => 'Project Files',
-	'types' => array('project'), 
-	'template' => get_stylesheet_directory() . '/metaboxes/custom-meta.php',
-	)
-);
+		'id' => '_project_files',
+		'title' => 'Project Files',
+		'types' => array('project'), 
+		'template' => get_stylesheet_directory() . '/metaboxes/project-uploads-meta.php',
+));
 
 /* eof */
 ?>

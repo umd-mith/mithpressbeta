@@ -3,14 +3,7 @@
 	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 	Cras orci lorem, bibendum in pharetra ac, luctus ut mauris.</p>
  
-	<label>Name</label>
- 
-	<p>
-		<input type="text" name="<?php $metabox->the_name('name'); ?>" value="<?php $metabox->the_value('name'); ?>"/>
-		<span>Enter in a name</span>
-	</p>
-
-	<label>Authors <span>(Enter in each authors name)</span></label>
+	<label>Project Staff<span>(Enter in each person's name)</span></label>
  
 	<?php while($metabox->have_fields('authors',3)): ?>
 	<p>
@@ -73,32 +66,6 @@
 		<?php $metabox->the_field('description'); ?>
 		<input type="text" name="<?php $metabox->the_name(); ?>" value="<?php $metabox->the_value(); ?>"/>
 	</p>
-	<?php endwhile; ?>
-
-	<h4>Documents</h4>
- 
-	<a style="float:right; margin:0 10px;" href="#" class="dodelete-docs button">Remove All</a>
- 
-	<p>Add documents to the library by entering in a title, 
-	URL and selecting a level of access. Upload new documents 
-	using the "Add Media" box.
-    To add additonal documents, click on "Add Document"</p>
- 
-	<?php while($mb->have_fields_and_multi('docs')): ?>
-	<?php $mb->the_group_open(); ?>
- 
-		<?php $mb->the_field('title'); ?>
-		<label>Title and URL</label>
-		<p><input type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>"/></p>
- 
-		<?php $mb->the_field('link'); ?>
-		<p><input type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>"/></p>
-  
-			<a href="#" class="button" style="margin-left:10px;" onclick="jQuery(this).siblings().removeAttr('checked'); return false;">Remove Access</a>
-			<a href="#" class="dodelete button">Remove Document</a>
-		</p>
- 
-	<?php $mb->the_group_close(); ?>
 	<?php endwhile; ?>
  
 	<p style="margin-bottom:15px; padding-top:5px;"><a href="#" class="docopy-docs button">Add Document</a></p>

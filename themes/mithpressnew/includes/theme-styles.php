@@ -3,7 +3,9 @@
 
 TABLE OF CONTENTS
 
-- Add / Remove Styles
+- Add Styles
+- Remove Styles
+- Add Scripts
 
 -----------------------------------------------------------------------------------*/
 
