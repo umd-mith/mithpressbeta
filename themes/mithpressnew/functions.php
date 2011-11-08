@@ -7,21 +7,34 @@ define('MY_THEME_PATH','/' . substr(MY_THEME_FOLDER,stripos(MY_THEME_FOLDER,'wp-
 // Set path to theme specific functions
 $functions_path = TEMPLATEPATH . '/functions/';
 $includes_path = TEMPLATEPATH . '/includes/';
+$scripts_path = TEMPLATEPATH . '/js/';
 //$content_path = TEMPLATEPATH . '/content/';
 
 require_once ($includes_path . 'theme-functions.php'); 		// Custom theme functions
 require_once ($includes_path . 'theme-widgets.php');		// Theme widgets
 require_once ($includes_path . 'theme-comments.php');		// Comments & Pingbacks, etc
-require_once ($includes_path . 'theme-styles.php');		// Theme styles
-require_once ($includes_path . 'theme-options.php');
+require_once ($includes_path . 'theme-styles.php');			// Theme styles
+require_once ($includes_path . 'theme-options.php');		
 require_once ($includes_path . 'theme-posts.php');		
-require_once ($includes_path . 'breadcrumbs.php');		// Breadcrumbs function
+require_once ($includes_path . 'breadcrumbs.php');			// Breadcrumbs function
 
+include_once 'metaboxes/setup.php';
+//include_once 'metaboxes/simple-spec.php'; 
+include_once 'metaboxes/full-spec.php';
+//include_once 'metaboxes/checkbox-spec.php';
+//include_once 'metaboxes/radio-spec.php';
+//include_once 'metaboxes/select-spec.php';
 
-//Custom icons 
+//require_once ($includes_path . 'theme-metabox.php');
+require_once ($includes_path . 'custom-posts.php');			// Defines Custom Post Types
+
+/*-----------------------------------------------------------------------------------*/
+/* Load Admin Styles Based if Custom Post Type */
+/*-----------------------------------------------------------------------------------*/
 
 add_action('admin_init','load_admin_styles');
 
+// Custom Icons for Custom Post Types
 function load_admin_styles() {
 	global $pagenow, $typenow;
 	if (empty($typenow) && !empty($_GET['post'])) {
@@ -36,11 +49,6 @@ function load_admin_styles() {
 
 
 
-// THEME SETUP 
-
-require_once ( get_template_directory() . '/includes/custom-posts.php' );
-require_once ( get_template_directory() . '/includes/breadcrumbs.php' );
-
 
 if ( is_admin() && isset($_GET['activated'] ) && $pagenow == 'themes.php' ) {
     update_option( 'posts_per_page', 12 );
@@ -48,27 +56,10 @@ if ( is_admin() && isset($_GET['activated'] ) && $pagenow == 'themes.php' ) {
 }
 
 
-// SUBPAGES 
-function is_tree( $pid ) {      // $pid = The ID of the page we're looking for pages underneath
-    global $post;               // load details about this page
+/*-----------------------------------------------------------------------------------*/
+/* Reading & Excerpts */
+/*-----------------------------------------------------------------------------------*/
 
-    if ( is_page($pid) )
-        return true;            // we're at the page or at a sub page
-
-    $anc = get_post_ancestors( $post->ID );
-    foreach ( $anc as $ancestor ) {
-        if( is_page() && $ancestor == $pid ) {
-            return true;
-        }
-    }
-
-    return false;  // we arn't at the page, and the page is not an ancestor
-}
-
-
-
-
-// MISC 
 
 /** Returns a "Continue Reading" link for excerpts  */
 function mithpress_continue_reading_link() {
@@ -121,17 +112,6 @@ function get_custom_field_data($key, $echo = false) {
 
 
 
-
-/* Add custom CSS to custom post type pages 
-add_action('admin_print_styles', 'custom_admin_styles', 21);
-
-	function custom_admin_styles() {
-		global $post_type; if (($_GET['post_type'] == 'project' ) || ($post_type == 'project')) :		
-			echo "<link rel='stylesheet' type='text/css' href='" . get_template_directory_uri() . "/css/custom-admin.css' media='screen' />";		
-		endif;
-
-}
-*/
 
 
 // OUTPUT WHICH TEMPLATE A PAGE/POST IS USING IN THE HEADER

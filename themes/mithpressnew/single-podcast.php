@@ -5,7 +5,8 @@
 <!--start subnav -->
 		  <?php get_sidebar('left'); ?>
 <!--end sidebar / start single podcast content-->
-			<div id="content" role="main" class="span-10 last">
+
+			<div id="content" role="main" class="span-16 last">
             
 			<?php if (function_exists('mithpress_breadcrumbs')) mithpress_breadcrumbs(); ?>
 				
@@ -13,10 +14,14 @@
 
 					<?php get_template_part( 'content', 'podcast' ); ?>
 	
-				<?php endwhile; // end of the loop. ?>
+				<?php endwhile; ?>
+
+				<?php mithpress_content_nav( 'nav-below' ); ?>
+
+			<?php endif; ?>
                     
 <!-- start sidebar -->
-		<?php get_sidebar('project'); ?>
+		<?php get_sidebar('podcast'); ?>
 <!-- end sidebar -->
 		</div>
 <!-- end #content -->

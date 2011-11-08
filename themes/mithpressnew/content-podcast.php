@@ -7,7 +7,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<header class="entry-header">
-		<h1 class="entry-title append-bottom prepend-top"><a href="<?php the_permalink(); ?>" ><?php the_title(); ?></a></h1>
+		<h1 class="entry-title append-bottom prepend-top"><?php the_title(); ?></h1>
 	</header>
     <!-- /entry-header -->
 
@@ -20,7 +20,16 @@
 		<div class="pods-speaker"><?php echo $speaker; ?>, <span class="pods-affiliation"><?php echo $affiliation; ?></span></div>
         <div class="pods-date"><?php echo $talkdate; ?></div>
 		<div class="pods-desc"><?php the_content(); ?></div>
-        <div class="pods-media"></div>
+        <div class="pods-media">
+        <?php 
+        $files = get_post_meta(get_the_ID(), 'pods-files', false);
+        foreach ($files as $att) {
+            // show image
+            echo wp_get_attachment_link($att);
+        } ?>
+        
+        
+        </div>
 		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'mithpress' ) . '</span>', 'after' => '</div>' ) ); ?>
 	</div><!-- .entry-content -->
 

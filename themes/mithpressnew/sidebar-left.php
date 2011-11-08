@@ -12,19 +12,19 @@
 		echo $parent_title;
 	} ?>
   </h1>
-<?php if (is_tree('554')) {
+<?php if (is_tree('2')) {
 	wp_nav_menu( array( 
 		'theme_location' => 'about-menu', 
 		'container_id' => 'sub-links',
 		'menu_class' => 'links'
 	) ); 
-} elseif (is_tree('54') || 'project' == get_post_type()) {
+} elseif (is_tree('54') || 'project' == get_post_type() || is_singular('project')) {
 	wp_nav_menu( array( 
 		'theme_location' => 'research-menu', 
 		'container_id' => 'sub-links',
 		'menu_class' => 'links'
 	) ); 
-} elseif (is_tree('127') || 'podcast' == get_post_type()) {
+} elseif (is_tree('127') || 'podcast' == get_post_type() || is_singular('podcast')) {
 	wp_nav_menu( array( 
 		'theme_location' => 'digital-dialogues-menu', 
 		'container_id' => 'sub-links',

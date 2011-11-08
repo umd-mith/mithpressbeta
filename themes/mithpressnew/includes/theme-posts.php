@@ -22,7 +22,7 @@ function my_get_posts( $query ) {
 	return $query;
 }*/
 
-add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'image', 'podcast', 'project' ) );
+add_theme_support( 'post-formats', array( 'aside', /*'link', 'gallery', 'status', 'quote', 'image',*/ 'podcast', 'project', 'people' ) );
 
 /*-----------------------------------------------------------------------------------*/
 /* Nav Menus Support */

@@ -23,8 +23,6 @@ Template Name: Dialogues
             ?>
   			<?php if ( have_posts() ) : ?>
 
-				<?php mithpress_content_nav( 'nav-above' ); ?>
-
 				<?php while ( have_posts() ) : the_post(); ?>
 
 					<?php get_template_part( 'content', 'ddialogues'); ?>
@@ -32,17 +30,17 @@ Template Name: Dialogues
 				<?php endwhile; ?>
 
 				<?php mithpress_content_nav( 'nav-below' ); ?>
-            
+
 			<?php endif; ?>
-            
-<!-- start right sidebar -->
-	<?php get_sidebar('ddialogue'); ?>
+                    
+<!-- start sidebar -->
+		<?php get_sidebar('ddialogue'); ?>
 <!-- end sidebar -->
-			</div>
-<!-- end #content -->
 		</div>
+<!-- end #content -->
+	</div>
+<!--end #primary/post -->    
 <div class="clear"></div>
-<!-- end #primary -->
 </div>
 <!-- end page / start footer -->
 

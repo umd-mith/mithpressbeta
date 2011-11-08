@@ -22,6 +22,9 @@ function mithpress_breadcrumbs() {
       $parentCat = get_category($thisCat->parent);
       if ($thisCat->parent != 0) echo(get_category_parents($parentCat, TRUE, ' ' . $delimiter . ' '));
       echo $before . 'Archive by category "' . single_cat_title('', false) . '"' . $after;
+	// display post type name on custom post type archive pages
+	} elseif ( is_post_type_archive() ) {
+      echo $before . post_type_archive_title() . $after;
  
     } elseif ( is_day() ) {
       echo '<a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a> ' . $delimiter . ' ';
@@ -59,7 +62,7 @@ function mithpress_breadcrumbs() {
       echo '<a href="' . get_permalink($parent) . '">' . $parent->post_title . '</a> ' . $delimiter . ' ';
       echo $before . get_the_title() . $after;
  
-    } elseif ( is_page() && !$post->post_parent ) {
+	} elseif ( is_page() && !$post->post_parent ) {
       echo $before . get_the_title() . $after;
  
     } elseif ( is_page() && $post->post_parent ) {
@@ -98,9 +101,9 @@ function mithpress_breadcrumbs() {
     echo '</div>';
  
   }
-  elseif ( is_home() ) {
+  elseif ( is_home() ) {  
 	echo '<div id="crumbs">';
-	echo '<a href="' . $homeLink . '">' . $home . '</a> ' . $delimiter . ' Blog';
+	echo '<a href="' . get_bloginfo('url') . '">' . $home . '</a> ' . $delimiter . ' Blog';
 	echo '</div>';
   }
 

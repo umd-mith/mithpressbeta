@@ -12,13 +12,9 @@
     <!-- /entry-header -->
 
 	<div class="entry-content">
-		<?php 
-			$thumbnail = get_post_meta(get_the_ID(), 'project-thumb', true);
-		?>
-		<div class="project-thumb"><img src="<?php echo $thumbnail; ?>" class="pthumb" border="0" alt="project thumb" /></div>
-        <div class="pods-date"><?php echo $talkdate; ?></div>
-		<!--<div class="pods-desc"><?php the_content(); ?></div>-->
-        <div class="pods-media"></div>
+		<div class="project-thumb">
+
+        </div>
 	</div><!-- .entry-content -->
 
 </article><!-- #post-<?php the_ID(); ?> -->

@@ -32,6 +32,15 @@ if ( function_exists('register_sidebars') )
         'after_title' => '</h3><div class="widget-body clear">'
     ));
     register_sidebar(array(
+        'name' => 'Digital Dialogues Sidebar',
+		'id' => 'ddialouges',
+		'description' => 'Sidebar displayed on main Digital Dialogues page',
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget' => '</div></div>',
+        'before_title' => '<h3>',
+        'after_title' => '</h3><div class="widget-body clear">'
+    ));
+    register_sidebar(array(
         'name' => 'Footer Widget Area',
 		'id' => 'footer',
 		'description' => 'Left footer quicklinks',
@@ -76,7 +85,7 @@ if ( function_exists('register_sidebars') )
 class Recentposts_thumbnail extends WP_Widget {
 
     function Recentposts_thumbnail() {
-        parent::WP_Widget(false, $name = 'Recent Posts');
+        parent::WP_Widget(false, $name = 'Recent Posts Widget');
     }
 
     function widget($args, $instance) {
@@ -84,7 +93,11 @@ class Recentposts_thumbnail extends WP_Widget {
         $title = apply_filters('widget_title', $instance['title']);
         ?>
             <?php echo $before_widget; ?>
-            <?php if ( $title ) echo $before_title . $title . $after_title;  else echo '<div class="widget-body clear">'; ?>
+            <?php if ( $title ) { 
+				echo $before_title . '<a href="';
+				echo ( get_option('feedburner_url') )? get_option('feedburner_url') : get_bloginfo('rss2_url');
+				echo '" class="rss">&nbsp;</a>' . $title . $after_title; 
+			} else echo '<div class="widget-body clear">'; ?>
 
             <?php
                 global $post;
@@ -103,7 +116,7 @@ class Recentposts_thumbnail extends WP_Widget {
                         $offset = 'style="padding-left: 65px;"';
                     }
                     ?>
-                    <span class="rpthumb-title" <?php echo $offset; ?>><?php the_title(); ?></span>
+                    <span class="rpthumb-title" <?php echo $offset; ?> ><?php the_title(); ?></span>
                     <span class="rpthumb-date" <?php echo $offset; unset($offset); ?>><?php the_time(__('M j, Y')) ?></span>
                 </a>
 

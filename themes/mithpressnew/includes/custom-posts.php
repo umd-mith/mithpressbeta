@@ -1,6 +1,4 @@
 <?php
-include_once 'meta-box-3.2.2.class.php';
-include 'meta-box-use.php';
 
 /*-------------------------------------------------------------------------------------------*/
 /* Project Post Type */
@@ -123,12 +121,12 @@ function edit_project_columns( $columns ) {
 
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
-		'id' => __('ID'),
 		'title' => __( 'Project Title' ),
 		'project_status' => __( 'Status' ),
+		'project_date' => __( 'Launch Date' ),
 		'tags' => __( 'Tags' ),
 		// 'categories' => __( 'Categories' ),
-		'project_date' => __( 'Launch Date' )
+		'id' => __('ID'),
 	);
 
 	return $columns;
@@ -213,29 +211,6 @@ function register_cpt_podcast() {
     register_post_type( 'podcast', $args );
 }
 
-// changes the "Enter title here" for PODCAST post type
-add_filter('gettext', 'podcast_custom_rewrites', 10, 4);
-function podcast_custom_rewrites($translation, $text, $domain) {
-	global $post;
-        if ( ! isset( $post->post_type ) ) {
-            return $translation;
-        }
-	$translations = &get_translations_for_domain($domain);
-	$translation_array = array();
- 
-	switch ($post->post_type) {
-		case 'podcast': 
-			$translation_array = array(
-				'Enter title here' => 'Enter talk title here'
-			);
-			break;
-	}
- 
-	if (array_key_exists($text, $translation_array)) {
-		return $translations->translate($translation_array[$text]);
-	}
-	return $translation;
-}
 /* New Podcast Tag Taxonomy
 add_action( 'init', 'register_taxonomy_podcast_tags' );
 
@@ -285,10 +260,10 @@ function edit_podasts_columns($columns) //this function display the columns head
 {
 	$columns = array(
 		"cb" => "<input type=\"checkbox\" />",
-		'id' => __('ID'),
 		"pods_date" => "Date",
 		"title" => "Title",
 		"pods_speaker" => "Speaker",
+		'id' => __('ID'),
 	);
 	return $columns;
 }
@@ -368,9 +343,13 @@ function register_cpt_people() {
     register_post_type( 'people', $args );
 }
 
-// changes the "Enter title here" for PEOPLE post type
-add_filter('gettext', 'people_custom_rewrites', 10, 4);
-function people_custom_rewrites($translation, $text, $domain) {
+/*-------------------------------------------------------------------------------------------*/
+/* Meta Box Title Changes */
+/*-------------------------------------------------------------------------------------------*/
+
+add_filter('gettext', 'admin_custom_rewrites', 10, 4);
+
+function admin_custom_rewrites($translation, $text, $domain) {
 	global $post;
         if ( ! isset( $post->post_type ) ) {
             return $translation;
@@ -381,7 +360,16 @@ function people_custom_rewrites($translation, $text, $domain) {
 	switch ($post->post_type) {
 		case 'people': 
 			$translation_array = array(
-				'Enter title here' => 'Enter full name here'
+				'Enter title here' => 'Enter full name here',
+				'Featured Image' => 'Bio Picture',
+				'Set featured image' => 'Assign image'
+			);
+			break;
+		case 'podcast': 
+			$translation_array = array(
+				'Enter title here' => 'Enter talk title here',
+				'Featured Image' => 'Speaker Photo',
+				'Set featured image' => 'Assign image'
 			);
 			break;
 	}
@@ -391,6 +379,7 @@ function people_custom_rewrites($translation, $text, $domain) {
 	}
 	return $translation;
 }
+
 
 
 /*-------------------------------------------------------------------------------------------*/
