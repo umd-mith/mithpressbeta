@@ -21,7 +21,7 @@
 
 	<label>Links <span>(Enter in the link title and url)</span></label>
  
-	<?php while($metabox->have_fields('links',5)): ?>
+	<?php while($metabox->have_fields('links', 5)): ?>
 	<p>
 		<?php $metabox->the_field('title'); ?>
 		<input type="text" name="<?php $metabox->the_name(); ?>" value="<?php $metabox->the_value(); ?>"/>
@@ -43,31 +43,5 @@
 		</select>
 	</p>
 	<?php endwhile; ?>
-
-	<p>And one field and field groups will initially display a 
-	single field, when new values are added and extra field is 
-	displayed allowing a user to add another value, and so on.</p>
-
-	<label>And One... <span>(Enter in a value)</span></label>
- 
-	<?php while($metabox->have_fields_and_one('and_one')): ?>
-	<p>
-		<input type="text" name="<?php $metabox->the_name(); ?>" value="<?php $metabox->the_value(); ?>"/>
-	</p>
-	<?php endwhile; ?>
-
-	<label>And One Group <span>(Enter in the link title and description)</span></label>
- 
-	<?php while($metabox->have_fields_and_one('and_one_group')): ?>
-	<p>
-		<?php $metabox->the_field('title'); ?>
-		<input type="text" name="<?php $metabox->the_name(); ?>" value="<?php $metabox->the_value(); ?>"/>
-		
-		<?php $metabox->the_field('description'); ?>
-		<input type="text" name="<?php $metabox->the_name(); ?>" value="<?php $metabox->the_value(); ?>"/>
-	</p>
-	<?php endwhile; ?>
- 
-	<p style="margin-bottom:15px; padding-top:5px;"><a href="#" class="docopy-docs button">Add Document</a></p>
 
 </div>
