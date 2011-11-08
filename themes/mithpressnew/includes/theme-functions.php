@@ -3,8 +3,12 @@
 
 TABLE OF CONTENTS
 
-- 
-- 
+- Post Thumbnail 
+- Nav Menus
+- Misc
+- Post Navigation
+- Post Meta
+- Admin Functions 
 
 -----------------------------------------------------------------------------------*/
 
@@ -23,6 +27,20 @@ function mithpress_thumbnails() {
 }
 add_action( 'init', 'mithpress_thumbnails' );
 
+
+// Remove Title Attribute from Featured Image
+
+add_filter('post_thumbnail_html', 'remove_feat_img_title');
+function remove_feat_img_title($img) {
+    $img = preg_replace('/title=\"(.*?)\"/','',$img);
+    return $img;
+}
+
+function modify_post_mime_types($post_mime_types) {
+    $post_mime_types['application/pdf'] = array(__('PDF'), __('Manage PDF'), _n_noop('PDF <span class="count">(%s)</span>', 'PDF <span class="count">(%s)</span>'));
+    return $post_mime_types;
+}
+add_filter('post_mime_types', 'modify_post_mime_types');
 
 /*-----------------------------------------------------------------------------------*/
 /* Nav Menus Support */
@@ -43,16 +61,32 @@ if ( function_exists('wp_nav_menu') ) {
   );
 }     
 
+
+function is_tree( $pid ) {      // $pid = The ID of the page we're looking for pages underneath
+    global $post;               // load details about this page
+
+    if ( is_page($pid) )
+        return true;            // we're at the page or at a sub page
+
+    $anc = get_post_ancestors( $post->ID );
+    foreach ( $anc as $ancestor ) {
+        if( is_page() && $ancestor == $pid ) {
+            return true;
+        }
+    }
+
+    return false;  // we arn't at the page, and the page is not an ancestor
+}
+
+
 /*-----------------------------------------------------------------------------------*/
 /* Misc */
 /*-----------------------------------------------------------------------------------*/
 
 add_theme_support( 'automatic-feed-links' );
 
-
-
 /*-----------------------------------------------------------------------------------*/
-/* Post navigation */
+/* Post Navigation */
 /*-----------------------------------------------------------------------------------*/
 function mithpress_content_nav( $nav_id ) {
 	global $wp_query;
@@ -110,7 +144,7 @@ endif;
 
 /*-----------------------------------------------------------------------------------*/
 /* WooTabs - Latest Posts */
-/*-----------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------
 if (!function_exists('woo_tabs_latest')) {
 	function woo_tabs_latest( $posts = 5, $size = 35 ) {
 		global $post;
@@ -126,14 +160,77 @@ if (!function_exists('woo_tabs_latest')) {
 	</li>
 	<?php endforeach; 
 	}
+}*/
+
+/*-----------------------------------------------------------------------------------*/
+/* Misc Admin */
+/*-----------------------------------------------------------------------------------*/
+
+// More Sorting Options for the Media Library 
+
+add_filter('post_mime_types', 'add_post_mime_type');
+function add_post_mime_type( $post_mime_types ) {
+    //$post_mime_types['application'] = array(__('Doc'), __('Manage Doc'), _n_noop('Doc <span class="count">(%s)</span>', 'Doc <span class="count">(%s)</span>'));
+    $post_mime_types['application/pdf'] = array(__('PDF'), __('Manage PDF'), _n_noop('PDF <span class="count">(%s)</span>', 'PDF <span class="count">(%s)</span>'));
+    $post_mime_types['application/msword'] = array(__('DOC'), __('Manage DOC'), _n_noop('DOC <span class="count">(%s)</span>', 'DOC <span class="count">(%s)</span>'));
+    return $post_mime_types;
 }
 
-/*-----------------------------------------------------------------------------------*/
-/* Nav Menus Support */
-/*-----------------------------------------------------------------------------------*/
 
-/*-----------------------------------------------------------------------------------*/
-/* Recent Posts Widgets */
-/*-----------------------------------------------------------------------------------*/
+// List Category ID in Quick Actions
 
+add_filter( "tag_row_actions", 'add_cat_id_to_quick_edit', 10, 2 );
+function add_cat_id_to_quick_edit( $actions, $tag ) {
+    $actions['cat_id'] = 'ID: '.$tag->term_id;
+    return $actions;
+}
+
+// Easier Access to Media File from Media Library
+/* will add a link to the ‘row actions’ for the File URL (as opposed the the attachment URL you’ll get with the ‘view’ link)*/
+
+add_filter ('media_row_actions','add_direct_link', 10, 3 );
+function add_direct_link( $actions, $post, $detached ) {
+    $actions['file_url'] = '<a href="' . wp_get_attachment_url($post->ID) . '">Actual File</a>';
+    return $actions;
+}
+
+
+// Remove Dashboard Widgets
+
+add_action( 'wp_dashboard_setup', 'remove_wp_dashboard_widgets' );
+
+function remove_wp_dashboard_widgets() {
+
+	//Plugins
+    wp_unregister_sidebar_widget( 'dashboard_plugins' );
+    remove_meta_box('dashboard_plugins', 'dashboard', 'normal');
+ 
+    //Right Now
+    //wp_unregister_sidebar_widget( 'dashboard_right_now' );
+    //remove_meta_box('dashboard_right_now', 'dashboard', 'normal');
+ 
+    //Recent Comments
+    //wp_unregister_sidebar_widget( 'dashboard_recent_comments' );
+    //remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');
+ 
+    //Incoming Links
+    //wp_unregister_sidebar_widget( 'dashboard_incoming_links' );
+    //remove_meta_box('dashboard_incoming_links', 'dashboard', 'normal');
+ 
+    //WordPress Blog
+    wp_unregister_sidebar_widget( 'dashboard_primary' );
+    remove_meta_box('dashboard_primary', 'dashboard', 'side');
+ 
+    //Other WordPress News
+    wp_unregister_sidebar_widget( 'dashboard_secondary' );
+    remove_meta_box('dashboard_secondary', 'dashboard', 'side');
+ 
+    //Quick Press
+    //wp_unregister_sidebar_widget( 'dashboard_quick_press' );
+    //remove_meta_box('dashboard_quick_press', 'dashboard', 'side');
+ 
+    //Recent Drafts
+    //wp_unregister_sidebar_widget( 'dashboard_recent_drafts' );
+    //remove_meta_box('dashboard_recent_drafts', 'dashboard', 'side');
+}
 ?>
