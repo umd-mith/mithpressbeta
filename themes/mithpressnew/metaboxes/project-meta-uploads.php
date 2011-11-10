@@ -9,14 +9,15 @@ global $wpalchemy_media_access;
 	<h4>Files</h4>
     <label><span>Add project files here (whitepapers, documentation, etc.)</span></label>
  
-	<p><a href="#" class="dodelete-docs button remove-all">Remove All</a></p>
+	<p class="remove-all-button"><a href="#" class="dodelete-docs button remove-all">Remove All</a></p>
  	
     <br clear="all" />
 	
 	<?php while($mb->have_fields_and_multi('docs', array('length' => 1, 'limit' => 10))): ?>
 	<?php $mb->the_group_open(); ?>
-		<a href="#" class="dodelete button remove">Remove</a>
- 
+        <p class="remove-button">
+			<a href="#" class="dodelete button remove">Remove</a>
+ 		</p>
 		<?php $mb->the_field('imgurl'); ?>
 		<?php $wpalchemy_media_access->setGroupName('doc-n'. $mb->get_the_index())->setInsertButtonLabel('Insert'); ?>
  
@@ -33,7 +34,7 @@ global $wpalchemy_media_access;
 	
     <br clear="all" />
  	
-    <p style="margin-bottom:15px; padding-top:5px;"><a href="#" class="docopy-docs button add-file">Add Another File</a></p>
+    <p class="add-another-button"><a href="#" class="docopy-docs button add-file">Add Another File</a></p>
 	
     <br clear="all" />
 

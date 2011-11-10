@@ -50,30 +50,6 @@ function register_cpt_project() {
     register_post_type( 'project', $args );
 }
 
-// changes the "Enter title here" for PROJECT post type
-add_filter('gettext', 'project_custom_rewrites', 10, 4);
-function project_custom_rewrites($translation, $text, $domain) {
-	global $post;
-        if ( ! isset( $post->post_type ) ) {
-            return $translation;
-        }
-	$translations = &get_translations_for_domain($domain);
-	$translation_array = array();
- 
-	switch ($post->post_type) {
-		case 'project': 
-			$translation_array = array(
-				'Enter title here' => 'Enter project name here'
-			);
-			break;
-	}
- 
-	if (array_key_exists($text, $translation_array)) {
-		return $translations->translate($translation_array[$text]);
-	}
-	return $translation;
-}
-
 /* New Project Tag Taxonomy
 add_action( 'init', 'register_taxonomy_project_tags' );
 
@@ -369,6 +345,13 @@ function admin_custom_rewrites($translation, $text, $domain) {
 			$translation_array = array(
 				'Enter title here' => 'Enter talk title here',
 				'Featured Image' => 'Speaker Photo',
+				'Set featured image' => 'Assign image'
+			);
+			break;
+		case 'project': 
+			$translation_array = array(
+				'Enter title here' => 'Enter project title here',
+				'Featured Image' => 'Project Thumbnail',
 				'Set featured image' => 'Assign image'
 			);
 			break;
