@@ -16,6 +16,7 @@ Custom MITH Styles
 
 
 @import url('css/fonts.css');
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700');
 
 /*-------------------------------------------------------------------------------------------*/
 /* Main
@@ -136,12 +137,19 @@ ol, ul, ul li { list-style: none outside none; padding:0; margin:0; }
 
 .post .nocomments { color: #999; }
 
-/* Staff 
---------------------------------------------------------------------------*/
-.staff .staff-member { display: inline-block; width:200px; }
-.staff .staff_img { width:50px; }
-.staff-member h4 { font-size: 1em; font-weight:normal; line-height: normal; margin-bottom: 0em; }
-.staff-member h5 { font-size:.9em; font-style:italic; font-weight:normal; }
+/*-------------------------------------------------------------------------------------------*/
+/* Staff / People */
+/*-------------------------------------------------------------------------------------------*/
+.attachment-bio-image { float: left; margin-right:20px; margin-bottom:20px;  }
+#personal-info .entry-title { margin-bottom:5px; display:block; }
+#personal-info .info-title { font-size: 1em; font-weight:400; display:block; margin-bottom: 5px;  }
+
+#personal-info span { display:block; margin: 5px 0; font-size: 0.625em; font-weight:500; }
+#personal-info .info-phone { }
+#personal-info .info-email { }
+#personal-info span a { text-decoration:none; }
+#personal-info span a:hover { text-decoration:none; }
+
 
 
 /*--project page (each)

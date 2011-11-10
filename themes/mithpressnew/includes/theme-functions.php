@@ -17,13 +17,14 @@ TABLE OF CONTENTS
 /*-----------------------------------------------------------------------------------*/
 
 add_theme_support( 'post-thumbnails' );
+add_theme_support( 'post-thumbnails', array( 'post','people','project' ) );
 
 function mithpress_thumbnails() {
 	//update_option('thumbnail_size_w', 290);
     //update_option('thumbnail_size_h', 290);
     add_image_size( 'mini-thumbnail', 50, 50, true );
     add_image_size( 'slide', 640, 290, true );
-
+	add_image_size( 'bio-image', 130, 130, true ); // staff photo size
 }
 add_action( 'init', 'mithpress_thumbnails' );
 
