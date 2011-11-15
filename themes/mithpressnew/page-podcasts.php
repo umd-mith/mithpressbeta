@@ -7,12 +7,11 @@ Template Name: Podcasts
 <?php get_header(); ?>
 <div id="page-container">
 		<div id="primary" class="width-limit">
-<!--start subnav -->
+		<!--start subnav -->
 		  <?php get_sidebar('left'); ?>
-<!--end sidebar / start podcast page content-->
+		<!--end sidebar / start podcast page content-->
 
 			<div id="content" role="main" class="span-16 last">
-
 			<?php if (function_exists('mithpress_breadcrumbs')) mithpress_breadcrumbs(); ?>
 
 			<?php global $wp_query;
@@ -34,9 +33,9 @@ Template Name: Podcasts
 				<?php mithpress_content_nav( 'nav-below' ); ?>
             
 			<?php endif; ?>
-<!-- start right sidebar -->
-	<?php get_sidebar('podcast'); ?>
-<!-- end sidebar -->
+            <!-- start right sidebar -->
+            <?php get_sidebar('podcast'); ?>
+            <!-- end sidebar -->
 			</div>
 <!-- end #content -->
 		</div>

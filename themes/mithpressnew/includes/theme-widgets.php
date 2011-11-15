@@ -18,36 +18,36 @@ if ( function_exists('register_sidebars') )
 		'id' => 'blog',
 		'description' => 'Sidebar displayed on blog pages',
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget' => '</div></div>',
+        'after_widget' => '</aside></div>',
         'before_title' => '<h3>',
-        'after_title' => '</h3><div class="widget-body clear">'
+        'after_title' => '</h3><aside class="widget-body clear">'
     ));
     register_sidebar(array(
         'name' => 'Podcast Sidebar',
 		'id' => 'podcast',
-		'description' => 'Sidebar displayed on individual podcast page',
+		'description' => 'Sidebar displayed on inasideidual podcast page',
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget' => '</div></div>',
+        'after_widget' => '</aside></div>',
         'before_title' => '<h3>',
-        'after_title' => '</h3><div class="widget-body clear">'
+        'after_title' => '</h3><aside class="widget-body clear">'
     ));
     register_sidebar(array(
         'name' => 'Digital Dialogues Sidebar',
 		'id' => 'ddialouges',
 		'description' => 'Sidebar displayed on main Digital Dialogues page',
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget' => '</div></div>',
+        'after_widget' => '</aside></div>',
         'before_title' => '<h3>',
-        'after_title' => '</h3><div class="widget-body clear">'
+        'after_title' => '</h3><aside class="widget-body clear">'
     ));
     register_sidebar(array(
         'name' => 'Footer Widget Area',
 		'id' => 'footer',
 		'description' => 'Left footer quicklinks',
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget' => '</div></div>',
+        'after_widget' => '</aside></div>',
         'before_title' => '<h3>',
-        'after_title' => '</h3><div class="widget-body clear">'
+        'after_title' => '</h3><aside class="widget-body clear">'
     ));
 /*    register_sidebar(array(
         'name' => 'Contact',

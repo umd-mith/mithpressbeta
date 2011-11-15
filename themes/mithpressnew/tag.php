@@ -10,7 +10,7 @@
 get_header(); ?>
 
 		<section id="primary">
-			<div id="content" role="main">
+			<div id="content" role="main" class="span-16 last">
 
 			<?php if ( have_posts() ) : ?>
 

@@ -10,7 +10,8 @@ get_header(); ?>
 			<div id="content" role="main" class="span-16 last">
 
             <?php if (function_exists('mithpress_breadcrumbs')) mithpress_breadcrumbs(); ?>
-
+			
+            <div id="posts">
 			<?php if ( have_posts() ) : ?>
 
 				<?php /* Start the Loop */ ?>
@@ -36,15 +37,16 @@ get_header(); ?>
 				</article><!-- #post-0 -->
 
 			<?php endif; ?>
+            </div>
 
-			</div>
-<!--end blog content / start sidebar -->
+		<!--end blog content / start sidebar -->
 		<?php get_sidebar('blog'); ?>
-<!--end sidebar-->
-	</div>
-<!--end #primary/blog -->    
+		<!--end sidebar-->
+		</div><!-- end content-->
+	</div><!--end #primary/blog -->    
+
 <div class="clear"></div>
-</div>
-<!-- end page / start footer -->
+
+</div><!-- end page / start footer -->
 
 <?php get_footer(); ?>
