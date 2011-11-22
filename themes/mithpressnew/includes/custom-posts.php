@@ -284,7 +284,7 @@ function register_cpt_people() {
         'add_new_item' => _x( 'Add New Person', 'people' ),
         'edit_item' => _x( 'Edit People', 'people' ),
         'new_item' => _x( 'New Person', 'people' ),
-        'view_item' => _x( 'View People', 'people' ),
+        'view_item' => _x( 'View Person', 'people' ),
         'search_items' => _x( 'Search People', 'people' ),
         'not_found' => _x( 'No people found', 'people' ),
         'not_found_in_trash' => _x( 'No people found in Trash', 'people' ),

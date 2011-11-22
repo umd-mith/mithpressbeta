@@ -16,7 +16,7 @@ TABLE OF CONTENTS
 /* Thumbnail Support */
 /*-----------------------------------------------------------------------------------*/
 
-add_theme_support( 'post-thumbnails', array('page', 'post','people','project' ) );
+add_theme_support( 'post-thumbnails', array('page','post','people','project','podcast' ) );
 
 function mithpress_thumbnails() {
 	//update_option('thumbnail_size_w', 290);

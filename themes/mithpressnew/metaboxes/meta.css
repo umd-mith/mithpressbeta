@@ -2,20 +2,22 @@
 { display:none; }
  
 .my_meta_control label
-{ color: #999999; display:block; font-weight:bold; margin:6px; margin-bottom:0; margin-top:12px; }
+{ color: #333; display:block; font-weight:bold; margin:3px; margin-bottom:0; margin-top:12px; }
  
 .my_meta_control label span
 { display:inline; font-weight:normal; }
  
 .my_meta_control span
-{ color:#999; display:block; }
+{ color:#999; display:inline; margin-left:6px; clear:right; line-height: 2em; }
  
 .my_meta_control textarea, .my_meta_control input[type='text']
-{ margin-bottom:3px; width:99%; }
+{ margin-bottom:3px; width:50%; float:left; }
  
 .my_meta_control h4
 { color:#464646; font-size:1em; margin:15px 6px; text-transform:uppercase; }
 
+#poststuff .inside .my_meta_control p 
+{ clear:both; overflow: auto; }
 
 .wpa_group 
 { }

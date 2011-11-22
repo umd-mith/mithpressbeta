@@ -48,6 +48,8 @@
 <!--[if lt IE 9]>
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 <![endif]-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/grayscale.js"></script>
 
 <!--/SCRIPTS-->
 
@@ -73,7 +75,7 @@
 <!-- end umd wrapper top / start top -->
 <div id="top-container">
 <header id="branding" role="banner">
-	<hgroup><div class="width-limit"><img src="<?php bloginfo('template_directory'); ?>/images/logo_mith_header.png" alt="MITH :: University of Maryland" />
+	<hgroup><div class="width-limit"><img src="<?php bloginfo('template_directory'); ?>/images/logo_mith_skinny.png" alt="MITH :: University of Maryland" />
 	<a href="<?php echo get_option('home'); ?>/" class="logo"></a>
 	<!-- <div class="description"><?php bloginfo('description'); ?></div>-->
 	</div></hgroup>

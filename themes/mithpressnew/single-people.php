@@ -3,7 +3,7 @@
 <div id="page-container">
 		<div id="primary" class="width-limit">
 			<!--start subnav -->
-			<?php get_sidebar('left'); ?>
+			<?php get_sidebar('left-people'); ?>
 			<!--end subnav / start single content-->
 	
     		<div id="content" role="main" class="span-16 last">

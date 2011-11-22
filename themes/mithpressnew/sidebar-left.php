@@ -16,13 +16,15 @@
 	wp_nav_menu( array( 
 		'theme_location' => 'about-menu', 
 		'container_id' => 'sub-links',
-		'menu_class' => 'links'
+		'menu_class' => 'links',
+		'depth' => '1'
 	) ); 
 } elseif (is_tree('54') || 'project' == get_post_type() || is_singular('project')) {
 	wp_nav_menu( array( 
 		'theme_location' => 'research-menu', 
 		'container_id' => 'sub-links',
-		'menu_class' => 'links'
+		'menu_class' => 'links',
+		'depth' => '1'
 	) ); 
 } elseif (is_tree('127') || 'podcast' == get_post_type() || is_singular('podcast')) {
 	wp_nav_menu( array( 
@@ -38,13 +40,13 @@
 	) ); 
 } else  {
 
-$output = wp_list_pages('echo=0&depth=1&title_li=<h2 class="append-bottom"></h2>' );
+$output = wp_list_pages('sort_column=menu_order&echo=0&depth=1&title_li=<h2 class="append-bottom"></h2>' );
 if (is_page( )) {
   $page = $post->ID;
   if ($post->post_parent) {
     $page = $post->post_parent;
   }
-  $children=wp_list_pages( 'echo=0&child_of=' . $page . '&title_li=' );
+  $children = wp_list_pages( 'echo=0&child_of=' . $page . '&title_li=' );
   if ($children) {
     $output = wp_list_pages ('echo=0&child_of=' . $page . '&title_li=');
   }

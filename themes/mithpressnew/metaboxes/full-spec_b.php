@@ -9,7 +9,7 @@ $project_mb = new WPAlchemy_MetaBox(array(
 	'template' => get_stylesheet_directory() . '/metaboxes/project-meta.php'
 ));
 
-$project2_mb = new WPAlchemy_MetaBox(array(
+$project_mb = new WPAlchemy_MetaBox(array(
 	'id' => '_project_status',
 	'title' => 'Project Status',
 	'types' => array('project'), 
@@ -25,14 +25,14 @@ $people_mb = new WPAlchemy_MetaBox(array(
 	'template' => get_stylesheet_directory() . '/metaboxes/people-meta.php'
 ));
 
-$people2_mb = new WPAlchemy_MetaBox(array(
+$people_mb = new WPAlchemy_MetaBox(array(
 	'id' => '_people_links',
 	'title' => 'Links',
 	'types' => array('people'),
 	'template' => get_stylesheet_directory() . '/metaboxes/people-meta-links.php'
 ));
 
-$podcast_mb = new WPAlchemy_MetaBox(array(
+$pdocast_mb = new WPAlchemy_MetaBox(array(
 	'id' => '_podcast_info',
 	'title' => 'Podcast Details',
 	'types' => array('podcast'), 
@@ -40,7 +40,7 @@ $podcast_mb = new WPAlchemy_MetaBox(array(
 	'priority' => 'high'
 ));
 
-$podcast2_mb = new WPAlchemy_MetaBox(array(
+$podcast_mb = new WPAlchemy_MetaBox(array(
 	'id' => '_podcast_files',
 	'title' => 'Podcast Files',
 	'types' => array('podcast'), 
@@ -48,3 +48,5 @@ $podcast2_mb = new WPAlchemy_MetaBox(array(
 ));
 
 /* eof */
+
+?>

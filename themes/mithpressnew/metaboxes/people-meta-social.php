@@ -16,12 +16,12 @@
   
 	<label>Twitter</label> 
 	<p>
-		<input type="text" name="<?php $metabox->the_name('name'); ?>" value="<?php $metabox->the_value('soc-twitter'); ?>"/>
+		<input type="text" name="<?php $mb->the_name('name'); ?>" value="<?php $mb->the_value('soc-twitter'); ?>"/>
 		<span>Enter your twitter handle without the @</span>
 	</p>
  
 	<label>Google+</label>
 	<p>
-		<input type="text" name="<?php $metabox->the_name('name'); ?>" value="<?php $metabox->the_value('name'); ?>"/>
+		<input type="text" name="<?php $mb->the_name('name'); ?>" value="<?php $mb->the_value('name'); ?>"/>
     </p>
 </div>
