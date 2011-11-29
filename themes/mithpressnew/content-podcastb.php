@@ -1,8 +1,10 @@
 <?php
 /**
- * The template for displaying content in the single.php template
+ * The template for displaying content for single podcasts
  *
 **/
+    global $podcast_mb;
+	$podcast_mb->the_meta();
 
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -13,25 +15,25 @@
     <!-- /entry-header -->
 
 	<div class="entry-content">
-		<?php 
-			$speaker = get_post_meta(get_the_ID(), 'pods-speaker', true);
-			$affiliation = get_post_meta(get_the_ID(), 'pods-affiliation', true);
-			$talkdate = get_post_meta(get_the_ID(), 'pods-date', true);
-		?>
-		<div class="pods-speaker"><?php echo $speaker; ?>, <span class="pods-affiliation"><?php echo $affiliation; ?></span></div>
-        <div class="pods-date"><?php echo $talkdate; ?></div>
-		<div class="pods-desc"><?php the_content(); ?></div>
-        <div class="pods-media">
-        <?php 
-        $files = get_post_meta(get_the_ID(), 'pods-files', false);
-        foreach ($files as $att) {
-            // show image
-            echo wp_get_attachment_link($att);
-        } ?>
+		<div id="podcast-info" class="append-bottom prepend-top clear">
+			<?php the_post_thumbnail( 'bio-image' ); ?>
+			<div class="pods-speaker"><?php echo $podcast_mb->the_value('speaker'); ?>, 
+        		<span class="pods-affiliation"><?php echo $podcast_mb->the_value('affiliation'); ?></span>
+			</div>
+            <div class="pods-date"><?php the_date( 'F j, Y' ); ?> </div>
+        </div><!-- /#podcast-info -->
         
+        <div id="abstract">
+			<?php the_content(); ?>
+        </div><!-- /#abstract -->
         
-        </div>
-		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'mithpress' ) . '</span>', 'after' => '</div>' ) ); ?>
+        <div id="media-links" class="column left">
+        <h2 class="column-title">Downloads</h2>
+        <ul>
+            <li><a href="#">Link One</a></li>
+            <li><a href="#">Link One</a></li>
+        </ul>
+        </div><!-- /#media-links--> 
 	</div><!-- .entry-content -->
 
 </article><!-- #post-<?php the_ID(); ?> -->

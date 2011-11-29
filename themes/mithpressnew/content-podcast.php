@@ -1,8 +1,10 @@
 <?php
 /**
- * The template for displaying content in the single.php template
+ * The template for displaying content for single podcasts
  *
 **/
+    global $podcast_mb;
+	$podcast_mb->the_meta();
 
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -13,20 +15,24 @@
     <!-- /entry-header -->
 
 	<div class="entry-content">
-<?php 
-
-// usually needed
-global $podcast_mb;
- 
-// get the meta data for the current post
-$meta = $podcast_mb->the_meta();
-print_r($meta);
-
-?>
+		<div id="podcast-info" class="append-bottom prepend-top clear">
+			<?php the_post_thumbnail( 'bio-image' ); ?>
+			<span class="pods-speaker"><?php echo $podcast_mb->the_value('speaker'); ?></span> 
+        	<span class="pods-affiliation"><?php echo $podcast_mb->the_value('affiliation'); ?></span>
+			<span class="pods-date"><?php the_date( 'F j, Y' ); ?></span>
+        </div><!-- /#podcast-info -->
         
+        <div id="abstract">
+			<?php the_content(); ?>
+        </div><!-- /#abstract -->
         
-        </div>
-		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'mithpress' ) . '</span>', 'after' => '</div>' ) ); ?>
+        <div id="media-links" class="column left">
+        <h2 class="column-title">Downloads</h2>
+        <ul>
+            <li><a href="#">Link One</a></li>
+            <li><a href="#">Link One</a></li>
+        </ul>
+        </div><!-- /#media-links--> 
 	</div><!-- .entry-content -->
 
 </article><!-- #post-<?php the_ID(); ?> -->

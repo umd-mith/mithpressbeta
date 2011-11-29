@@ -53,7 +53,7 @@ if ( function_exists('wp_nav_menu') ) {
 		'main-menu' => __( 'Main Menu' ), 
 		'about-menu' => __( 'About Menu' ),
 		'research-menu' => __( 'Research Menu' ),
-		'community-menu' => __( 'Community Menu' ),
+		//'community-menu' => __( 'Community Menu' ),
 		'staff-menu' => __( 'Staff Menu' ),
 		'digital-dialogues-menu' => __( 'Digital Dialogues Menu'),
 		'footer-textlinks' => __( 'Footer Text Links ' ),
