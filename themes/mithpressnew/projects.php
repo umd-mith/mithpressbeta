@@ -67,7 +67,7 @@ $url = get_bloginfo('url');
 <!--****** start project category page ******-->
 	<?php get_sidebar('left'); ?>
 <!--end sidebar / start page content -->
-    <div id="content" class="span-16 last">
+    <div id="content">
 		<div class="post" id="post-<?php the_ID(); ?>">
 		<h2 class="append-bottom prepend-top"><?php the_title(); ?></h2>
 			<div class="entry">

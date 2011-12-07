@@ -7,13 +7,13 @@ Template Name: Dialogues
 <?php get_header(); ?>
 <div id="page-container">
 		<div id="primary" class="width-limit">
-<!--start subnav -->
-		  <?php get_sidebar('left'); ?>
-<!--end sidebar / start podcast page content-->
+		<!--start subnav -->
+		<?php get_sidebar('left'); ?>
+		<!--end subnav / start podcast page content-->
 
-			<div id="content" role="main" class="span-16 last">
-
+		<div id="content" role="main" class="span-16 last">
 			<?php if (function_exists('mithpress_breadcrumbs')) mithpress_breadcrumbs(); ?>
+        	<div id="articles">
 
 			<?php global $wp_query;
 				query_posts( array(
@@ -32,10 +32,11 @@ Template Name: Dialogues
 				<?php mithpress_content_nav( 'nav-below' ); ?>
 
 			<?php endif; ?>
-                    
-<!-- start sidebar -->
+        	</div>
+		<!-- start sidebar -->
 		<?php get_sidebar('ddialogue'); ?>
-<!-- end sidebar -->
+		<!-- end sidebar -->
+                    
 		</div>
 <!-- end #content -->
 	</div>

@@ -9,7 +9,12 @@ get_header(); ?>
 <div id="page-container">
 		<div id="primary" class="width-limit">
 <!--start subnav -->
-		  <?php get_sidebar('left'); ?>
+<?php if ( is_post_type_archive('people') ) { 
+	get_sidebar('left-people'); }
+	else {
+	get_sidebar( 'left' ); 	
+	} 
+?>
 <!-- end subnav sidebar / start archive content -->
 			<div id="content" role="main" class="archive span-16 last">
 			
