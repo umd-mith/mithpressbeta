@@ -6,8 +6,6 @@ TABLE OF CONTENTS
 - Post Thumbnail 
 - Nav Menus
 - Misc
-- Post Navigation
-- Post Meta
 - Admin Functions 
 
 -----------------------------------------------------------------------------------*/
@@ -86,62 +84,6 @@ function is_tree( $pid ) {      // $pid = The ID of the page we're looking for p
 
 add_theme_support( 'automatic-feed-links' );
 
-/*-----------------------------------------------------------------------------------*/
-/* Post Navigation */
-/*-----------------------------------------------------------------------------------*/
-function mithpress_content_nav( $nav_id ) {
-	global $wp_query;
-
-	if ( $wp_query->max_num_pages > 1 ) : ?>
-		<nav id="<?php echo $nav_id; ?>" class="post-navigation clear">
-			<h3 class="assistive-text"><?php _e( 'Post navigation', 'mithpress' ); ?></h3>
-                <?php
-                    $prev_post = get_adjacent_post(false, '', true);
-                    $next_post = get_adjacent_post(false, '', false); ?>
-                    <?php if ($prev_post) : $prev_post_url = get_permalink($prev_post->ID); $prev_post_title = $prev_post->post_title; ?>
-                        <a class="post-prev" href="<?php echo $prev_post_url; ?>"><em>Previous post</em><span><?php echo $prev_post_title; ?></span></a>
-                    <?php endif; ?>
-                    <?php if ($next_post) : $next_post_url = get_permalink($next_post->ID); $next_post_title = $next_post->post_title; ?>
-                        <a class="post-next" href="<?php echo $next_post_url; ?>"><em>Next post</em><span><?php echo $next_post_title; ?></span></a>
-                    <?php endif; ?>
-                <div class="line"></div>
-            </div>
-            
-		</nav><!-- #nav-below-->
-	<?php endif;
-}
-
-/*-----------------------------------------------------------------------------------*/
-/* Post Meta */
-/*-----------------------------------------------------------------------------------*/
-
-if (!function_exists('woo_post_meta')) {
-	function woo_post_meta( ) {
-?>
-<p class="post-meta">
-    <span class="post-author"><span class="small"><?php _e('by', 'woothemes') ?></span> <?php the_author_posts_link(); ?></span>
-    <span class="post-date"><span class="small"><?php _e('on', 'woothemes') ?></span> <?php the_time( get_option( 'date_format' ) ); ?></span>
-    <span class="post-category"><span class="small"><?php _e('in', 'woothemes') ?></span> <?php the_category(', ') ?></span>
-    <?php edit_post_link( __('{ Edit }', 'woothemes'), '<span class="small">', '</span>' ); ?>
-</p>
-<?php 
-	}
-}
-
-/* Prints HTML with meta information for the current post-date/time and author. */
-if ( ! function_exists( 'mithpress_posted_on' ) ) :
-function mithpress_posted_on() {
-	printf( __( '<span class="sep">Posted on </span><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s" pubdate>%4$s</time></a><span class="by-author"> <span class="sep"> by </span> <span class="author vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span>', 'mithpress' ),
-		esc_url( get_permalink() ),
-		esc_attr( get_the_time() ),
-		esc_attr( get_the_date( 'c' ) ),
-		esc_html( get_the_date() ),
-		esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-		sprintf( esc_attr__( 'View all posts by %s', 'mithpress' ), get_the_author() ),
-		esc_html( get_the_author() )
-	);
-}
-endif;
 
 /*-----------------------------------------------------------------------------------*/
 /* WooTabs - Latest Posts */

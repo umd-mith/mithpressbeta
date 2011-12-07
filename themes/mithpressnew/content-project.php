@@ -16,5 +16,7 @@
 
         </div>
 	</div><!-- .entry-content -->
+    <br clear="all" />
+	<?php edit_post_link( __( 'Edit', 'mithpress' ), '<div class="edit-link">', '</div>' ); ?>
 
 </article><!-- #post-<?php the_ID(); ?> -->

@@ -33,16 +33,15 @@ get_header(); ?>
                 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 
                     <div class="entry-content">
-                        <div id="person" class="append-bottom prepend-top">
-                        	
-                            <a href="<?php the_permalink(); ?>" rel="alternate" title="Permanent Link to <?php the_title_attribute(); ?>">
-							<?php the_post_thumbnail( 'mini-thumbnail' ); ?>
-                            </a>
-                            
-                            <span class="info-name"><?php the_title(); ?></span>
-                            
-                            <span class="info-title"><?php $people_mb->the_value('title'); ?></span>
-                        
+                        <div id="person" class="append-bottom prepend-top">                        	
+                        <a href="<?php the_permalink(); ?>" rel="alternate" title="Permanent Link to <?php the_title_attribute(); ?>">
+							<?php the_post_thumbnail( 'mini-thumbnail' ); ?></span>
+                            <div class="person-info">
+                                <span class="info-name"><?php the_title(); ?></span>                            
+                                <span class="info-title"><?php $people_mb->the_value('title'); ?></span>
+                            </div>
+                        </a>
+
                         </div><!-- /#person-->
                     </div><!-- .entry-content -->
                 

@@ -44,14 +44,14 @@
 
 		<?php $blogrss = $people_mb->get_the_value('blogrss');
 			if ( $blogrss != '') { ?>
-        <div id="blog-feed" class="column right">
-            <h2><?php _e('Recent Posts from Personal Blog'); ?></h2>
+        <div id="personal-blog-feed" class="column right">
+            <h2><?php _e('Personal Blog Posts'); ?></h2>
             <?php // Get RSS Feed(s)
             include_once(ABSPATH . WPINC . '/feed.php');
             
             // Get a SimplePie feed object from the specified feed source.
 			$blogrss = $people_mb->get_the_value('blogrss');
-            $rss = fetch_feed( $people_mb->the_value('blogrss') );
+            $rss = fetch_feed( $blogrss );
             if (!is_wp_error( $rss ) ) : // Checks that the object is created correctly 
                 // Figure out how many total items there are, but limit it to 5. 
                 $maxitems = $rss->get_item_quantity(5); 
@@ -61,23 +61,28 @@
             endif;
             ?>
             
-            <ul>
+            <ul id="blog-feed">
                 <?php if ($maxitems == 0) echo '<li>No recent posts.</li>';
                 else
                 // Loop through each feed item and display each item as a hyperlink.
                 foreach ( $rss_items as $item ) : ?>
-                <li>
-                    <a href='<?php echo esc_url( $item->get_permalink() ); ?>'
-                    title='<?php echo 'Posted '.$item->get_date('j F Y | g:i a'); ?>'>
-                    <?php echo esc_html( $item->get_title() ); ?></a>
-                    <span class="post-date"><?php echo $item->get_date('j F Y'); ?>
-                </li>
+                <li><a href="<?php echo esc_url( $item->get_permalink() ); ?>"
+                    title="Permanent Link to <?php echo esc_html( $item->get_title() ); ?>" class="rpost clear" target="_blank">
+                    <span class="rpost-title"><?php echo esc_html( $item->get_title() ); ?></span>
+                    <span class="rpost-date"><?php echo $item->get_date('M j, Y'); ?></span>
+				</a></li>
                 <?php endforeach; ?>
             </ul>
+            <div id="blog-more">
+            	<?php $blogcat = $people_mb->get_the_value('blogcat'); ?>
+                <a href="<?php echo $blogcat ?>" target="_blank" class="clear readmore">Read More</a>
+            </div>
         </div><!-- /#blog-feed --> 
         <?php } ?>
         
 	</div><!-- .entry-content -->
+    <br clear="all" />
+	<?php edit_post_link( __( 'Edit', 'mithpress' ), '<div class="edit-link">', '</div>' ); ?>
 
 </article>
 <!-- #post-<?php the_ID(); ?> -->

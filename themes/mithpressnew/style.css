@@ -105,7 +105,7 @@ ol, ul, ul li { list-style: none outside none; padding:0; margin:0; }
 /* Breadcrumbs */
 /*-------------------------------------------------------------------------------------------*/
 
-#crumbs { font-size: 0.7em; margin: 0px; padding: 0px; margin-bottom: 16px; line-height: normal; height:13px; }
+#crumbs { font-size: 0.7em; margin: 0px; padding: 0px; margin-bottom: 16px; line-height: normal; height:16px; }
 #curmbs a { color: #20558A; padding-bottom: 1px; }
 #crumbs a:hover { border-bottom: 1px solid #3C5F8A; }
 #crumbs .bc_home { background: url(images/icon_home.png) no-repeat left center; display:block; float:left; padding: 0 5px 0 0; width: 12px; height:12px;}
@@ -135,10 +135,10 @@ ol, ul, ul li { list-style: none outside none; padding:0; margin:0; }
 
 #content .column.left {float:left; }
 #content .column.right { float:right; margin-right:0px; }
-#content .column h2 { font-weight: 500; margin-bottom: 0.6875em; }
+#content .column h2 { margin-bottom: 0.6875em; font-size: 0.9375em; }
 
 #content.wide .entry-content { width:100%; }
-
+#content .edit-link { font-size: 0.75em; display:block; margin: 10px 0px; }
 
 /*-------------------------------------------------------------------------------------------*/
 /* Blog */
@@ -150,7 +150,7 @@ ol, ul, ul li { list-style: none outside none; padding:0; margin:0; }
 .post .entry-meta { font-size: 0.75em }
 .post .entry-meta .author-avatar { margin-bottom: 10px; }
 
-.post .entry-meta .meta-line { padding: 0.75em 0; border-top: 1px solid #DDD; display:block; }
+.post .entry-meta .meta-line { padding: 0.625em 0; border-top: 1px solid #DDD; display:block; }
 .post .entry-meta .meta-line a { text-decoration:none; color: #424242; }
 .post .entry-meta .meta-line a:hover { text-decoration:none; }
 
@@ -173,13 +173,23 @@ ol, ul, ul li { list-style: none outside none; padding:0; margin:0; }
 #personal-info span a { color: #333333; text-decoration:none; }
 #personal-info span a:hover { text-decoration:none; color:#20558A }
 
-#blog-feed.column ul li a { color: #333333; text-decoration:none; display:block; }
-#blog-feed.column ul li a:hover { text-decoration: none; color:#20558A; }
-#blog-feed.column .post-date { color: #5C5C5C; font-style:italic; font-family:Georgia, "Times New Roman", Times, serif; font-size:0.9875em; }
+#personal-blog-feed ul li a { color: #000000; text-decoration:none; }
+#personal-blog-feed ul li a:hover { text-decoration: none; color:#20558A; }
+#personal-blog-feed .rpost { border-bottom: 1px dotted #D9D9D9; display: block; margin-top: 15px; padding-bottom: 15px; line-height:normal;  }
+#personal-blog-feed .rpost-title { display: block; font-size:11px; margin-bottom: 3px; line-height:125%; }
+#personal-blog-feed .rpost-date { color: #AAA9A9; display: block; font-size: 11px; font-family:Georgia,Geneva,"Times New Roman",times;}
+#content #personal-blog-feed li { padding: 0px 0px; border-bottom-width: 0px; }
+
 
 /* People Archive
 --------------------------------------------------------------------------*/
-#person { float:left; margin-right: 20px; }
+#person { float:left; margin: 0px 15px 25px 0px; }
+#person a { color: #4E4E4E; text-transform:none; display:block; }
+#person .person-info { width:130px; display:block; float:left; line-height:100%; }
+#person span { float:left; display:block; width:100%; } 
+#person img { margin-right:10px; float: left; } 
+#person .info-name { font-weight:600; font-size:0.75em; }
+#person .info-title { font-weight: 500; font-size:0.6875em; }
 
 
 /*--project page (each)
@@ -225,7 +235,7 @@ ol, ul, ul li { list-style: none outside none; padding:0; margin:0; }
 
 #sidebar { float:right; }
 #sidebar .widget { border-bottom: 2px solid #E4E4E4; padding-bottom: 10px; margin-bottom: 25px; }
-#sidebar h3 { font-size: 0.9375em; font-family: "VegurMedium", Sans-serif; margin-bottom: 0.6875em; }
+#sidebar h3 { font-size: 0.9375em; margin-bottom: 0.6875em; }
 #sidebar .widget-body { font-size: 0.625em; font-weight:normal; line-height: 1.5em; }
 #sidebar ul { font-size: inherit; padding:0px; margin:0; }
 #sidebar ul li { font-size: inherit; padding-left: 0; list-style:none; }
@@ -249,14 +259,6 @@ ol, ul, ul li { list-style: none outside none; padding:0; margin:0; }
 --------------------------------------------------------------------------*/
 .widget a, .widget-small a { color: #000000; text-decoration: none; }
 
-/*#secondary {  }
-#secondary h3, #secondary .sidebox h3, h3.widget-title { color:#424242; font-size: 0.9375em; font-weight: 600; margin: 0px 0px 0.6em 0px; }
-#secondary p, aside.widget p { font-size: 0.75; }
-
-#sidebar-right .sidebox {margin-bottom: 20px; line-height:140% }
-#sidebar-right .sidebox p { font-size: .9em; margin: 0px 0px 8px 0px; padding:0px;  }
-*/
-
 /* Right: Podcast
 --------------------------------------------------------------------------*/
 
@@ -273,10 +275,14 @@ ol, ul, ul li { list-style: none outside none; padding:0; margin:0; }
 #twtr-widget-1 .twtr-tweet a.twtr-user, .twtr-widget .twtr-tweet a.twtr-user { color: #20558A !important; font-weight:600;  }
 
 
-/*recent-posts*/
-.widget .rpthumb { border-bottom: 1px dotted #D9D9D9; display: block; margin-top: 15px; padding-bottom: 15px; }
-.widget .rpthumb-title { display: block; font-size:11px; margin-bottom: 6px; line-height:125%; }
-.widget .rpthumb-date { color: #AAA9A9; display: block; font-size: 11px; font-family:Georgia,Geneva,"Times New Roman",times;}
+/* Recent Posts 
+---------------------*/
+.widget .rpost { border-bottom: 1px dotted #D9D9D9; display: block; margin-top: 15px; padding-bottom: 15px; line-height:normal;  }
+.widget .rpost-title { display: block; font-size:11px; margin-bottom: 3px; line-height:125%; }
+.widget .rpost-date { color: #AAA9A9; display: block; font-size: 11px; font-family:Georgia,Geneva,"Times New Roman",times;}
+
+.widget a:hover { text-decoration: none; color:#20558A; }
+
 /*calendar*/
 #calendar_wrap { margin-top:15px; }
 .widget_calendar table { width: 75%; }
@@ -333,6 +339,7 @@ ol, ul, ul li { list-style: none outside none; padding:0; margin:0; }
 
 /* READ MORE */
 .readmore { float:right; clear:both; display:block; width:100%; font-size: 9px; text-transform:uppercase; text-align:right; font-family: Arial, Helvetica, sans-serif; padding-right: 10px; background: url(images/arrow-blue-next.gif) no-repeat right center; }
+#personal-blog-feed .readmore { margin-top: 10px; }
 
 
 /* --------------MISC STYLES--------------*/

@@ -10,7 +10,7 @@ get_header(); ?>
 			<div id="content" role="main" class="span-16 last">
 
             <?php if (function_exists('mithpress_breadcrumbs')) mithpress_breadcrumbs(); ?>
-			
+		
             <div id="posts">
 			<?php if ( have_posts() ) : ?>
 
