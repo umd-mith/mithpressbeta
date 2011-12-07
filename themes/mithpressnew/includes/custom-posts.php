@@ -50,69 +50,6 @@ function register_cpt_project() {
     register_post_type( 'project', $args );
 }
 
-// changes the "Enter title here" for PROJECT post type
-add_filter('gettext', 'project_custom_rewrites', 10, 4);
-function project_custom_rewrites($translation, $text, $domain) {
-	global $post;
-        if ( ! isset( $post->post_type ) ) {
-            return $translation;
-        }
-	$translations = &get_translations_for_domain($domain);
-	$translation_array = array();
- 
-	switch ($post->post_type) {
-		case 'project': 
-			$translation_array = array(
-				'Enter title here' => 'Enter project name here'
-			);
-			break;
-	}
- 
-	if (array_key_exists($text, $translation_array)) {
-		return $translations->translate($translation_array[$text]);
-	}
-	return $translation;
-}
-
-/* New Project Tag Taxonomy
-add_action( 'init', 'register_taxonomy_project_tags' );
-
-function register_taxonomy_project_tags() {
-
-    $labels = array( 
-        'name' => _x( 'Project Tags', 'project tags' ),
-        'singular_name' => _x( 'Project Tags', 'project tags' ),
-        'search_items' => _x( 'Search Project Tags', 'project tags' ),
-        'popular_items' => _x( 'Popular Project Tags', 'project tags' ),
-        'all_items' => _x( 'All Project Tags', 'project tags' ),
-        'parent_item' => _x( 'Parent Project Tags', 'project tags' ),
-        'parent_item_colon' => _x( 'Parent Project Tags:', 'project tags' ),
-        'edit_item' => _x( 'Edit Project Tag', 'project tags' ),
-        'update_item' => _x( 'Update Project Tag', 'project tags' ),
-        'add_new_item' => _x( 'Add New Project Tag', 'project tags' ),
-        'new_item_name' => _x( 'New Project Tag Name', 'project tags' ),
-        'separate_items_with_commas' => _x( 'Separate project tags with commas', 'project tags' ),
-        'add_or_remove_items' => _x( 'Add or remove project tag', 'project tags' ),
-        'choose_from_most_used' => _x( 'Choose from the most used project tags', 'project tags' ),
-        'menu_name' => _x( 'Project Tags', 'project tags' ),
-    );
-
-    $args = array( 
-        'labels' => $labels,
-        'public' => true,
-        'show_in_nav_menus' => true,
-        'show_ui' => true,
-        'show_tagcloud' => true,
-        'hierarchical' => false,
-
-        'rewrite' => true,
-        'query_var' => true
-    );
-
-    register_taxonomy( 'project_tags', array('project'), $args );
-}
-*/
-
 /* Project Columns */
 /*-------------------------------------------------------------------------------------------*/
 add_filter( 'manage_edit-project_columns', 'edit_project_columns' ) ;
@@ -211,58 +148,19 @@ function register_cpt_podcast() {
     register_post_type( 'podcast', $args );
 }
 
-/* New Podcast Tag Taxonomy
-add_action( 'init', 'register_taxonomy_podcast_tags' );
-
-function register_taxonomy_podcast_tags() {
-
-    $labels = array( 
-        'name' => _x( 'Podcast Tags', 'podcast tags' ),
-        'singular_name' => _x( 'Podcast Tags', 'podcast tags' ),
-        'search_items' => _x( 'Search Podcast Tags', 'podcast tags' ),
-        'popular_items' => _x( 'Popular Podcast Tags', 'podcast tags' ),
-        'all_items' => _x( 'All Podcast Tags', 'podcast tags' ),
-        'parent_item' => _x( 'Parent Podcast Tags', 'podcast tags' ),
-        'parent_item_colon' => _x( 'Parent Podcast Tags:', 'podcast tags' ),
-        'edit_item' => _x( 'Edit Podcast Tag', 'podcast tags' ),
-        'update_item' => _x( 'Update Podcast Tag', 'podcast tags' ),
-        'add_new_item' => _x( 'Add New Podcast Tag', 'podcast tags' ),
-        'new_item_name' => _x( 'New Podcast Tag Name', 'podcast tags' ),
-        'separate_items_with_commas' => _x( 'Separate podcast tags with commas', 'podcast tags' ),
-        'add_or_remove_items' => _x( 'Add or remove podcast tag', 'podcast tags' ),
-        'choose_from_most_used' => _x( 'Choose from the most used podcast tags', 'podcast tags' ),
-        'menu_name' => _x( 'Podcast Tags', 'podcast tags' ),
-    );
-
-    $args = array( 
-        'labels' => $labels,
-        'public' => true,
-        'show_in_nav_menus' => true,
-        'show_ui' => true,
-        'show_tagcloud' => true,
-        'hierarchical' => false,
-
-        'rewrite' => true,
-        'query_var' => true
-    );
-
-    register_taxonomy( 'podcast_tags', array('podcast'), $args );
-
-
-}
-*/
+/* Podcast Columns */
+/*-------------------------------------------------------------------------------------------*/
 
 add_action('manage_podcast_posts_custom_column', 'manage_podcast_columns');
-add_filter('manage_edit-podcast_columns', 'edit_podasts_columns');
+add_filter('manage_edit-podcast_columns', 'edit_podcast_columns');
 
  
-function edit_podasts_columns($columns) //this function display the columns headings
+function edit_podcast_columns($columns) //this function display the columns headings
 {
 	$columns = array(
 		"cb" => "<input type=\"checkbox\" />",
-		"pods_date" => "Date",
 		"title" => "Title",
-		"pods_speaker" => "Speaker",
+		"speaker" => "Speaker",
 		'id' => __('ID'),
 	);
 	return $columns;
@@ -280,13 +178,9 @@ function manage_podcast_columns($column)
 			case "pods_description":
 				the_excerpt();
 				break;
-			case "pods_speaker":
+			case "speaker":
 				$custom = get_post_custom();
-				echo $custom["pods-speaker"][0];
-				break;
-			case "pods_date":
-				$custom = get_post_custom();
-				echo $custom["pods-date"][0];
+				echo $custom["speaker"][0];
 				break;
 		}
 	
@@ -306,9 +200,9 @@ function register_cpt_people() {
         'singular_name' => _x( 'People', 'people' ),
         'add_new' => _x( 'Add New Person', 'people' ),
         'add_new_item' => _x( 'Add New Person', 'people' ),
-        'edit_item' => _x( 'Edit People', 'people' ),
+        'edit_item' => _x( 'Edit Person', 'people' ),
         'new_item' => _x( 'New Person', 'people' ),
-        'view_item' => _x( 'View People', 'people' ),
+        'view_item' => _x( 'View Person', 'people' ),
         'search_items' => _x( 'Search People', 'people' ),
         'not_found' => _x( 'No people found', 'people' ),
         'not_found_in_trash' => _x( 'No people found in Trash', 'people' ),
@@ -320,7 +214,7 @@ function register_cpt_people() {
         'hierarchical' => false,
         
         'supports' => array( 'featured image', 'title', 'editor', 'thumbnail', 'revisions', 'page-attributes' ),
-        'taxonomies' => array( 'categories', 'tags' ),
+        'taxonomies' => array( 'tags' ),
         'public' => true,
         'show_ui' => true,
         'show_in_menu' => true,
@@ -336,11 +230,133 @@ function register_cpt_people() {
         'can_export' => true,
         'capability_type' => 'post',
 		
-		'taxonomies' => array('category', 'post_tag'),
+		'taxonomies' => array('post_tag'),
 		
     );
 
     register_post_type( 'people', $args );
+}
+
+
+
+
+/* People Categories */
+/*-------------------------------------------------------------------------------------------*/
+add_action( 'init', 'register_taxonomy_staffgroup' );
+
+function register_taxonomy_staffgroup() {
+
+    $labels = array( 
+        'name' => _x( 'Staff Groups', 'staff group' ),
+        'singular_name' => _x( 'Staff Group', 'staff group' ),
+        'search_items' => _x( 'Search Staff Groups', 'staff group' ),
+        'popular_items' => _x( 'Popular Staff Groups', 'staff group' ),
+        'all_items' => _x( 'All Staff Groups', 'staff group' ),
+        'parent_item' => _x( 'Parent Staff Group', 'staff group' ),
+        'parent_item_colon' => _x( 'Parent Staff Group:', 'staff group' ),
+        'edit_item' => _x( 'Edit Staff Group', 'staff group' ),
+        'update_item' => _x( 'Update Staff Group', 'staff group' ),
+        'add_new_item' => _x( 'Add New Staff Group', 'staff group' ),
+        'new_item_name' => _x( 'New Staff Group Name', 'staff group' ),
+        'separate_items_with_commas' => _x( 'Separate staff groups with commas', 'staff group' ),
+        'add_or_remove_items' => _x( 'Add or remove staff groups', 'staff group' ),
+        'choose_from_most_used' => _x( 'Choose from the most used staff groups', 'staff group' ),
+        'menu_name' => _x( 'Staff Groups', 'staff group' ),
+    );
+
+    $args = array( 
+        'labels' => $labels,
+        'public' => true,
+        'show_in_nav_menus' => false,
+        'show_ui' => true,
+        'show_tagcloud' => false,
+        'hierarchical' => true,
+
+        'rewrite' => true,
+        'query_var' => true,
+		/*'capabilities' => array (
+            'manage_terms' => 'manage-options', //by default only admin
+            'edit_terms' => 'manage-options',
+            'delete_terms' => 'manage-options',
+            'assign_terms' => 'edit-posts'  // 'edit-posts' option = administrator', 'editor', 'author', 'contributor'
+            )
+*/
+    );
+
+    register_taxonomy( 'staffgroup', array('people'), $args );
+}
+
+/* People Columns */
+/*-------------------------------------------------------------------------------------------*/
+ 
+add_filter( 'manage_edit-people_columns', 'edit_people_columns' ) ;
+add_action( 'manage_people_posts_custom_column', 'manage_people_columns', 10, 2 );
+
+function edit_people_columns( $columns ) {
+
+	$columns = array(
+		'cb' => '<input type="checkbox" />',
+		'title' => __( 'Name' ),
+		'staffgroup' => __( 'Staff Group' ),
+	);
+
+	return $columns;
+}
+ 
+
+function manage_people_columns( $column, $post_id ) {
+	global $post;
+
+	switch( $column ) {
+
+		case 'title' :
+
+			/* Get the post meta. */
+			$title = get_post_meta( $post_id, 'title', true );
+
+			/* If no title is found, output a default message. */
+			if ( empty( $title ) )
+				echo __( 'n/a' );
+
+			else
+				printf( $title );
+
+			break;
+
+		/* If displaying the 'staffgroup' column. */
+		case 'staffgroup' :
+
+			/* Get the staffgroups for the post. */
+			$terms = get_the_terms( $post_id, 'staffgroup' );
+
+			/* If terms were found. */
+			if ( !empty( $terms ) ) {
+
+				$out = array();
+
+				/* Loop through each term, linking to the 'edit posts' page for the specific term. */
+				foreach ( $terms as $term ) {
+					$out[] = sprintf( '<a href="%s">%s</a>',
+						esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'staffgroup' => $term->slug ), 'edit.php' ) ),
+						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'staffgroup', 'display' ) )
+					);
+				}
+
+				/* Join the terms, separating them with a comma. */
+				echo join( ', ', $out );
+			}
+
+			/* If no terms were found, output a default message. */
+			else {
+				_e( 'not assigned' );
+			}
+
+			break;
+
+		/* Just break out of the switch statement for everything else. */
+		default :
+			break;
+	}
 }
 
 /*-------------------------------------------------------------------------------------------*/
@@ -372,6 +388,13 @@ function admin_custom_rewrites($translation, $text, $domain) {
 				'Set featured image' => 'Assign image'
 			);
 			break;
+		case 'project': 
+			$translation_array = array(
+				'Enter title here' => 'Enter project title here',
+				'Featured Image' => 'Project Thumbnail',
+				'Set featured image' => 'Assign image'
+			);
+			break;
 	}
  
 	if (array_key_exists($text, $translation_array)) {
@@ -387,8 +410,8 @@ function admin_custom_rewrites($translation, $text, $domain) {
 /*-------------------------------------------------------------------------------------------*/
 function sortable_columns() {
   return array(
-    'pods_speaker'  => 'pods_speaker',
-    'pods_date' 	=> 'pods_date',
+	'staffgroup' => 'staffgroup',
+    'speaker'  => 'speaker',
 	'project_date' =>	'project_date',
 	'project_status' =>  'project_status',
   );
@@ -396,5 +419,6 @@ function sortable_columns() {
 
 add_filter( "manage_edit-podcast_sortable_columns", "sortable_columns" );
 add_filter( "manage_edit-project_sortable_columns", "sortable_columns" );
+add_filter( "manage_edit-people_sortable_columns", "sortable_columns" );
 
 ?>

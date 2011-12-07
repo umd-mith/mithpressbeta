@@ -12,8 +12,7 @@
             <?php $author_email = get_the_author_meta('user_email'); ?>
             <?php echo get_avatar( $author_email, 55, get_bloginfo('template_url').'/images/no-avatar.png' ); ?>
         </div><!-- #author-avatar -->
-
-        <div class="meta-line post-author"><?php the_author(); ?></div>
+        <div class="meta-line post-author"><a href="<?php bloginfo('url'); ?>/people/<?php the_author_meta( 'user_nicename'); ?>"><?php the_author(); ?></a></div>
 
         <div class="meta-line post_date"><?php the_time('F j, Y') ?></div>
 
@@ -30,7 +29,7 @@
     <!-- /.entry-meta -->
         
 	<header class="entry-header">
-		<h1 class="entry-title append-bottom prepend-top"><?php the_title(); ?></h1>
+		<h1 class="entry-title append-bottom"><?php the_title(); ?></h1>
 	</header>
     <!-- /.entry-header -->
 
@@ -39,6 +38,7 @@
         <?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'mithpress' ) . '</span>', 'after' => '</div>' ) ); ?>
     </div>
     <!-- /.entry-content -->
-
+    <br clear="all" />
+	<?php edit_post_link( __( 'Edit', 'mithpress' ), '<div class="edit-link">', '</div>' ); ?>
 
 </article><!-- #post-<?php the_ID(); ?> -->

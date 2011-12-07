@@ -38,7 +38,6 @@
 <!--<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/print.css" type="text/css" media="print">-->
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <!--<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/style.css" type="text/css" media="screen, projection">-->
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700' rel='stylesheet' type='text/css'>
 
 <!--/STYLES-->
 
@@ -49,6 +48,8 @@
 <!--[if lt IE 9]>
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 <![endif]-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/grayscale.js"></script>
 
 <!--/SCRIPTS-->
 
@@ -74,7 +75,7 @@
 <!-- end umd wrapper top / start top -->
 <div id="top-container">
 <header id="branding" role="banner">
-	<hgroup><div class="width-limit"><img src="<?php bloginfo('template_directory'); ?>/images/logo_mith_header.png" alt="MITH :: University of Maryland" />
+	<hgroup><div class="width-limit"><img src="<?php bloginfo('template_directory'); ?>/images/logo_mith_skinny.png" alt="MITH :: University of Maryland" />
 	<a href="<?php echo get_option('home'); ?>/" class="logo"></a>
 	<!-- <div class="description"><?php bloginfo('description'); ?></div>-->
 	</div></hgroup>
