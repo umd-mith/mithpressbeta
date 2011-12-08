@@ -27,12 +27,12 @@
             <?php comments_popup_link(__('No Comments'), __('1 Comment'), __('% Comments'), '', __('')); ?>
         </div>
     </div>
-    <!-- /.entry-meta -->
+    <!-- end entry-meta -->
 
 	<header class="entry-header">
 		<h1 class="entry-title append-bottom"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'mithpress' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 	</header>
-    <!-- /.entry-header -->
+    <!-- end entry-header -->
 
 
 	<?php if ( is_search() ) : // Only display Excerpts for Search ?>
@@ -46,6 +46,6 @@
         <?php the_excerpt(); ?>
         <?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'mithpress' ) . '</span>', 'after' => '</div>' ) ); ?>
     </div>
-    <!-- /.entry-content -->
+    <!-- end entry-content -->
 	</article>
     <!-- end #post-<?php the_ID(); ?> -->

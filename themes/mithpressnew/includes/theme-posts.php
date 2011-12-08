@@ -161,10 +161,14 @@ if ( '' == $text ) {
     $text = apply_filters('the_content', $text);
     $text = str_replace(']]>', ']]&gt;', $text);
  
-    $allowed_tags = '<p>,<em>,<strong>,<a>,<ul>,<li>,<ol>,<blockquote>,<code>'; /*** MODIFY THIS. Add the allowed HTML tags separated by a comma.***/
+    $allowed_tags = '<p>,<em>,<i>,<b>,<strong>,<a>,<ul>,<li>,<ol>,<blockquote>,<code>'; /*** MODIFY THIS. Add the allowed HTML tags separated by a comma.***/
     $text = strip_tags($text, $allowed_tags);
- 
+ 	
+	if ( is_post_type_archive('podcast') ) { 
+   	$excerpt_word_count = 30;
+	} else {
    	$excerpt_word_count = 175; /*** MODIFY THIS. change the excerpt word count to any integer you like.***/
+	}
     $excerpt_length = apply_filters('excerpt_length', $excerpt_word_count);
  
    	$excerpt_end = '. . . '; /*** MODIFY THIS. change the excerpt endind to something else.***/

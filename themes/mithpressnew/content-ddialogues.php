@@ -9,7 +9,7 @@
 	<header class="entry-header">
 		<h1 class="entry-title append-bottom prepend-top"><a href="<?php the_permalink(); ?>" ><?php the_title(); ?></a></h1>
 	</header>
-    <!-- /entry-header -->
+    <!-- end entry-header-->
 
 	<div class="entry-content">
 		<?php 
@@ -23,4 +23,4 @@
 		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'mithpress' ) . '</span>', 'after' => '</div>' ) ); ?>
 	</div><!-- .entry-content -->
 
-</article><!-- #post-<?php the_ID(); ?> -->
+</article><!-- end post-<?php the_ID(); ?> -->

@@ -12,7 +12,7 @@
 	<header class="entry-header">
 		<h1 class="entry-title append-bottom prepend-top"><?php the_title(); ?></h1>
 	</header>
-    <!-- /entry-header -->
+    <!-- end entry-header-->
 
 	<div class="entry-content">
 		<div id="podcast-info" class="append-bottom prepend-top clear">
@@ -36,4 +36,4 @@
         </div><!-- /#media-links--> 
 	</div><!-- .entry-content -->
 
-</article><!-- #post-<?php the_ID(); ?> -->
+</article><!-- end post-<?php the_ID(); ?> -->

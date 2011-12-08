@@ -9,7 +9,7 @@
 	<header class="entry-header">
 		<h1 class="entry-title append-bottom prepend-top"><a href="<?php the_permalink(); ?>" ><?php the_title(); ?></a></h1>
 	</header>
-    <!-- /entry-header -->
+    <!-- end entry-header-->
 
 	<div class="entry-content">
 		<div class="project-thumb">
@@ -19,4 +19,4 @@
     <br clear="all" />
 	<?php edit_post_link( __( 'Edit', 'mithpress' ), '<div class="edit-link">', '</div>' ); ?>
 
-</article><!-- #post-<?php the_ID(); ?> -->
+</article><!-- end post-<?php the_ID(); ?> -->

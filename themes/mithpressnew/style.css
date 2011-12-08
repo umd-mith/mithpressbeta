@@ -1,10 +1,10 @@
 /*  
 Theme Name: MITH Theme
 Theme URI: 
-Description: A simple Wordpress theme based on the <a href="http://code.google.com/p/blueprintcss/">Blueprint CSS Framework</a>. Created specifically for MITH (http://mith.umd.edu) 
+Description: A WordPress theme designed specifically for MITH. 
 Version: 1.0
 Author: Kirsten Keister
-Tags: Blueprint, theme, css, framework, clean, minimalistic 
+Tags: clean, grid, white, fonts, 3-column, 2-column
 Author URI: 
 Credits:
 
@@ -34,16 +34,17 @@ a:focus, a:hover { text-decoration:none; color:#20558A }
 
 /* Paragraphs & Lists */
 
-p { font-size: 0.75em; margin: 1em 0; color:#424242;}
-#content ul { font-size: 0.75em; padding-left: 1em; }
-#content ul li { list-style-position: outside; list-style-type: disc; padding-left:5px; margin: 5px 0; font-size:inherit;  }
-#content ul ul { font-size:inherit; }
+p { font-size: 0.75em; margin: 1em 0; color:#424242; }
+#content ul { font-size: 0.75em; padding-left: 16px; }
+#content ul li { list-style-position: outside; list-style-type: disc; padding-left:5px; padding-right:50px; margin: 5px 0; font-size:inherit;  }
+#content ul ul { font-size:inherit; padding-left: 19px; }
+#content p { font-size: 0.7825em; line-height: 1.5em; }
 
 /* Headers */
 
 h1, h2, h3, h4, h5, h6 { font-weight:500; color:#232323; }
 h1 { font-size: 1.0625em; line-height: normal; font-weight:600; }
-h2 { font-size: 1em; line-height:normal; font-weight:600;  }
+h2 { font-size: 1.02em; line-height:normal; font-weight:600;  }
 h3 { font-size: 0.9875em; line-height:normal; font-weight:600; }
 /* 
 h4 { font-size:1.2em; line-height:1.25; margin-bottom:1.25em; }
@@ -52,6 +53,8 @@ h6 { font-size:1em; font-weight:bold; }
 */
 h1 img, h2 img, h3 img, h4 img, h5 img, h6 img { margin:0; }
 ol, ul, ul li { list-style: none outside none; padding:0; margin:0; }
+
+#content h3 { margin-top: 1.5em; margin-bottom:.5em; font-size:inherit; }
 
 
 /*-------------------------------------------------------------------------------------------*/
@@ -145,7 +148,7 @@ ol, ul, ul li { list-style: none outside none; padding:0; margin:0; }
 /*-------------------------------------------------------------------------------------------*/
 #content .post { }
 #content #posts .entry-content { float:right; }
-#content #posts article { overflow:auto; padding-bottom:1em; margin-bottom:2em; border-bottom: 1px solid #DDDx`; }
+#content #posts article { overflow:auto; padding-bottom:1em; margin-bottom:2em; border-bottom: 1px solid #EEEEEE; }
 
 .post .entry-meta { font-size: 0.75em }
 .post .entry-meta .author-avatar { margin-bottom: 10px; }
@@ -155,6 +158,17 @@ ol, ul, ul li { list-style: none outside none; padding:0; margin:0; }
 .post .entry-meta .meta-line a:hover { text-decoration:none; }
 
 .post .nocomments { color: #999; }
+
+/* Post Share */
+/*------------------------------------*/
+.dd_post_share { border:1px solid #EEE; overflow: hidden; border-left:none; border-right:none; line-height:1em; margin:7px auto; }
+.dd_buttons img { border:none; border-width:0px; border-color:#000000; border-style:none; }
+.dd_button { float:left; padding:6px 10px 6px; }
+.dd_button a:link,
+.dd_button a:visited,
+.dd_button a:active,
+.dd_button a:hover { text-decoration:none; border-bottom:none; color:#000000; }
+
 
 /*-------------------------------------------------------------------------------------------*/
 /* Staff / People */
@@ -337,9 +351,11 @@ ol, ul, ul li { list-style: none outside none; padding:0; margin:0; }
 #footer_mith { background: url(images/footer_mith.gif) no-repeat top left; top: 58px; left: 890px; width: 50px; height: 41px; }
 #copyright_text { color: #999; text-align: center; line-height: 140%; position: absolute; top: 65px; width: 960px; }
 
-/* READ MORE */
-.readmore { float:right; clear:both; display:block; width:100%; font-size: 9px; text-transform:uppercase; text-align:right; font-family: Arial, Helvetica, sans-serif; padding-right: 10px; background: url(images/arrow-blue-next.gif) no-repeat right center; }
-#personal-blog-feed .readmore { margin-top: 10px; }
+/* READ MORE & RSS, ETC */
+.readmore { float:right; display:block; font-size: 9px; text-transform:uppercase; text-align:right; font-family: Arial, Helvetica, sans-serif; padding-right: 10px; background: url(images/arrow-blue-next.gif) no-repeat right center; }
+#personal-blog-feed .readmore, #personal-blog-feed .rss, .twitter-more .twitter { margin-top: 10px; }
+.rss { float:left; display:block; font-size:9px; text-transform:uppercase; text-align:left; font-family:Arial, Helvetica, sans-serif; padding-left: 20px; background: url(images/icon_rss16.png) no-repeat left center; }
+.twitter-more .twitter { float:none; display:block; font-size:9px; text-transform:uppercase; text-align:left; font-family:Arial, Helvetica, sans-serif; padding-left: 20px; background: url(images/icon_twitter16.png) no-repeat left center; }
 
 
 /* --------------MISC STYLES--------------*/

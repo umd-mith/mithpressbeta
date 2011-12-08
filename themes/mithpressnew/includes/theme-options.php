@@ -8,7 +8,7 @@ add_action('admin_menu', 'mithpress_theme_page');
 function mithpress_theme_page () {
 	if ( count($_POST) > 0 && isset($_POST['mithpress_settings']) ) {
 		
-		$options = array ('slide1','slide2','slide3','slide4','slide1_img','slide2_img','slide3_img','slide4_img','slide1_linkurl','slide2_linkurl','slide3_linkurl','slide4_linkurl','slide1_linktxt','slide2_linktxt','slide3_linktxt','slide4_linktxt','logo_img', 'logo_alt','contact_email','contact_text','cufon','linkedin_link','twitter_user','latest_tweet','facebook_link','keywords','description','analytics','copyright','blurb_enable','blurb_text','blurb_link','blurb_page', 'footer_actions','actions_hide','portfolio','blog','slider');
+		$options = array ('slide1','slide2','slide3','slide4','slide1_img','slide2_img','slide3_img','slide4_img','slide1_linkurl','slide2_linkurl','slide3_linkurl','slide4_linkurl','slide1_linktxt','slide2_linktxt','slide3_linktxt','slide4_linktxt','linkedin_link','twitter_user','latest_tweet','facebook_link','slider');
 		foreach ( $options as $opt ) {
 			delete_option ( 'mithpress_'.$opt, $_POST[$opt] );
 			add_option ( 'mithpress_'.$opt, $_POST[$opt] );	

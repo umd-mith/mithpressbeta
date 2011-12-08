@@ -15,7 +15,7 @@
 		</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header>
-    <!-- /entry-header -->
+    <!-- end entry-header-->
 
 	<div class="entry-content">
 		<?php the_content(); ?>
@@ -25,4 +25,4 @@
 	<footer class="entry-meta">
     
 	</footer><!-- .entry-meta -->
-</article><!-- #post-<?php the_ID(); ?> -->
+</article><!-- end post-<?php the_ID(); ?> -->

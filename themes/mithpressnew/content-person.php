@@ -75,7 +75,8 @@
             </ul>
             <div id="blog-more">
             	<?php $blogcat = $people_mb->get_the_value('blogcat'); ?>
-                <a href="<?php echo $blogcat ?>" target="_blank" class="clear readmore">Read More</a>
+                <a href="<?php echo $blogcat ?>" target="_blank" class="readmore">More Posts</a>
+                <a href="<?php echo $blogrss ?>" target="_blank" class="rss">Subscribe</a>
             </div>
         </div><!-- /#blog-feed --> 
         <?php } ?>
@@ -85,4 +86,4 @@
 	<?php edit_post_link( __( 'Edit', 'mithpress' ), '<div class="edit-link">', '</div>' ); ?>
 
 </article>
-<!-- #post-<?php the_ID(); ?> -->
+<!-- end post-<?php the_ID(); ?> -->
