@@ -62,126 +62,76 @@ function optionsframework_options() {
 		
 	$options = array();
 		
-	$options[] = array( "name" => "Basic Settings",
+	$options[] = array( "name" => "Homepage Slides",
 						"type" => "heading");
-							
-	$options[] = array( "name" => "Input Text Mini",
-						"desc" => "A mini text input field.",
-						"id" => "example_text_mini",
-						"std" => "Default",
-						"class" => "mini",
-						"type" => "text");
-								
-	$options[] = array( "name" => "Input Text",
-						"desc" => "A text input field.",
-						"id" => "example_text",
-						"std" => "Default Value",
-						"type" => "text");
-							
-	$options[] = array( "name" => "Textarea",
-						"desc" => "Textarea description.",
-						"id" => "example_textarea",
-						"std" => "Default Text",
-						"type" => "textarea"); 
-						
-	$options[] = array( "name" => "Input Select Small",
-						"desc" => "Small Select Box.",
-						"id" => "example_select",
-						"std" => "three",
-						"type" => "select",
-						"class" => "mini", //mini, tiny, small
-						"options" => $test_array);			 
-						
-	$options[] = array( "name" => "Input Select Wide",
-						"desc" => "A wider select box.",
-						"id" => "example_select_wide",
-						"std" => "two",
-						"type" => "select",
-						"options" => $test_array);
-						
-	$options[] = array( "name" => "Select a Category",
-						"desc" => "Passed an array of categories with cat_ID and cat_name",
-						"id" => "example_select_categories",
-						"type" => "select",
-						"options" => $options_categories);
-						
-	$options[] = array( "name" => "Select a Page",
-						"desc" => "Passed an pages with ID and post_title",
-						"id" => "example_select_pages",
-						"type" => "select",
-						"options" => $options_pages);
-						
-	$options[] = array( "name" => "Input Radio (one)",
-						"desc" => "Radio select with default options 'one'.",
-						"id" => "example_radio",
-						"std" => "one",
-						"type" => "radio",
-						"options" => $test_array);
-							
-	$options[] = array( "name" => "Example Info",
-						"desc" => "This is just some example information you can put in the panel.",
-						"type" => "info");
-											
-	$options[] = array( "name" => "Input Checkbox",
-						"desc" => "Example checkbox, defaults to true.",
-						"id" => "example_checkbox",
-						"std" => "1",
-						"type" => "checkbox");
-						
-	$options[] = array( "name" => "Advanced Settings",
-						"type" => "heading");
-						
-	$options[] = array( "name" => "Check to Show a Hidden Text Input",
-						"desc" => "Click here and see what happens.",
-						"id" => "example_showhidden",
-						"type" => "checkbox");
+												
+	//slide one
 	
-	$options[] = array( "name" => "Hidden Text Input",
-						"desc" => "This option is hidden unless activated by a checkbox click.",
-						"id" => "example_text_hidden",
-						"std" => "Hello",
-						"class" => "hidden",
+	$options[] = array( "name" => "Slide One",
+						"desc" => "Title for first slide.",
+						"id" => "slide_title_one",
+						"std" => "Enter slide title here",
 						"type" => "text");
-						
-	$options[] = array( "name" => "Uploader Test",
-						"desc" => "This creates a full size uploader that previews the image.",
-						"id" => "example_uploader",
+
+	$options[] = array( "desc" => "Upload the image for the first slide.",
+						"id" => "slide_upload_one",
 						"type" => "upload");
 						
-	$options[] = array( "name" => "Example Image Selector",
-						"desc" => "Images for layout.",
-						"id" => "example_images",
-						"std" => "2c-l-fixed",
-						"type" => "images",
-						"options" => array(
-							'1col-fixed' => $imagepath . '1col.png',
-							'2c-l-fixed' => $imagepath . '2cl.png',
-							'2c-r-fixed' => $imagepath . '2cr.png')
-						);
-						
-	$options[] = array( "name" =>  "Example Background",
-						"desc" => "Change the background CSS.",
-						"id" => "example_background",
-						"std" => $background_defaults, 
-						"type" => "background");
-								
-	$options[] = array( "name" => "Multicheck",
-						"desc" => "Multicheck description.",
-						"id" => "example_multicheck",
-						"std" => $multicheck_defaults, // These items get checked by default
-						"type" => "multicheck",
-						"options" => $multicheck_array);
-							
-	$options[] = array( "name" => "Colorpicker",
-						"desc" => "No color selected by default.",
-						"id" => "example_colorpicker",
+	$options[] = array( "desc" => "Insert text for first slide",
+						"id" => "slide_text_one",
 						"std" => "",
-						"type" => "color");
-						
-	$options[] = array( "name" => "Typography",
-						"desc" => "Example typography.",
-						"id" => "example_typography",
-						"std" => array('size' => '12px','face' => 'verdana','style' => 'bold italic','color' => '#123456'),
-						"type" => "typography");			
+						"type" => "textarea"); 
+
+	//slide two 
+
+	$options[] = array( "name" => "Slide Two",
+						"desc" => "Title for second slide.",
+						"id" => "slide_title_two",
+						"std" => "Enter slide title here",
+						"type" => "text");
+	
+	$options[] = array( "desc" => "Upload the image for the second slide.",
+						"id" => "slide_upload_two",
+						"type" => "upload");
+	
+	$options[] = array( "desc" => "Insert text for second slide",
+						"id" => "slide_text_two",
+						"std" => "",
+						"type" => "textarea"); 
+
+	//slide three 
+
+	$options[] = array( "name" => "Slide Three",
+						"desc" => "Title for third slide.",
+						"id" => "slide_title_three",
+						"std" => "Enter slide title here",
+						"type" => "text");
+	
+	$options[] = array( "desc" => "Upload the image for the third slide.",
+						"id" => "slide_upload_three",
+						"type" => "upload");
+	
+	$options[] = array( "desc" => "Insert text for third slide",
+						"id" => "slide_text_three",
+						"std" => "",
+						"type" => "textarea"); 
+
+	//slide four 
+
+	$options[] = array( "name" => "Slide Four",
+						"desc" => "Title for fourth slide.",
+						"id" => "slide_title_four",
+						"std" => "Enter slide title here",
+						"type" => "text");
+	
+	$options[] = array( "desc" => "Upload the image for the fourth slide.",
+						"id" => "slide_upload_four",
+						"type" => "upload");
+	
+	$options[] = array( "desc" => "Insert text for fourth slide",
+						"id" => "slide_text_four",
+						"std" => "",
+						"type" => "textarea"); 
+	
 	return $options;
 }

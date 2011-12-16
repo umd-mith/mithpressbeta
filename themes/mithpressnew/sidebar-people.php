@@ -47,7 +47,7 @@ new TWTR.Widget({
   version: 2,
   type: 'profile',
   rpp: 10,
-  interval: 30000,
+  interval: 10000,
   width: 190,
   height: 300,
   theme: {

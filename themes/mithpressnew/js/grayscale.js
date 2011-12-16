@@ -1,5 +1,5 @@
 $(window).load(function(){
-	$(".item img").animate({opacity:1},500);
+	$(".item img").animate({opacity:1},100);
 	
 	// clone image
 	$('.item img').each(function(){
@@ -19,10 +19,10 @@ $(window).load(function(){
 	
 	// Fade image 
 	$('.item img').mouseover(function(){
-		$(this).parent().find('img:first').stop().animate({opacity:1}, 1000);
+		$(this).parent().find('img:first').stop().animate({opacity:1}, 600);
 	})
 	$('.img_grayscale').mouseout(function(){
-		$(this).stop().animate({opacity:0}, 1000);
+		$(this).stop().animate({opacity:0}, 600);
 	});		
 });
 	

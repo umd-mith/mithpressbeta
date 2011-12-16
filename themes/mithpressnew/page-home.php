@@ -4,9 +4,9 @@ Template Name: Home
 */
 ?>
 <?php get_header(); ?>
-<div id="page-container">
+<div id="page-container" class="home-page">
 		<div id="primary" class="width-limit">
-			<div id="content" role="main" class="span-16 last">
+			<div id="content" role="main" class="span-22 last">
 <!-- start slideshow -->
 				<?php get_template_part( 'slider', 'home' ); ?>
 <!-- end slideshow / start twitter feed -->
@@ -14,10 +14,9 @@ Template Name: Home
 
 <!-- end twitter feed / start page content -->
 
-
-
+				<?php get_template_part( 'page', 'home' ); ?>
 			</div>
-<!--end page content-->
+<!--end page content-->st
 		</div>
 <!-- end #primary -->
 </div>

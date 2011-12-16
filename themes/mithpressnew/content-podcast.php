@@ -17,9 +17,10 @@
 	<div class="entry-content">
 		<div id="podcast-info" class="append-bottom prepend-top clear">
 			<?php the_post_thumbnail( 'bio-image' ); ?>
-			<span class="pods-speaker"><?php echo $podcast_mb->the_value('speaker'); ?></span> 
-        	<span class="pods-affiliation"><?php echo $podcast_mb->the_value('affiliation'); ?></span>
+			<span class="pods-speaker"><?php $podcast_mb->the_value('speaker'); ?></span> 
+        	<span class="pods-affiliation"><?php $podcast_mb->the_value('affiliation'); ?></span>
 			<span class="pods-date"><?php the_date( 'F j, Y' ); ?></span>
+			<span class="pods-twitter"><?php $podcast_mb->the_value('twitter'); ?></span>
         </div>
         <!-- end podcast-info -->
         
@@ -27,15 +28,6 @@
 			<?php the_content(); ?>
         </div>
         <!-- end abstract -->
-        
-        <div id="media-links" class="column left">
-        <h2 class="column-title">Downloads</h2>
-        <ul>
-            <li><a href="#">Link One</a></li>
-            <li><a href="#">Link One</a></li>
-        </ul>
-        </div>
-        <!-- end media-links--> 
 	</div>
     <!-- end entry-content -->
     <br clear="all" />

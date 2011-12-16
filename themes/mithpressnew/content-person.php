@@ -14,7 +14,7 @@
         <div id="personal-info" class="append-bottom prepend-top clear">
 			<?php the_post_thumbnail( 'bio-image' ); ?>
         	<h1 class="entry-title"><?php the_title(); ?></h1>
-            <h2 class="info-title"><?php echo $people_mb->the_value('title'); ?></h2>
+            <h2 class="info-title"><?php echo $people_mb->the_value('stafftitle'); ?></h2>
             
 			<?php $email = $people_mb->get_the_value('email');
 			if ( $email != '') { ?>
@@ -34,15 +34,33 @@
             <?php the_content(); ?>
         </div><!-- /#bio -->
         
-        <div id="info-links" class="column left">
-        <h2 class="column-title">Links</h2>
-        <ul>
-            <li><a href="#">Link One</a></li>
-            <li><a href="#">Link One</a></li>
-        </ul>
-        </div><!-- /#info-links --> 
+	<?php 
+		global $people2_mb;
+		$people2_mb->the_meta();
+		
+		if ($people2_mb->have_fields('links')) { ?>
 
-		<?php $blogrss = $people_mb->get_the_value('blogrss');
+        <div id="info-links" class="column left">
+       	<h2 class="column-title">Links</h2>
+        	<ul>        
+			<?php  // loop a set of field groups
+            while($people2_mb->have_fields('links'))
+            {
+                $url = $people2_mb->get_the_value('url');
+                $title = $people2_mb->get_the_value('title');
+                echo '<li><a href="' . $url . '" target="_blank" rel="nofollow">';
+                echo $title . '</a></li>';
+            }
+        ?>
+        	</ul>
+        </div><!-- /#info-links --> 
+    <?php } ?>
+		
+	<?php 
+		global $people_mb;
+		$people_mb->the_meta();
+		$blogrss = $people_mb->get_the_value('blogrss');
+		
 			if ( $blogrss != '') { ?>
         <div id="personal-blog-feed" class="column right">
             <h2><?php _e('Personal Blog Posts'); ?></h2>

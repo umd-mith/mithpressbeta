@@ -22,7 +22,9 @@ $people_mb = new WPAlchemy_MetaBox(array(
 	'id' => '_people_info',
 	'title' => 'Personal Information',
 	'types' => array('people'), 
+	'mode' => WPALCHEMY_MODE_EXTRACT,
 	'template' => get_stylesheet_directory() . '/metaboxes/people-meta.php'
+	
 ));
 
 $people2_mb = new WPAlchemy_MetaBox(array(

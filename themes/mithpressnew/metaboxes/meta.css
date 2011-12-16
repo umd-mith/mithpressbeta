@@ -71,3 +71,8 @@ p .remove-all
 .wpa_group-links input[type=text] 
 { width: 275px; margin-right: 10px; display:inline; }
 
+/*---------Custom-----------*/
+#poststuff .inside .internal p
+{ overflow: auto; width: 33%; clear:none; float:left; }
+.my_meta_control textarea, .internal input[type='text']
+{ margin-bottom:3px; float:left; }

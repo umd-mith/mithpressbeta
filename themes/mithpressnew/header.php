@@ -38,7 +38,9 @@
 <!--<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/print.css" type="text/css" media="print">-->
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <!--<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/style.css" type="text/css" media="screen, projection">-->
-
+<?php if (is_front_page() ) { ?>
+<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/orbit.css" type="text/css" media="screen, projection">
+<?php } ?>
 <!--/STYLES-->
 
 <script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/functions.js"></script>
@@ -49,8 +51,11 @@
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 <![endif]-->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/grayscale.js"></script>
+<script src="<?php bloginfo('stylesheet_directory'); ?>/js/grayscale.js" type="text/javascript"></script>
 
+<?php if (is_front_page() ) { ?>
+<script src="<?php bloginfo('stylesheet_directory'); ?>/js/jquery.orbit-1.2.3.min.js" type="text/javascript"></script>
+<?php } ?>
 <!--/SCRIPTS-->
 
 <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
@@ -61,7 +66,16 @@
 
 <?php wp_head(); ?>
 
+<?php if (is_front_page() ) { ?>
+<script type="text/javascript">
+   $(window).load(function() {
+      $('#featured').orbit();
+   });
+</script>
+<?php } ?>
+
 </head>
+
 <body <?php body_class(); ?>>
 <!-- start umd wrapper -->
 <div id="umd-wrapper">

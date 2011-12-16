@@ -34,7 +34,7 @@ Template Name: Podcasts
             
 			<?php endif; ?>
             <!-- start right sidebar -->
-            <?php get_sidebar('podcast'); ?>
+            <?php get_sidebar('podcasts'); ?>
             <!-- end sidebar -->
 			</div>
 <!-- end #content -->
