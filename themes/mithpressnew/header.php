@@ -40,7 +40,10 @@
 <!--<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/style.css" type="text/css" media="screen, projection">-->
 <?php if (is_front_page() ) { ?>
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/orbit.css" type="text/css" media="screen, projection">
+<?php } if ( 'project' == get_post_type() ) { ?>
+<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/slimbox2.css" type="text/css" media="screen, projection">
 <?php } ?>
+
 <!--/STYLES-->
 
 <script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/functions.js"></script>
@@ -52,10 +55,12 @@
 <![endif]-->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
 <script src="<?php bloginfo('stylesheet_directory'); ?>/js/grayscale.js" type="text/javascript"></script>
-
 <?php if (is_front_page() ) { ?>
 <script src="<?php bloginfo('stylesheet_directory'); ?>/js/jquery.orbit-1.2.3.min.js" type="text/javascript"></script>
+<?php } if ( 'project' == get_post_type() ) { ?>
+<script src="<?php bloginfo('stylesheet_directory'); ?>/js/slimbox2.js" type="text/javascript"></script>
 <?php } ?>
+
 <!--/SCRIPTS-->
 
 <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
@@ -69,7 +74,14 @@
 <?php if (is_front_page() ) { ?>
 <script type="text/javascript">
    $(window).load(function() {
-      $('#featured').orbit();
+      $('#featured').orbit({
+		animation: 'fade',               // fade, horizontal-slide, vertical-slide, horizontal-push
+		animationSpeed: 700,             // how fast animations are
+		advanceSpeed: 5000,
+		pauseOnHover: true,             // if you hover pauses the slider
+		startClockOnMouseOut: true,
+		startClockOnMouseOutAfter: 300,
+		});
    });
 </script>
 <?php } ?>
@@ -89,8 +101,7 @@
 <!-- end umd wrapper top / start top -->
 <div id="top-container">
 <header id="branding" role="banner">
-	<hgroup><div class="width-limit"><img src="<?php bloginfo('template_directory'); ?>/images/logo_mith_skinny.png" alt="MITH :: University of Maryland" />
-	<a href="<?php echo get_option('home'); ?>/" class="logo"></a>
+	<hgroup><div class="width-limit"><a href="<?php echo get_option('home'); ?>/" ><img src="<?php bloginfo('template_directory'); ?>/images/logo_mith_skinny.png" alt="MITH :: University of Maryland" /></a>
 	<!-- <div class="description"><?php bloginfo('description'); ?></div>-->
 	</div></hgroup>
 </header>

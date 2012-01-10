@@ -2,9 +2,14 @@
   
 	<label>Speaker</label> 
 	<p>
-		<?php $mb->the_field('speaker'); ?>
-		<input type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>"/>
-		<span>Speaker's full name and title (i.e. PhD, etc.)</span>
+		<input type="text" name="<?php $mb->the_name('speaker'); ?>" value="<?php $mb->the_value('speaker'); ?>"/>
+		<span>Speaker's full name</span>
+    </p>
+	
+	<label>Title</label> 
+	<p>
+		<input type="text" name="<?php $mb->the_name('speakertitle'); ?>" value="<?php $mb->the_value('speakertitle'); ?>"/>
+		<span>Enter speaker's title (i.e. PhD, Associate Director, etc.)</span>
 	</p>
 
 	<label>Affiliation</label> 

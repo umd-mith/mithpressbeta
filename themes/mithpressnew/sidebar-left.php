@@ -4,9 +4,11 @@
 <?php $post_type = get_post_type( $post->ID );
 	  $obj = get_post_type_object( $post->post_type);
 	if ('podcast' == get_post_type() || 'project' == get_post_type() ) { 
-	echo $obj->labels->singular_name;
+	echo $obj->labels->name;
     //} elseif ( is_tree('127') || is_tree('54'))  {
 	//echo $obj->labels->singular_name;
+	} elseif ('people' == get_post_type() ) { 
+		echo "Staff";
 	} else { 
 		$parent_title = get_the_title($post->post_parent);
 		echo $parent_title;
@@ -32,7 +34,7 @@
 		'container_id' => 'sub-links',
 		'menu_class' => 'links'
 	) ); 
-} elseif (is_page('555')) { 
+} elseif (is_post_type_archive( 'people' )) { 
 	wp_nav_menu( array( 
 		'theme_location' => 'staff-menu', 
 		'container_id' => 'sub-links',

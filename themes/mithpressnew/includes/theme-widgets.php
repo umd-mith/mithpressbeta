@@ -42,42 +42,15 @@ if ( function_exists('register_sidebars') )
     ));
     register_sidebar(array(
         'name' => 'Footer Widget Area',
-		'id' => 'footer',
-		'description' => 'Left footer quicklinks',
+		'id' => 'footerwidgets',
+		'description' => 'footer area widgets',
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
         'after_widget' => '</aside></div>',
         'before_title' => '<h3>',
         'after_title' => '</h3><aside class="widget-body clear">'
     ));
-/*    register_sidebar(array(
-        'name' => 'Contact',
-		'id' => 'contact',
-		'description' => 'Right footer contact info',
-        'before_widget' => '<div id="%1$s" class="widget %2$s contact">',
-        'after_widget' => '</div></div>',
-        'before_title' => '<h3>',
-        'after_title' => '</h3><div class="widget-body clear">'
-    ));
-	register_sidebar(array(
-		'name' => 'Footer 1',
-		'id' => 'footer-1', 
-		'description' => "Widetized footer", 
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget' => '</div></div>',
-        'before_title' => '<h3>',
-        'after_title' => '</h3><div class="widget-body clear">'
-    ));
-	register_sidebar(array(
-		'name' => 'Footer 2',
-		'id' => 'footer-2', 
-		'description' => "Widetized footer", 
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget' => '</div></div>',
-        'before_title' => '<h3>',
-        'after_title' => '</h3><div class="widget-body clear">'
-    ));
-*/	
-	
+
+
 /*-----------------------------------------------------------------------------------*/
 /* Recent Posts Widgets */
 /*-----------------------------------------------------------------------------------*/

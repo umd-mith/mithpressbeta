@@ -17,7 +17,7 @@
 { color:#464646; font-size:1em; margin:15px 6px; text-transform:uppercase; }
 
 #poststuff .inside .my_meta_control p 
-{ clear:both; overflow: auto; }
+{ clear:both; /*overflow: auto; */ }
 
 .wpa_group 
 { }
@@ -25,7 +25,7 @@
 /*---------Buttons--------------*/
 
 p .remove-all 
-{ display: inline; float: right; left: 60px; position: absolute; top: 3px; }
+{ display: inline; float: right; right:0; position: relative; top: 3px; }
 
 .wpa_group p .remove { display: block; float: right; right:0px; top:-5px; position:relative; margin-left:10px; }
 
@@ -34,45 +34,45 @@ p .remove-all
 .wpa_group > p.add-another-button
 { margin-bottom:15px; padding-top:5px; }
 
-/*---------Docs Group-----------*/
-#wpa_loop-docs .wpa_group-docs 
-{ float:left; width:350px; margin-right: 20px; }
-
-.wpa_group-docs 
-{ margin-bottom: 10px; padding:10px 10px 0px 10px; border: 1px solid #999; }
-
 .wpa_group-docs .button 
 { }
-
-.wpa_group-docs input[type=text] 
-{ width: 275px; margin-right: 10px; display:inline; }
-
-
-/*---------Images Group-----------*/
-#wpa_loop-imgs .wpa_group-imgs 
-{ float:left; width:350px; margin-right: 20px; }
-
-.wpa_group-imgs 
-{ margin-bottom: 10px; padding:10px 10px 0px 10px; border: 1px solid #999; }
-
 .wpa_group-imgs .button 
 { }
 
-.wpa_group-imgs input[type=text] 
-{ width: 275px; margin-right: 10px; display:inline; }
 
-/*---------Links Group-----------*/
-#wpa_loop-links .wpa_group-links 
+/*---------Repeating Groups-----------*/
+#wpa_loop-links .wpa_group-links,
+#wpa_loop-staff .wpa_group-staff,
+#wpa_loop-imgs .wpa_group-imgs,
+#wpa_loop-docs .wpa_group-docs,
+#wpa_loop-imguploads .wpa_group-imguploads, 
+#wpa_loop-fileuploads .wpa_group-fileuploads
 { float:left; width:300px; margin-right: 20px; }
 
-.wpa_group-links 
-{ margin-bottom: 10px; padding:10px 10px 0px 10px; border: 1px solid #999; }
 
-.wpa_group-links input[type=text] 
+.wpa_group-links input[type=text], 
+.wpa_group-staff input[type=text], 
+.wpa_group-imgs input[type=text],
+.wpa_group-docs input[type=text],
+.wpa_group-imguploads input[type=text], 
+.wpa_group-fileuploads input[type=text]
 { width: 275px; margin-right: 10px; display:inline; }
 
+.wpa_group-links, 
+.wpa_group-staff, 
+.wpa_group-imgs,
+.wpa_group-docs,
+.wpa_group-imguploads, 
+.wpa_group-fileuploads
+{ margin-bottom: 10px; padding:10px 10px 0px 10px; border: 1px solid #999; }
+
+
+
 /*---------Custom-----------*/
+#wpcontent #wpa_loop-staff select { width: 150px; }
+
 #poststuff .inside .internal p
 { overflow: auto; width: 33%; clear:none; float:left; }
+
 .my_meta_control textarea, .internal input[type='text']
 { margin-bottom:3px; float:left; }

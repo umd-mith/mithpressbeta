@@ -16,7 +16,7 @@
 
 	<div class="entry-content">
 		<div id="podcast-info" class="append-bottom prepend-top clear">
-			<?php the_post_thumbnail( 'bio-image' ); ?>
+			<?php the_post_thumbnail( 'med-thumbnail' ); ?>
 			<div class="pods-speaker"><?php echo $podcast_mb->the_value('speaker'); ?>, 
         		<span class="pods-affiliation"><?php echo $podcast_mb->the_value('affiliation'); ?></span>
 			</div>

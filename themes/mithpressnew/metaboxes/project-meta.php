@@ -1,47 +1,76 @@
 <div class="my_meta_control">
- 
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-	Cras orci lorem, bibendum in pharetra ac, luctus ut mauris.</p>
- 
-	<label>Project Staff<span>(Enter in each person's name)</span></label>
- 
-	<?php while($metabox->have_fields('authors',3)): ?>
+<!-- PROJECT INFO -->
+
+	<label>Website/Blog</label>
 	<p>
-		<input type="text" name="<?php $metabox->the_name(); ?>" value="<?php $metabox->the_value(); ?>"/>
-	</p>
-	<?php endwhile; ?>
- 
-	<label>Info</label>
- 
+    	<?php $mb->the_field('website');?>
+		<input type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>"/>
+        <span>Enter official website/blog for project (if applicable). All other project links should be added below. Format: <strong>without</strong> "http://"</span>
+    </p> 
+    
+	<label>Contact Person</label>
 	<p>
-		<!-- instead of using helper methods, you can also use array notation: name="custom_meta[info]" -->
-		<input type="text" name="<?php $metabox->the_id(); ?>[info]" value="<?php if(!empty($meta['info'])) echo $meta['info']; ?>"/>
-		<span>Enter in the info</span>
-	</p>
+    	<?php $mb->the_field('contactname');?>
+		<input type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>"/>
+        <span>Name</span>
+    </p>
+    <p>
+    	<?php $mb->the_field('contactemail');?>
+		<input type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>"/>
+        <span>Email Address</span>
+    </p>
 
-	<label>Links <span>(Enter in the link title and url)</span></label>
- 
-	<?php while($metabox->have_fields('links', 5)): ?>
+	<label>Launch Date</label>
 	<p>
-		<?php $metabox->the_field('title'); ?>
-		<input type="text" name="<?php $metabox->the_name(); ?>" value="<?php $metabox->the_value(); ?>"/>
+    	<?php $mb->the_field('launchdate');?>
+		<input type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>"/>
+		<span>Enter official date of project launch. Format: November 11, 2011</span>
+    </p>
 
-		<input type="text" name="<?php $metabox->the_name('url'); ?>" value="<?php $metabox->the_value('url'); ?>"/>
+	<label>Twitter Account <span>(optional)</span></label>
+	<p>
+    	<?php $mb->the_field('twitter');?>
+		<input type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>"/>
+		<span>Enter twitter handle if project has its own Twitter account.</span>
+    </p>
 
-		<br/><?php $metabox->the_field('nofollow'); ?>
-		<input type="checkbox" name="<?php $metabox->the_name(); ?>" value="1"<?php if ($metabox->get_the_value()) echo ' checked="checked"'; ?>/> Use <code>nofollow</code>
+	<label>Twitter Hashtag <span>(optional)</span></label>
+	<p>
+    	<?php $mb->the_field('hashtag');?>
+		<input type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>"/>
+		<span>Enter hashtag for project (optional).</span>
+    </p>
 
-		<?php $selected = ' selected="selected"'; ?>
+<!-- PROJECT STAFF -->
 
-		<br/><?php $metabox->the_field('target'); ?>
-		<select name="<?php $metabox->the_name(); ?>">
-		<option value=""></option>
-		<option value="_self"<?php if ($metabox->get_the_value() == '_self') echo $selected; ?>>_self</option>
-		<option value="_blank"<?php if ($metabox->get_the_value() == '_blank') echo $selected; ?>>_blank</option>
-		<option value="_parent"<?php if ($metabox->get_the_value() == '_parent') echo $selected; ?>>_parent</option>
-		<option value="_top"<?php if ($metabox->get_the_value() == '_top') echo $selected; ?>>_top</option>
-		</select>
-	</p>
-	<?php endwhile; ?>
+    <label>Project Staff 
+    <span>(current Staff associated with the project)</span></label>	 
+    
+    <div class="remove-all-button"><a href="#" class="dodelete-staff button remove-all">Remove All</a></div>
+     
+    <p>Add staff to project by selecting them from the dropdown. Add addtional staff by clicking the "Add Staff" button.</p> 
 
+    <br clear="all" />
+
+    <?php while($mb->have_fields_and_multi('staff')): ?>
+    <?php $mb->the_group_open(); 
+        $selected = ' selected="selected"'; 
+        $mb->the_field('projectstaff'); 
+	?>
+        <select name="<?php $mb->the_name(); ?>" id="project-staff">
+            <option value=""></option>
+            <option value="test_name"<?php if ($metabox->get_the_value() == 'test_name') echo $selected; ?>>test_name</option>
+            <option value="test_name2"<?php if ($metabox->get_the_value() == 'test_name2') echo $selected; ?>>test_name2</option>
+        </select>
+        
+        <div class="remove-button"><a href="#" class="dodelete button remove">Remove Person</a></div>
+        
+        <br clear="all" />                 
+    
+    <?php $mb->the_group_close(); ?>
+    <?php endwhile; ?>
+     
+        <div class="add-another-link"><a href="#" class="docopy-staff button add-another">Add Staff</a></div>
+
+    <br clear="all" /> 
 </div>

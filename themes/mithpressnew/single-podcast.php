@@ -10,7 +10,7 @@
             
 			<?php if (function_exists('mithpress_breadcrumbs')) mithpress_breadcrumbs(); ?>
         	
-            <div id="articles">				
+            <div id="article">				
            		<?php while ( have_posts() ) : the_post(); ?>
 					<?php get_template_part( 'content', 'podcast' ); ?>
 	

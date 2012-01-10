@@ -17,6 +17,7 @@
 	<p>
     	<?php $mb->the_field('phone');?>
 		<input type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>"/>
+		<span>(optional)</span>
     </p>
 
 	<label>Twitter Handle</label>

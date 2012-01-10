@@ -43,12 +43,13 @@ function get_custom_field_data($key, $echo = false) {
 
 
 
-// OUTPUT WHICH TEMPLATE A PAGE/POST IS USING IN THE HEADER
+/* OUTPUT WHICH TEMPLATE A PAGE/POST IS USING IN THE HEADER
 add_action('wp_head', 'show_template');
 function show_template() {
     global $template;
     print_r($template);
 }
+*/
 
 if ( !function_exists( 'optionsframework_init' ) ) {
 

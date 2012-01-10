@@ -36,37 +36,13 @@ function mithpress_content_nav( $nav_id ) {
 	<?php endif;
 }
 
+
+
+
 /*-----------------------------------------------------------------------------------*/
 /* Post Meta */
 /*-----------------------------------------------------------------------------------*/
 
-if (!function_exists('woo_post_meta')) {
-	function woo_post_meta( ) {
-?>
-<p class="post-meta">
-    <span class="post-author"><span class="small"><?php _e('by', 'woothemes') ?></span> <?php the_author_posts_link(); ?></span>
-    <span class="post-date"><span class="small"><?php _e('on', 'woothemes') ?></span> <?php the_time( get_option( 'date_format' ) ); ?></span>
-    <span class="post-category"><span class="small"><?php _e('in', 'woothemes') ?></span> <?php the_category(', ') ?></span>
-    <?php edit_post_link( __('{ Edit }', 'woothemes'), '<span class="small">', '</span>' ); ?>
-</p>
-<?php 
-	}
-}
-
-/* Prints HTML with meta information for the current post-date/time and author. */
-if ( ! function_exists( 'mithpress_posted_on' ) ) :
-function mithpress_posted_on() {
-	printf( __( '<span class="sep">Posted on </span><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s" pubdate>%4$s</time></a><span class="by-author"> <span class="sep"> by </span> <span class="author vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span>', 'mithpress' ),
-		esc_url( get_permalink() ),
-		esc_attr( get_the_time() ),
-		esc_attr( get_the_date( 'c' ) ),
-		esc_html( get_the_date() ),
-		esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-		sprintf( esc_attr__( 'View all posts by %s', 'mithpress' ), get_the_author() ),
-		esc_html( get_the_author() )
-	);
-}
-endif;
 
 /*-----------------------------------------------------------------------------------*/
 /* Custom Post Type Support */
@@ -165,9 +141,13 @@ if ( '' == $text ) {
     $text = strip_tags($text, $allowed_tags);
  	
 	if ( is_post_type_archive('podcast') ) { 
-   	$excerpt_word_count = 30;
+   	$excerpt_word_count = 30; 
+	} elseif ( 'podcast' == get_post_type() ) { 
+   	$excerpt_word_count = 20;
+	} elseif (is_page_template('content.php') ) { 
+	$excerpt_word_count = 175;
 	} else {
-   	$excerpt_word_count = 175; /*** MODIFY THIS. change the excerpt word count to any integer you like.***/
+   	$excerpt_word_count = 50; /*** MODIFY THIS. change the excerpt word count to any integer you like.***/
 	}
     $excerpt_length = apply_filters('excerpt_length', $excerpt_word_count);
  

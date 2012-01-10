@@ -16,12 +16,18 @@
 
 	<div class="entry-content">
 		<div id="podcast-info" class="append-bottom prepend-top clear">
-			<?php the_post_thumbnail( 'bio-image' ); ?>
-			<span class="pods-speaker"><?php $podcast_mb->the_value('speaker'); ?></span> 
+			<?php the_post_thumbnail( 'med-thumbnail' ); ?>
+			<span class="pods-speaker"><?php $podcast_mb->the_value('speaker'); ?>
+			<?php $stitle = $podcast_mb->get_the_value('speakertitle');
+			if ( $stitle != '') { ?>, <span class="pods-stitle"><?php echo $stitle ?></span><?php } ?>
+            </span> 
         	<span class="pods-affiliation"><?php $podcast_mb->the_value('affiliation'); ?></span>
 			<span class="pods-date"><?php the_date( 'F j, Y' ); ?></span>
-			<span class="pods-twitter"><?php $podcast_mb->the_value('twitter'); ?></span>
-        </div>
+		<?php $twitter = $podcast_mb->get_the_value('twitter');
+			if ( $twitter != '') { ?>
+            <span class="pods-twitter"><a href="http://www.twitter.com/#!/<?php echo $twitter ?>" rel="nofollow" target="_blank">@<?php echo $twitter ?></a></span>
+        <?php } ?>
+            </div>
         <!-- end podcast-info -->
         
         <div id="abstract">

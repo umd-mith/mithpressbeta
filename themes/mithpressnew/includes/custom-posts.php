@@ -148,45 +148,47 @@ function register_cpt_podcast() {
     register_post_type( 'podcast', $args );
 }
 
+
 /* Podcast Columns */
 /*-------------------------------------------------------------------------------------------*/
 
-add_action('manage_podcast_posts_custom_column', 'manage_podcast_columns');
-add_filter('manage_edit-podcast_columns', 'edit_podcast_columns');
+add_filter( 'manage_edit-podcast_columns', 'register_podcast_columns' ) ;
+add_action( 'manage_podcast_posts_custom_column', 'manage_podcast_columns', 10, 2 );
 
- 
-function edit_podcast_columns($columns) //this function display the columns headings
-{
+function register_podcast_columns( $columns ) {
+
 	$columns = array(
-		"cb" => "<input type=\"checkbox\" />",
-		"date" => "Date",
-		"title" => "Title",
-		"speaker" => "Speaker",
-		'id' => __('ID'),
+		'cb' => '<input type="checkbox" />',
+		'date' => __('Date'),
+		'speaker' => __('Speaker'),
+		"title" => __('Title'),
 	);
+
 	return $columns;
 }
- 
-function manage_podcast_columns($column)
-{
+
+function manage_podcast_columns( $column, $post_id ) {
 	global $post;
-		global $post;
-		switch ($column)
-		{
-			case "id":
-				echo $post->ID;
-				break;
-			case "pods_description":
-				the_excerpt();
-				break;
-			case "speaker":
-				$custom = get_post_custom();
-				echo $custom["speaker"][0];
-				break;
-		}
-	
+
+	switch( $column ) {
+
+		case 'speaker' :
+			/* Get the post meta. */
+			$speaker = get_post_meta( $post_id, 'speaker', true );
+
+			/* If no title is found, output a default message. */
+			if ( empty( $speaker ) )
+				echo __( 'n/a' );
+
+			else printf( $speaker );
+			break;
+
+		/* Just break out of the switch statement for everything else. */
+		default :
+			break;
 	}
-	
+}
+
 
 /*-------------------------------------------------------------------------------------------*/
 /* People Post Type */
@@ -428,7 +430,7 @@ function admin_custom_rewrites($translation, $text, $domain) {
 /*-------------------------------------------------------------------------------------------*/
 /* Create Sortable Columns */
 /*-------------------------------------------------------------------------------------------*/
-function sortable_columns() {
+/*function sortable_columns() {
   return array(
 	'staffgroup' => 'staffgroup',
     'speaker'  => 'speaker',
@@ -437,16 +439,39 @@ function sortable_columns() {
 	'lname' => 'lname'
   );
 }
+*/
 
-add_filter( "manage_edit-podcast_sortable_columns", "sortable_columns" );
-add_filter( "manage_edit-project_sortable_columns", "sortable_columns" );
+/* Podcast Columns */
 
+add_filter('manage_edit-podcast_sortable_columns', 'register_podcast_sortable_columns');
+function register_podcast_sortable_columns( ) {
+  return array(
+    'speaker'  => 'speaker',
+	'affiliation' => 'affiliation',
+	);
+}
+add_filter('request', 'handle_podcast_column_sorting');
+function handle_podcast_column_sorting( $vars ){
+  if( isset($vars['orderby']) && 'speaker' == $vars['orderby'] ){
+    $vars = array_merge( $vars, array(
+		'meta_key' => 'speaker',
+		'orderby' => 'meta_value',
+    ));
+  }
+  return $vars;
+}
+
+/* Project Columns */
+
+add_filter( "manage_edit-project_sortable_columns", "reguster_project_sortable_columns" );
+
+
+/* People Columns */
 
 add_filter('manage_edit-people_sortable_columns', 'register_people_sortable_columns');
 function register_people_sortable_columns( ) {
   return array(
 	'staffgroup' => 'staffgroup',
-    'speaker'  => 'speaker',
 	'title' => 'name',
 	'fname' => 'fname',
 	'lname' => 'lname'

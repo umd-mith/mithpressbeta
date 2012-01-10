@@ -1,8 +1,7 @@
 <div id="sidebar" class="podcast widget-area span-5 prepend-1 append-bottom last" role="complementary">
 
-<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('podcast') ); 
-
-    global $podcast2_mb;
+<?php
+	global $podcast2_mb;
 	$podcast2_mb->the_meta();
 
 ?>
@@ -42,5 +41,7 @@
             <?php } ?>
         </ul>
     </aside>
+
+<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('podcast') ); ?>
 
 </div>

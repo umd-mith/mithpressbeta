@@ -21,10 +21,8 @@
 	</div>
     <!-- /entry-content -->
     
-	<footer class="entry-meta">
-		<?php edit_post_link( __( 'Edit', 'mithpress' ), '<span class="edit-link">', '</span>' ); ?>
-	</footer>
-    <!-- /entry-meta -->
+    <br clear="all" />
+	<?php edit_post_link( __( 'Edit', 'mithpress' ), '<div class="edit-link">', '</div>' ); ?>
 
 </article>
 <!-- end post-<?php the_ID(); ?> -->

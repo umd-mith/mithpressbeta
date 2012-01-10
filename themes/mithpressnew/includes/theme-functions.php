@@ -21,8 +21,9 @@ function mithpress_thumbnails() {
     //update_option('thumbnail_size_h', 290);
 	//add_image_size( 'featured-image', 640, 130 ); 
     add_image_size( 'mini-thumbnail', 50, 50, true );
+	add_image_size( 'med-thumbnail', 130, 130, true ); // staff/person photo size
+	add_image_size( 'horiz-thumbnail', 200, 90, true ); // project detail photo
     add_image_size( 'slide', 640, 290, true );
-	add_image_size( 'bio-image', 130, 130, true ); // staff photo size
 }
 add_action( 'init', 'mithpress_thumbnails' );
 

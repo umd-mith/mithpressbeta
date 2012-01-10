@@ -12,13 +12,13 @@
 	<div class="entry-content">
 
         <div id="personal-info" class="append-bottom prepend-top clear">
-			<?php the_post_thumbnail( 'bio-image' ); ?>
+			<?php the_post_thumbnail( 'med-thumbnail' ); ?>
         	<h1 class="entry-title"><?php the_title(); ?></h1>
             <h2 class="info-title"><?php echo $people_mb->the_value('stafftitle'); ?></h2>
             
 			<?php $email = $people_mb->get_the_value('email');
 			if ( $email != '') { ?>
-            <span class="info-email"><a href="mailto:<?php echo $email ?>" rel="nofollow"><?php echo $email ?></a></span>
+            <span class="info-email"><a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a></span>
             <?php } 
 			$twit = $people_mb->get_the_value('twitter');
 			if ( $twit != '') { ?>
@@ -44,14 +44,12 @@
        	<h2 class="column-title">Links</h2>
         	<ul>        
 			<?php  // loop a set of field groups
-            while($people2_mb->have_fields('links'))
-            {
+            while($people2_mb->have_fields('links')) {
                 $url = $people2_mb->get_the_value('url');
                 $title = $people2_mb->get_the_value('title');
                 echo '<li><a href="' . $url . '" target="_blank" rel="nofollow">';
                 echo $title . '</a></li>';
-            }
-        ?>
+            } ?>
         	</ul>
         </div><!-- /#info-links --> 
     <?php } ?>

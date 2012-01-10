@@ -6,7 +6,7 @@
 			'theme_location' => 'footer', 
 			'container' => 'false'
 		) ); */ ?>
-        <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('footer') ); ?>
+        <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('footerwidgets') ); ?>
         <!--/quicklinks-->
 		
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('contact') ); ?>

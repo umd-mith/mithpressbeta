@@ -3,6 +3,9 @@
  * The template for displaying content in the single.php template
  *
 **/
+    global $podcast_mb;
+	$podcast_mb->the_meta();
+
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
@@ -12,15 +15,22 @@
     <!-- end entry-header-->
 
 	<div class="entry-content">
-		<?php 
-			$speaker = get_post_meta(get_the_ID(), 'pods-speaker', true);
-			$affiliation = get_post_meta(get_the_ID(), 'pods-affiliation', true);
-			$talkdate = get_post_meta(get_the_ID(), 'pods-date', true);
-		?>
-		<div class="pods-speaker"><?php echo $speaker; ?>, <span class="pods-affiliation"><?php echo $affiliation; ?></span></div>
-        <div class="pods-date"><?php echo $talkdate; ?></div>
-        <div class="pods-media"></div>
-		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'mithpress' ) . '</span>', 'after' => '</div>' ) ); ?>
-	</div><!-- .entry-content -->
+		<div id="podcast-info" class="excerpt append-bottom prepend-top clear">
+			<?php the_post_thumbnail( 'med-thumbnail' ); ?>
+			<span class="pods-speaker"><?php $podcast_mb->the_value('speaker'); ?></span> 
+        	<span class="pods-affiliation"><?php $podcast_mb->the_value('affiliation'); ?></span>
+			<span class="pods-date"><?php the_date( 'F j, Y' ); ?></span>
+			<span class="pods-twitter"><?php $podcast_mb->the_value('twitter'); ?></span>
+        </div>
+        <!-- end podcast-info -->
+        
+        <div id="abstract">
+			<?php the_excerpt(); ?>
+        </div>
+        <!-- end abstract -->
+	</div>
+    <!-- end entry-content -->
+    <br clear="all" />
+	<?php // edit_post_link( __( 'Edit', 'mithpress' ), '<div class="edit-link">', '</div>' ); ?>
 
 </article><!-- end post-<?php the_ID(); ?> -->

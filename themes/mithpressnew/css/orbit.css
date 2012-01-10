@@ -9,7 +9,7 @@
 /* PUT IN YOUR SLIDER ID AND SIZE TO MAKE LOAD BEAUTIFULLY
    ================================================== */
 #featured { 
-	width: 640px;
+	width: 870px;
 	height: 250px;
 	background: #000 url('orbit/loading.gif') no-repeat center center;
 	overflow: hidden; }
@@ -128,16 +128,19 @@ span.pause.active {
 
 .orbit-wrapper .orbit-caption {
     background: #000;
-    background: rgba(0,0,0,.6);
+    background: rgba(0,0,0,.9);
     z-index: 1000;
     color: #fff;
-	text-align: center;
-	padding: 7px 0;
-    font-size: 13px;
+	text-align: left;
+	padding: 20px;
+    font-size: 0.75em;
     position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 100%; }
+    left: 0;
+    top: 0;
+    width: 170px;
+	height:210px;
+}
+.orbit-caption h2 { margin-bottom:0.9em; color: #FFFFFF !important;  }
 
 
 /* DIRECTIONAL NAV
@@ -162,7 +165,7 @@ div.slider-nav span.right {
 
 div.slider-nav span.left {
     background: url(orbit/left-arrow.png);
-    left: 0; }
+    left: 210px; }
 
 /* BULLET NAV
    ================================================== */

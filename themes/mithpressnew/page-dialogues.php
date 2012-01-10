@@ -18,7 +18,8 @@ Template Name: Dialogues
 			<?php global $wp_query;
 				query_posts( array(
 					'post_type' => 'podcast',
-					'showposts' => 5,
+					'posts_per_page' => '5',
+					'paged' => get_query_var('paged')
 				) );
             ?>
   			<?php if ( have_posts() ) : ?>
@@ -28,8 +29,12 @@ Template Name: Dialogues
 					<?php get_template_part( 'content', 'ddialogues'); ?>
 
 				<?php endwhile; ?>
-
-				<?php mithpress_content_nav( 'nav-below' ); ?>
+				
+                <nav id="nav-page">
+                    <h3 class="assistive-text"><?php _e( 'Page navigation', 'mithpress' ); ?></h3>
+                    <span class="nav-previous"><span class="meta-nav"></span><?php next_posts_link('Older', 0); ?></span>
+                    <span class="nav-next"><span class="meta-nav"></span><?php previous_posts_link('Newer', 0) ?></span>
+                </nav>
 
 			<?php endif; ?>
         	</div>
