@@ -576,9 +576,9 @@ if(strpos($_SERVER['QUERY_STRING'], 'gigpress') !== FALSE) {
 	add_action('admin_init','gigpress_admin_head');
 	add_action('admin_footer_text', 'gigpress_admin_footer');
 }
-/*if($gpo['category_exclude'] == 1) {
+if($gpo['category_exclude'] == 1) {
 	add_action('pre_get_posts','gigpress_exclude_shows');
-}*/
+}
 add_action('template_redirect', 'gigpress_js');
 add_action('wp_head', 'gigpress_head');
 add_action('admin_post_gigpress_export', 'gigpress_export');
@@ -601,4 +601,7 @@ add_shortcode('gigpress_menu','gigpress_menu');
 add_shortcode('gigpress_upcoming','gigpress_upcoming');
 add_shortcode('gigpress_archive','gigpress_archive');
 add_shortcode('gigpress_related_shows','gigpress_show_related');
+
+// We're forced to bed, but we're free to dream.
+
 ?>

@@ -17,14 +17,14 @@
         <div class="meta-line post_date"><?php the_time('F j, Y') ?></div>
 
     </div>
-    <!-- end entry-meta -->
+    <!-- /entry-meta -->
 
 	<header class="entry-header">
 		<h1 class="entry-title append-bottom"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Link to %s', 'mithpress' ), the_title_attribute( 'echo=0' ) ); ?>"><?php the_title(); ?></a></h1>
 	</header>
-    <!-- end entry-header-->
+    <!-- /entry-header-->
 	<div class="entry-content">
-		<?php the_excerpt(); ?>
+		<?php custom_excerpt(75); ?>
 	</div>
     <!-- /entry-content -->
     <br clear="all" />

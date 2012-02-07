@@ -6,9 +6,9 @@ Template Name: 2-Column (Wide)
 <?php get_header(); ?>
 <div id="page-container">
 		<div id="primary" class="width-limit">
-<!--start subnav -->
-		  <?php get_sidebar('left'); ?>
-<!-- end subnav sidebar / start page content -->
+
+		<?php get_sidebar('left'); ?>
+		<!-- /subnav -->
 			<div id="content" role="main" class="span-16 wide last">
 
                 <?php if (function_exists('mithpress_breadcrumbs')) mithpress_breadcrumbs(); ?>
@@ -18,10 +18,10 @@ Template Name: 2-Column (Wide)
 				<?php get_template_part( 'content', 'page' ); ?>
 
 			</div>
-<!--end page content-->
+			<!-- /page content-->
 		</div>
-<!-- end #primary -->
+		<!-- /primary -->
 </div>
-<!-- end page / start footer -->
+<!-- /page -->
 
 <?php get_footer(); ?>

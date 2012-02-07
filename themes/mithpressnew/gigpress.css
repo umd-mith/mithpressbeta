@@ -1,0 +1,37 @@
+/*
+Gigpress styles
+*/
+
+/* */
+
+th.gigpress-city , td.gigpress-city { display:none; }
+
+span.gigpress-info-item { display:block; }
+span.gigpress-info-item span { display: inline; }
+th.gigpress-heading { display: none; }
+
+span.gigpress-sidebar-artist {
+	font-weight:600;
+}
+
+
+/* speaker affiliation */
+#sidebar span.gigpress-info-item em {
+	display: inline;
+	color: #555;
+	font-style:italic;
+	font-weight:400;
+	line-height:1.3em;
+}
+/* talk title */
+#sidebar span.gigpress-info-item span {
+	margin-top:2px;
+	font-weight:600;
+}
+
+/* Stop Firefox from underlining our abbreviated dates */
+abbr {
+	border: none !important;
+	text-decoration: none;
+	font-size: 100%;
+}

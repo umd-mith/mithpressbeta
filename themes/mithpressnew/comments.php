@@ -5,61 +5,148 @@
  * Used as a callback by wp_list_comments() for displaying the comments.
  *
  */
-if ( ! function_exists( 'mithpress_comment' ) ) :
-function mithpress_comment( $comment, $args, $depth ) {
-	$GLOBALS['comment'] = $comment;
-	switch ( $comment->comment_type ) :
-		case 'pingback' :
-		case 'trackback' :
-	?>
-	<li class="post pingback">
-		<p><?php _e( 'Pingback:', 'twentyeleven' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( 'Edit', 'twentyeleven' ), '<span class="edit-link">', '</span>' ); ?></p>
-	<?php
-			break;
-		default :
-	?>
-	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
-		<article id="comment-<?php comment_ID(); ?>" class="comment">
-			<footer class="comment-meta">
-				<div class="comment-author vcard">
-					<?php
-						$avatar_size = 68;
-						if ( '0' != $comment->comment_parent )
-							$avatar_size = 39;
+ if ( comments_open() ) : ?>
+<div class="comments">
+    <?php if ( post_password_required() ) : ?>
+                    <p class="nopassword"><?php _e('This post is password protected. Enter the password to view any comments.'); ?></p>
+                </div><!-- #comments -->
+    <?php
+            /* Stop the rest of comments.php from being processed,
+             * but don't kill the script entirely -- we still have
+             * to fully load the template.
+             */
+            return;
+        endif;
+    ?>
 
-						echo get_avatar( $comment, $avatar_size );
+    <?php
+        // You can start editing here -- including this comment!
+    ?>
 
-						/* translators: 1: comment author, 2: date and time */
-						printf( __( '%1$s on %2$s <span class="says">said:</span>', 'twentyeleven' ),
-							sprintf( '<span class="fn">%s</span>', get_comment_author_link() ),
-							sprintf( '<a href="%1$s"><time pubdate datetime="%2$s">%3$s</time></a>',
-								esc_url( get_comment_link( $comment->comment_ID ) ),
-								get_comment_time( 'c' ),
-								/* translators: 1: date, 2: time */
-								sprintf( __( '%1$s at %2$s', 'twentyeleven' ), get_comment_date(), get_comment_time() )
-							)
-						);
-					?>
+<div id="comments">
+  <?php if (have_comments()) : global $wp_query; ?>
+  <!--
+  <div class="navigation">
+	<div class="alignleft"><?php previous_comments_link() ?></div>
+    <div class="alignright"><?php next_comments_link() ?></div>
+  </div> -->    
+<!--  <h2 id="comments"><?php comments_number('No Responses', 'One Response', '% Responses' ); ?></h2>-->
+  <?php if (!empty($comments_by_type['comment'])) { ?>
+  <h3 id="comments"><?php echo count($wp_query->comments_by_type['comment']); ?> Comments<h3>
+  <ol class="commentlist">
+    <?php wp_list_comments('type=comment&callback=commentslist'); ?>
+  </ol>
+  <?php } ?>
 
-					<?php edit_comment_link( __( 'Edit', 'twentyeleven' ), '<span class="edit-link">', '</span>' ); ?>
-				</div><!-- .comment-author .vcard -->
+  <?php if (!empty($comments_by_type['pingback'])) { ?>
+  <h3 id="pingbacks"><?php echo count($wp_query->comments_by_type['pingback']); ?> Pingbacks</h3>
+  <ol class="pingbacklist">
+    <?php wp_list_comments('type=pingback&callback=pingslist'); ?>
+  </ol>
+  <?php } ?>
 
-				<?php if ( $comment->comment_approved == '0' ) : ?>
-					<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'twentyeleven' ); ?></em>
-					<br />
-				<?php endif; ?>
+  <?php if (!empty($comments_by_type['trackback'])) { ?>
+  <h3 id="trackbacks"><?php echo count($wp_query->comments_by_type['trackback']); ?> Trackbacks</h3>
+  <ol class="trackbacklist">
+    <?php wp_list_comments('type=trackback&callback=pings_trackslist'); ?>
+  </ol>
+  <?php } ?>
 
-			</footer>
+  <?php else : // if there are no comments yet ?>
 
-			<div class="comment-content"><?php comment_text(); ?></div>
+  <?php if (comments_open()) : ?>
+  <!-- comments open, no comments -->
+  <?php else : ?>
+  <!-- comments closed, no comments -->
+  <?php endif; ?>
+  <!--
+  <div class="navigation">
+	<div class="alignleft"><?php previous_comments_link() ?></div>
+    <div class="alignright"><?php next_comments_link() ?></div>
+  </div> -->    
+  <?php endif; // end have_comments() ?>
+</div>
+    
 
-			<div class="reply">
-				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply <span>&darr;</span>', 'twentyeleven' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
-			</div><!-- .reply -->
-		</article><!-- #comment-## -->
+    <?php if ('open' == $post->comment_status) : ?>
 
-	<?php
-			break;
-	endswitch;
-}
-endif; // ends check for mithpress_comment()
+    <div id="respond">
+        <h3>What do you think?</h3>
+        <div class="comment_form">
+
+        <?php if ( get_option('comment_registration') && !$user_ID ) : ?>
+            <p class="comment_message">You must be <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php echo urlencode(get_permalink()); ?>">logged in</a> to post a comment.</p>
+        <?php else : ?>
+
+            <form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
+
+                <?php if ( $user_ID ) : ?>
+
+                    <p class="comment_message">Logged in as <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="Log out of this account">Log out &raquo;</a></p>
+
+                    <table>
+                        <tr>
+                            <td colspan="3">
+                                <div class="commform-textarea">
+                                    <textarea name="comment" id="comment" cols="50" rows="7" tabindex="1"></textarea>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                <?php else : ?>
+
+                    <table>
+                        <tr>
+                            <td colspan="3">
+                                <div class="commform-textarea">
+                                    <textarea name="comment" id="comment" cols="50" rows="7" tabindex="1"></textarea>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="commform-author">
+                                <p>Name <span>required</span></p>
+                                <div>
+                                    <input type="text" name="author" id="author" tabindex="2" />
+                                </div>
+                            </td>
+                            <td class="commform-email">
+                                <p>Email <span>required</span></p>
+                                <div>
+                                    <input type="text" name="email" id="email" tabindex="3" />
+                                </div>
+                            </td>
+                            <td class="commform-url">
+                                <p>Website <span>&nbsp;</span></p>
+                                <div>
+                                    <input type="text" name="url" id="url" tabindex="4" />
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                <?php endif; ?>
+
+                <p class="comment_message"><small><strong>XHTML:</strong> You can use these tags: <code><?php echo allowed_tags(); ?></code></small></p>
+
+                <div class="submit clear">
+                    <input name="submit" type="submit" id="submit" tabindex="5" value="Submit" />
+                    <div id="cancel-comment-reply"><?php cancel_comment_reply_link('Cancel') ?></div>
+                </div>
+                    
+                <div><?php comment_id_fields(); ?><?php do_action('comment_form', $post->ID); ?></div>
+
+            </form>
+
+        <?php endif; // If registration required and not logged in ?>
+
+        </div>
+
+        <?php endif; // if you delete this the sky will fall on your head ?>
+
+    </div>
+
+</div>
+<?php endif; // end ! comments_open() ?>
+<!-- #comments -->

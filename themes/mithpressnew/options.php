@@ -82,6 +82,11 @@ function optionsframework_options() {
 						"std" => "",
 						"type" => "textarea"); 
 
+	$options[] = array( "desc" => "Slide link",
+						"id" => "slide_link_one",
+						"std" => "http://",
+						"type" => "text");
+
 	//slide two 
 
 	$options[] = array( "name" => "Slide Two",
@@ -98,6 +103,11 @@ function optionsframework_options() {
 						"id" => "slide_text_two",
 						"std" => "",
 						"type" => "textarea"); 
+
+	$options[] = array( "desc" => "Slide link",
+						"id" => "slide_link_two",
+						"std" => "http://",
+						"type" => "text");
 
 	//slide three 
 
@@ -116,6 +126,11 @@ function optionsframework_options() {
 						"std" => "",
 						"type" => "textarea"); 
 
+	$options[] = array( "desc" => "Slide link",
+						"id" => "slide_link_three",
+						"std" => "http://",
+						"type" => "text");
+
 	//slide four 
 
 	$options[] = array( "name" => "Slide Four",
@@ -132,6 +147,33 @@ function optionsframework_options() {
 						"id" => "slide_text_four",
 						"std" => "",
 						"type" => "textarea"); 
+
+	$options[] = array( "desc" => "Slide link",
+						"id" => "slide_link_four",
+						"std" => "http://",
+						"type" => "text");
+
+	//slide Fifth 
+
+	$options[] = array( "name" => "Slide Fifth",
+						"desc" => "Title for fifth slide.",
+						"id" => "slide_title_fifth",
+						"std" => "Enter slide title here",
+						"type" => "text");
 	
+	$options[] = array( "desc" => "Upload the image for the fifth slide.",
+						"id" => "slide_upload_fifth",
+						"type" => "upload");
+	
+	$options[] = array( "desc" => "Insert text for fifth slide",
+						"id" => "slide_text_fifth",
+						"std" => "",
+						"type" => "textarea"); 
+
+	$options[] = array( "desc" => "Slide link",
+						"id" => "slide_link_fifth",
+						"std" => "http://",
+						"type" => "text");
+
 	return $options;
 }

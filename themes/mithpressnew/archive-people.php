@@ -8,7 +8,7 @@ get_header(); ?>
 		<div id="primary" class="width-limit">
         <!--start subnav -->
         <?php get_sidebar('left'); ?>
-        <!-- end subnav sidebar / start archive content -->
+        <!-- /subnav sidebar / start archive content -->
 			<div id="content" role="main" class="archive span-16 last">
 			
 			<?php if (function_exists('mithpress_breadcrumbs')) mithpress_breadcrumbs(); ?>
@@ -18,11 +18,11 @@ get_header(); ?>
 			<div class="people-section"><?php include('people/people-rassoc.php'); ?></div>
 			<div class="people-section"><?php include('people/people-fellows.php'); ?></div>
         </div>
-        <!-- end #content -->
+        <!-- /content -->
 	</div>
 <div class="clear"></div>
-<!-- end #primary -->
+<!-- /primary -->
 </div>
-<!-- end page / start footer -->
+<!-- /page / start footer -->
 
 <?php get_footer(); ?>

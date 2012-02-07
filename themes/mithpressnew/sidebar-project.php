@@ -70,7 +70,7 @@ if ( $twit != '' || $hash !='') { ?>
             <a href="http://www.twitter.com/#!/<?php echo $twit ?>" rel="nofollow" target="_blank" class="follow">Follow</a>
         </div>
     </aside>
-</div><!-- end recent_tweets -->
+</div><!-- /recent_tweets -->
 <?php } ?>
 
 </div><!-- #secondary .widget-area -->

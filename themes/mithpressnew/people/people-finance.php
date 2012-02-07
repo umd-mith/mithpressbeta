@@ -1,9 +1,10 @@
-<?php 
-	$args = array(
+<?php global $wp_query;
+	query_posts( array(
+		'post_type' => 'people',
+		'posts_per_page' => '-1',
 		'meta_key' => $people_mb->get_the_name('pplsort'),
 		'orderby' => 'meta_value_num',
 		'order' => 'ASC',
-		'posts_per_page' => -1,
 		'tax_query' => array(
 		'relation' => 'AND',
 			array(
@@ -18,21 +19,18 @@
 				'operator' => 'NOT IN'
 			)
 		)
-	);
-	query_posts( $args );
-	?>
-
+	) );
+?>				  
+				  
 <?php if ( have_posts() ) : ?>
 
 	<header class="page-header">
 		<h1 class="page-title append-bottom prepend-top">Finance + Administration</h1>
 	</header>
 
-	<?php /* Start the Loop */ 
-	while ( have_posts() ) : the_post(); 
-	global $people_mb;
-	$people_mb->the_meta();
-	?>
+	<?php while ( have_posts() ) : the_post(); 
+	  global $people_mb; 
+	  $people_mb->the_meta(); ?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	
@@ -46,10 +44,10 @@
 				</div>
 			</a>
 
-			</div><!-- /#person-->
-		</div><!-- .entry-content -->
+			</div><!-- /person-->
+		</div><!-- /entry-content -->
 	
 	</article>
 
-	<?php endwhile; endif; ?>
-	<?php wp_reset_query(); ?>
+	<?php endwhile; ?>
+<?php endif; ?>

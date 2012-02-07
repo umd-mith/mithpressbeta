@@ -1,47 +1,63 @@
 <?php
 /*
-Template Name: Podcasts
-* display list of most recent podcasts
+Template Name: Dialogues
+* display list of most recent dialogues
 */
-?>
-<?php get_header(); ?>
+
+get_header(); ?>
 <div id="page-container">
 		<div id="primary" class="width-limit">
-		<!--start subnav -->
-		  <?php get_sidebar('left'); ?>
-		<!--end sidebar / start podcast page content-->
 
-			<div id="content" role="main" class="span-16 last">
+		<?php get_sidebar('left'); ?>
+		<!-- /subnav -->
+
+		<div id="content" role="main" class="span-16 last">
+			
 			<?php if (function_exists('mithpress_breadcrumbs')) mithpress_breadcrumbs(); ?>
+            
+        	<div id="articles">
 
 			<?php global $wp_query;
 				query_posts( array(
 					'post_type' => 'podcast',
-					'showposts' => 5,
+					'posts_per_page' => '5',
+					'paged' => get_query_var('paged')
 				) );
             ?>
   			<?php if ( have_posts() ) : ?>
 
-				<?php mithpress_content_nav( 'nav-above' ); ?>
-
 				<?php while ( have_posts() ) : the_post(); ?>
 
-					<?php get_template_part( 'content', 'podcast'); ?>
+					<?php get_template_part( 'content', 'podcasts'); ?>
 
 				<?php endwhile; ?>
+                
+				<?php if (get_option('paging_mode') == 'default') : ?>
+                    <nav id="nav-page" class="span-narrow">
+                    <h3 class="assistive-text"><?php _e( 'Page navigation', 'mithpress' ); ?></h3>
+                        <span class="nav-previous"><span class="meta-nav"></span><?php next_posts_link(__('Older'), 0); ?></span>
+                        <span class="nav-next"><span class="meta-nav"></span><?php previous_posts_link(__('Newer'), 0); ?></span>
+                    <?php if (function_exists('wp_pagenavi')) wp_pagenavi(); ?>
+                    </nav>
+                    <?php else : ?>
+                    <nav id="nav-page" class="span-narrow">
+                    <h3 class="assistive-text"><?php _e( 'Page navigation', 'mithpress' ); ?></h3>
+                        <span class="nav-next"><span class="meta-nav"></span><?php next_posts_link(__('LOAD MORE')); ?></span>
+                    </nav>
+                <?php endif; ?>				
 
-				<?php mithpress_content_nav( 'nav-below' ); ?>
-            
 			<?php endif; ?>
-            <!-- start right sidebar -->
-            <?php get_sidebar('podcasts'); ?>
-            <!-- end sidebar -->
-			</div>
-<!-- end #content -->
+        	</div>
+            <!-- /articles -->
+		<?php get_sidebar('podcasts'); ?>
+		<!-- /sidebar -->
+                    
 		</div>
+        <!-- /content -->
+	</div>
+    <!--/primary/post -->    
 <div class="clear"></div>
-<!-- end #primary -->
 </div>
-<!-- end page / start footer -->
+<!-- /page / start footer -->
 
 <?php get_footer(); ?>

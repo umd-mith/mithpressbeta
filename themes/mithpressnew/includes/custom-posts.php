@@ -36,7 +36,7 @@ function register_cpt_project() {
         'show_in_nav_menus' => false,
         'publicly_queryable' => true,
         'query_var' => true,
-        'rewrite' => true,		
+        'rewrite' => array('slug' => 'projects'),
 		
         'exclude_from_search' => false,
         'has_archive' => true,
@@ -139,7 +139,7 @@ function register_cpt_podcast() {
         'has_archive' => true,
         'query_var' => true,
         'can_export' => true,
-        'rewrite' => true,
+        'rewrite' => array('slug'=>'podcasts'),
         'capability_type' => 'post',
 		
 		'taxonomies' => array('category', 'post_tag')
@@ -241,8 +241,6 @@ function register_cpt_people() {
 }
 
 
-
-
 /* People Categories */
 /*-------------------------------------------------------------------------------------------*/
 add_action( 'init', 'register_taxonomy_staffgroup' );
@@ -252,8 +250,6 @@ function register_taxonomy_staffgroup() {
     $labels = array( 
         'name' => _x( 'Staff Groups', 'staff group' ),
         'singular_name' => _x( 'Staff Group', 'staff group' ),
-        'search_items' => _x( 'Search Staff Groups', 'staff group' ),
-        'popular_items' => _x( 'Popular Staff Groups', 'staff group' ),
         'all_items' => _x( 'All Staff Groups', 'staff group' ),
         'parent_item' => _x( 'Parent Staff Group', 'staff group' ),
         'parent_item_colon' => _x( 'Parent Staff Group:', 'staff group' ),
@@ -270,7 +266,7 @@ function register_taxonomy_staffgroup() {
     $args = array( 
         'labels' => $labels,
         'public' => true,
-        'show_in_nav_menus' => false,
+        'show_in_nav_menus' => true,
         'show_ui' => true,
         'show_tagcloud' => false,
         'hierarchical' => true,

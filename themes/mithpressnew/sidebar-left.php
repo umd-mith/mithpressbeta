@@ -3,12 +3,12 @@
   <h1 class="append-bottom">
 <?php $post_type = get_post_type( $post->ID );
 	  $obj = get_post_type_object( $post->post_type);
-	if ('podcast' == get_post_type() || 'project' == get_post_type() ) { 
+	if ('podcast' == get_post_type() || 'people' == get_post_type() ) { 
 	echo $obj->labels->name;
     //} elseif ( is_tree('127') || is_tree('54'))  {
 	//echo $obj->labels->singular_name;
-	} elseif ('people' == get_post_type() ) { 
-		echo "Staff";
+	} elseif ('project' == get_post_type() ) { 
+		echo "Research";
 	} else { 
 		$parent_title = get_the_title($post->post_parent);
 		echo $parent_title;
@@ -34,7 +34,7 @@
 		'container_id' => 'sub-links',
 		'menu_class' => 'links'
 	) ); 
-} elseif (is_post_type_archive( 'people' )) { 
+} elseif (is_post_type_archive( 'people' ) || is_tax( 'staffgroup', 'archive') ) { 
 	wp_nav_menu( array( 
 		'theme_location' => 'staff-menu', 
 		'container_id' => 'sub-links',

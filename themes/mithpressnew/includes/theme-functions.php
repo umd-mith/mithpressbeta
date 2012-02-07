@@ -22,11 +22,77 @@ function mithpress_thumbnails() {
 	//add_image_size( 'featured-image', 640, 130 ); 
     add_image_size( 'mini-thumbnail', 50, 50, true );
 	add_image_size( 'med-thumbnail', 130, 130, true ); // staff/person photo size
-	add_image_size( 'horiz-thumbnail', 200, 90, true ); // project detail photo
+	//add_image_size( 'horiz-header', 410, 185, false ); // project detail header	
+	add_image_size( 'horiz-thumbnail', 200, 90, false ); // project icon
     add_image_size( 'slide', 640, 290, true );
 }
 add_action( 'init', 'mithpress_thumbnails' );
 
+
+/*-----------------------------------------------------------------------------------*/
+/* Add Image Sizes to Media Uploader */
+/*-----------------------------------------------------------------------------------*/
+
+/**
+ * Filter callback to add image sizes to Media Uploader
+ *
+ * WP 3.3 beta adds a new filter 'image_size_names_choose' to
+ * the list of image sizes which are displayed in the Media Uploader
+ * after an image has been uploaded.
+ *
+ * See image_size_input_fields() in wp-admin/includes/media.php
+ * 
+ * Tested with WP 3.3 beta 1
+ *
+ * @uses get_intermediate_image_sizes()
+ *
+ * @param $sizes, array of default image sizes (associative array)
+ * @return $new_sizes, array of all image sizes (associative array)
+ */
+function sgr_display_image_size_names_muploader( $sizes ) {
+	
+	$new_sizes = array();
+	
+	$added_sizes = get_intermediate_image_sizes();
+	
+	// $added_sizes is an indexed array, therefore need to convert it
+	// to associative array, using $value for $key and $value
+	foreach( $added_sizes as $key => $value) {
+		$new_sizes[$value] = $value;
+	}
+	
+	// This preserves the labels in $sizes, and merges the two arrays
+	$new_sizes = array_merge( $new_sizes, $sizes );
+	
+	return $new_sizes;
+}
+add_filter('image_size_names_choose', 'sgr_display_image_size_names_muploader', 11, 1);
+
+/*-----------------------------------------------------------------------------------*/
+/* Remove Standard Image Sizes */
+/*-----------------------------------------------------------------------------------*/
+/**
+ * Remove standard image sizes so that these sizes are not
+ * created during the Media Upload process
+ *
+ * Tested with WP 3.2.1
+ *
+ * Hooked to intermediate_image_sizes_advanced filter
+ * See wp_generate_attachment_metadata( $attachment_id, $file ) in wp-admin/includes/image.php
+ *
+ * @param $sizes, array of default and added image sizes
+ * @return $sizes, modified array of image sizes
+ * @author Ade Walker http://www.studiograsshopper.ch
+ */
+function sgr_filter_image_sizes( $sizes) {
+		
+	unset( $sizes['thumbnail']);
+	unset( $sizes['medium']);
+	unset( $sizes['large']);
+	
+	return $sizes;
+}
+add_filter('intermediate_image_sizes_advanced', 'sgr_filter_image_sizes');
 
 // Remove Title Attribute from Featured Image
 

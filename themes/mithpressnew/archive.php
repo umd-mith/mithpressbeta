@@ -15,7 +15,7 @@ get_header(); ?>
 	get_sidebar( 'left' ); 	
 	} 
 ?>
-<!-- end subnav sidebar / start archive content -->
+<!-- /subnav sidebar / start archive content -->
 			<div id="content" role="main" class="archive span-16 last">
 			
 			<?php if (function_exists('mithpress_breadcrumbs')) mithpress_breadcrumbs(); ?>
@@ -38,8 +38,6 @@ get_header(); ?>
 					</h1>
 				</header>
 
-
-				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 
 					<?php
@@ -59,22 +57,22 @@ get_header(); ?>
 				<article id="post-0" class="post no-results not-found">
 					<header class="page-header">
 						<h1 class="page-title append-bottom prepend-top"><?php _e( 'Nothing Found', 'mithpress' ); ?></h1>
-					</header><!-- .entry-header -->
+					</header><!-- /entry-header -->
 
 					<div class="page-content">
 						<p><?php _e( 'Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.', 'mithpress' ); ?></p>
 						<?php get_search_form(); ?>
-					</div><!-- .entry-content -->
-				</article><!-- end post-0 -->
+					</div><!-- /entry-content -->
+				</article><!-- /post-0 -->
 
 			<?php endif; ?>
 
         </div>
-<!-- end #content -->
+<!-- /content -->
 	</div>
 <div class="clear"></div>
-<!-- end #primary -->
+<!-- /primary -->
 </div>
-<!-- end page / start footer -->
+<!-- /page / start footer -->
 
 <?php get_footer(); ?>

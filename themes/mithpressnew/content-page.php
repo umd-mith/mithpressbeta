@@ -14,10 +14,9 @@
 	<header class="entry-header">
 		<h1 class="entry-title append-bottom"><?php the_title(); ?></h1>
 	</header>
-    <!-- end entry-header-->
+    <!-- /entry-header-->
 	<div class="entry-content">
 		<?php the_content(); ?>
-		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'mithpress' ) . '</span>', 'after' => '</div>' ) ); ?>
 	</div>
     <!-- /entry-content -->
     
@@ -25,4 +24,4 @@
 	<?php edit_post_link( __( 'Edit', 'mithpress' ), '<div class="edit-link">', '</div>' ); ?>
 
 </article>
-<!-- end post-<?php the_ID(); ?> -->
+<!-- /post-<?php the_ID(); ?> -->

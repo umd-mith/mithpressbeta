@@ -1,6 +1,6 @@
 <div id="sidebar" class="podcast widget-area span-5 prepend-1 append-bottom last" role="complementary">
 
-<?php
+<?php // displayed on single podcast page 
 	global $podcast2_mb;
 	$podcast2_mb->the_meta();
 

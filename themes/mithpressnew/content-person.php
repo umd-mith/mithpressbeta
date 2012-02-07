@@ -11,10 +11,10 @@
 
 	<div class="entry-content">
 
-        <div id="personal-info" class="append-bottom prepend-top clear">
+        <div id="personal-info" class="append-bottom clear">
 			<?php the_post_thumbnail( 'med-thumbnail' ); ?>
         	<h1 class="entry-title"><?php the_title(); ?></h1>
-            <h2 class="info-title"><?php echo $people_mb->the_value('stafftitle'); ?></h2>
+            <h2 class="info-title"><?php $people_mb->the_value('stafftitle'); ?></h2>
             
 			<?php $email = $people_mb->get_the_value('email');
 			if ( $email != '') { ?>
@@ -28,40 +28,48 @@
 			if ( $phone != '') { ?>
             <span class="info-phone"><?php echo $phone ?></span>
             <?php } ?>
-        </div><!-- /#personal-info -->
+        </div><!-- /personal-info -->
         
         <div id="bio">
             <?php the_content(); ?>
-        </div><!-- /#bio -->
-        
+        </div><!-- /bio -->
+    
+    
 	<?php 
-		global $people2_mb;
-		$people2_mb->the_meta();
-		
-		if ($people2_mb->have_fields('links')) { ?>
-
+	global $peoplelinks_mb;
+	$peoplelinks_mb->the_meta();
+        $i = 0;
+	while($peoplelinks_mb->have_fields('links')) {
+	?>
+	<?php 
+    if($i == 0) { ?>
         <div id="info-links" class="column left">
-       	<h2 class="column-title">Links</h2>
-        	<ul>        
-			<?php  // loop a set of field groups
-            while($people2_mb->have_fields('links')) {
-                $url = $people2_mb->get_the_value('url');
-                $title = $people2_mb->get_the_value('title');
+        <h2 class="column-title">Links</h2>
+            <ul>
+    <?php } ?>
+            <?php  // loop a set of field groups
+            
+                $url = $peoplelinks_mb->get_the_value('url');
+                $title = $peoplelinks_mb->get_the_value('title');
                 echo '<li><a href="' . $url . '" target="_blank" rel="nofollow">';
                 echo $title . '</a></li>';
-            } ?>
-        	</ul>
-        </div><!-- /#info-links --> 
-    <?php } ?>
-		
+            ?>
+        <?php
+             $i++;
+             // End while loop
+             } 
+         if($i > 0) { ?>
+            </ul>
+        </div>
+	<?php } ?>    <!-- /info-links --> 
+        
 	<?php 
-		global $people_mb;
 		$people_mb->the_meta();
 		$blogrss = $people_mb->get_the_value('blogrss');
 		
 			if ( $blogrss != '') { ?>
         <div id="personal-blog-feed" class="column right">
-            <h2><?php _e('Personal Blog Posts'); ?></h2>
+            <h2 class="column-title"><?php _e('Personal Blog Posts'); ?></h2>
             <?php // Get RSS Feed(s)
             include_once(ABSPATH . WPINC . '/feed.php');
             
@@ -94,12 +102,12 @@
                 <a href="<?php echo $blogcat ?>" target="_blank" class="readmore">More Posts</a>
                 <a href="<?php echo $blogrss ?>" target="_blank" class="rss">Subscribe</a>
             </div>
-        </div><!-- /#blog-feed --> 
+        </div><!-- /blog-feed --> 
         <?php } ?>
         
-	</div><!-- .entry-content -->
+	</div><!-- /entry-content -->
     <br clear="all" />
 	<?php edit_post_link( __( 'Edit', 'mithpress' ), '<div class="edit-link">', '</div>' ); ?>
 
 </article>
-<!-- end post-<?php the_ID(); ?> -->
+<!-- /post-<?php the_ID(); ?> -->

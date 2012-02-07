@@ -6,7 +6,11 @@
  
 .my_meta_control label span
 { display:inline; font-weight:normal; }
- 
+
+.my_meta_control.side  { line-height:1.75; }
+.my_meta_control.side label span { display: block; line-height:normal; margin-left:0; padding-bottom:5px; }
+.my_meta_control.side input[type="checkbox"], .my_meta_control.side input[type="radio"] { margin-left: 10px; }
+
 .my_meta_control span
 { color:#999; display:inline; margin-left:6px; clear:right; line-height: 2em; }
  
@@ -33,6 +37,9 @@ p .remove-all
 
 .wpa_group > p.add-another-button
 { margin-bottom:15px; padding-top:5px; }
+
+.wpa_group div.remove-button { display: inline-block; clear: left; margin-bottom: 10px; margin-top: 10px;
+} 
 
 .wpa_group-docs .button 
 { }
@@ -66,8 +73,6 @@ p .remove-all
 .wpa_group-fileuploads
 { margin-bottom: 10px; padding:10px 10px 0px 10px; border: 1px solid #999; }
 
-
-
 /*---------Custom-----------*/
 #wpcontent #wpa_loop-staff select { width: 150px; }
 
@@ -76,3 +81,11 @@ p .remove-all
 
 .my_meta_control textarea, .internal input[type='text']
 { margin-bottom:3px; float:left; }
+
+/*---------Repeating Dates-----------*/
+.wpa_group-dates .dates-span { display: inline; width: 200px; height: 40px; } 
+#poststuff .inside .my_meta_control .dates-span p { clear: none; display: inline; }
+.my_meta_control .dates-span label { display: inline; margin-right: 10px; } 
+.my_meta_control .dates-span input[type='text'] { float: none; width: 150px; } 
+
+

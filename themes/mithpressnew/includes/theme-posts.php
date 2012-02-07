@@ -48,15 +48,6 @@ function mithpress_content_nav( $nav_id ) {
 /* Custom Post Type Support */
 /*-----------------------------------------------------------------------------------*/
 
-/*add_filter( 'pre_get_posts', 'my_get_posts' );
-
-function my_get_posts( $query ) {
-
-	if ( is_home() && false == $query->query_vars['suppress_filters'] )
-		$query->set( 'post_type', array( 'post', 'page', 'project', 'podcast', 'attachment' ) );
-
-	return $query;
-}*/
 
 add_theme_support( 'post-formats', array( 'aside', /*'link', 'gallery', 'status', 'quote', 'image',*/ 'podcast', 'project', 'people' ) );
 
@@ -122,10 +113,9 @@ function close_tags($text) {
     return $text;
 }
 
-/* Code that preserves HTML formating to the automatically generated Excerpt */
-/* Also modifies the default excerpt_length and excerpt_more filters. */
-/* Code tested on WordPress Version 3.1.3 */
-function custom_wp_trim_excerpt($text) {
+//EXCERPT LENGTH 
+
+function custom_excerpt($excerpt_length=50) {
 $raw_excerpt = $text;
 if ( '' == $text ) {
     //Retrieve the post content.
@@ -139,18 +129,7 @@ if ( '' == $text ) {
  
     $allowed_tags = '<p>,<em>,<i>,<b>,<strong>,<a>,<ul>,<li>,<ol>,<blockquote>,<code>'; /*** MODIFY THIS. Add the allowed HTML tags separated by a comma.***/
     $text = strip_tags($text, $allowed_tags);
- 	
-	if ( is_post_type_archive('podcast') ) { 
-   	$excerpt_word_count = 30; 
-	} elseif ( 'podcast' == get_post_type() ) { 
-   	$excerpt_word_count = 20;
-	} elseif (is_page_template('content.php') ) { 
-	$excerpt_word_count = 175;
-	} else {
-   	$excerpt_word_count = 50; /*** MODIFY THIS. change the excerpt word count to any integer you like.***/
-	}
-    $excerpt_length = apply_filters('excerpt_length', $excerpt_word_count);
- 
+ 	 
    	$excerpt_end = '. . . '; /*** MODIFY THIS. change the excerpt endind to something else.***/
    	$excerpt_more = apply_filters('excerpt_more', ' ' . $excerpt_end);
  
@@ -168,6 +147,6 @@ echo close_tags($content);
 
 }
 remove_filter('get_the_excerpt', 'wp_trim_excerpt');
-add_filter('get_the_excerpt', 'custom_wp_trim_excerpt');
+add_filter('get_the_excerpt', 'custom_excerpt');
 
 ?>

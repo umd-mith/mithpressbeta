@@ -24,7 +24,7 @@ $projectuploads_mb = new WPAlchemy_MetaBox(array(
 
 $projectstatus_mb = new WPAlchemy_MetaBox(array(
 	'id' => '_project_status',
-	'title' => 'Project Status',
+	'title' => 'Project Status & Type',
 	'types' => array('project'), 
 	'context' => 'side', 
 	'priority' => 'default', 
@@ -41,11 +41,20 @@ $people_mb = new WPAlchemy_MetaBox(array(
 	
 ));
 
-$people2_mb = new WPAlchemy_MetaBox(array(
+$peoplelinks_mb = new WPAlchemy_MetaBox(array(
 	'id' => '_people_links',
 	'title' => 'Links',
 	'types' => array('people'),
-	'template' => get_stylesheet_directory() . '/metaboxes/people-meta-links.php'
+	'mode' => WPALCHEMY_MODE_EXTRACT,
+	'template' => get_stylesheet_directory() . '/metaboxes/people-meta-links.php',	
+));
+
+$peopledates_mb = new WPAlchemy_MetaBox(array(
+	'id' => '_people_dates',
+	'title' => 'Dates',
+	'types' => array('people'),
+	'mode' => WPALCHEMY_MODE_EXTRACT,
+	'template' => get_stylesheet_directory() . '/metaboxes/people-meta-dates.php',	
 ));
 
 $podcast_mb = new WPAlchemy_MetaBox(array(

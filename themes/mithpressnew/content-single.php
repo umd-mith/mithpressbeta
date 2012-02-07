@@ -20,68 +20,42 @@
         <div class="meta-line post-categories">
             <?php the_category(' <span>, </span> '); ?>
         </div>
-        
+		
 		<?php edit_post_link( __( 'Edit', 'mithpress' ), '<div class="meta-line">', '</div>' ); ?>
                 
         <div class="meta-line post-comments">
             <?php comments_popup_link(__('No Comments'), __('1 Comment'), __('% Comments'), '', __('')); ?>
         </div>
     </div>
-    <!-- end entry-meta -->
-        
+    <!-- /entry-meta -->
+	<div class="post-wrap">
 	<header class="entry-header">
 		<h1 class="entry-title append-bottom"><?php the_title(); ?></h1>
 	</header>
-    <!-- end entry-header -->
+    <!-- /entry-header -->
 
     <div class="entry-content">
         <?php the_content(); ?>
-        
-        <div class="dd_post_share">
-        <div class="dd_buttons">
-            <div class="dd_button twitter-share">
-               <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-            </div>
-            <div class="dd_button facebook-share"><!-- Uses the iframe on legacy IEs. -->
-               <iframe src="http://www.facebook.com/plugins/like.php?href=<?php echo urlencode(get_permalink($post->ID)); ?>&amp;layout=button_count&amp;show_faces=false&amp;width=92&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:92px; height:21px;"></iframe>
-            </div>
-            <div class="dd_button digg-share">
-               <script type="text/javascript">
-               (function() {
-               var s = document.createElement('SCRIPT'), s1 = document.getElementsByTagName('SCRIPT')[0];
-               s.type = 'text/javascript';
-               s.async = true;
-               s.src = 'http://widgets.digg.com/buttons.js';
-               s1.parentNode.insertBefore(s, s1);
-               })();
-               </script>
-            
-               <a class="DiggThisButton DiggCompact"></a>
-            </div>
-            <div class="dd_button stumble-share">
-            <script src="http://www.stumbleupon.com/hostedbadge.php?s=2"></script>
-            </div>
-            <div class="dd_button gplus-share">
-			<!-- Place this tag where you want the +1 button to render -->
-            <g:plusone size="small"></g:plusone>
-            
-            <!-- Place this render call where appropriate -->
-            <script type="text/javascript">
-              (function() {
-                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-                po.src = 'https://apis.google.com/js/plusone.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-              })();
-            </script>
-           </div>
-        </div>
-	</div>
-	<!-- end dd_post_share -->
-        
     </div>
-    <!-- end entry-content -->
+    <!-- /entry-content -->
+	<div id="sharing">
+    	<div class="gp-link share-button"><g:plusone size="small" href="<?php the_permalink(); ?>"></g:plusone>
+        </div>
+        <div class="tw-link share-button">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="UMD_MITH" data-text="<?php the_title(); ?>" data-url="<?php the_permalink(); ?>">Tweet</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
+		if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";
+		fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+        <div class="fb-like share-button" data-href="http://mith-beta.umd.edu/" href="<?php echo get_permalink($post->ID); ?>" data-send="true" data-layout="button_count" data-width="140" data-show-faces="false" data-font="arial">
+        </div>        
+    </div>
+	<!-- /sharing -->
+	<?php //get_template_part( 'content', 'share' ); ?>
+    
+    </div>
+    <!-- /post-wrap -->
     
     <br clear="all" />
-	<?php edit_post_link( __( 'Edit', 'mithpress' ), '<div class="edit-link">', '</div>' ); ?>
 
-</article><!-- end post-<?php the_ID(); ?> -->
+</article><!-- /post-<?php the_ID(); ?> -->

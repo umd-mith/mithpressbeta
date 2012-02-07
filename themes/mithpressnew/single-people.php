@@ -20,14 +20,14 @@
                         
             <!-- start sidebar -->
             <?php get_sidebar('people'); ?>
-            <!-- end sidebar -->
+            <!-- /sidebar -->
 
 		</div>
-<!-- end #content -->
+<!-- /content -->
 	</div>
 <!--end #primary/post -->    
 <div class="clear"></div>
 </div>
-<!-- end page / start footer -->
+<!-- /page / start footer -->
 
 <?php get_footer(); ?>

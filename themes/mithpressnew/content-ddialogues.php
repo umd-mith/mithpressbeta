@@ -9,28 +9,18 @@
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<header class="entry-header">
-		<h1 class="entry-title append-bottom prepend-top"><a href="<?php the_permalink(); ?>" ><?php the_title(); ?></a></h1>
-	</header>
-    <!-- end entry-header-->
-
 	<div class="entry-content">
 		<div id="podcast-info" class="excerpt append-bottom prepend-top clear">
-			<?php the_post_thumbnail( 'med-thumbnail' ); ?>
-			<span class="pods-speaker"><?php $podcast_mb->the_value('speaker'); ?></span> 
-        	<span class="pods-affiliation"><?php $podcast_mb->the_value('affiliation'); ?></span>
 			<span class="pods-date"><?php the_date( 'F j, Y' ); ?></span>
-			<span class="pods-twitter"><?php $podcast_mb->the_value('twitter'); ?></span>
+			<span class="pods-speaker"><?php $podcast_mb->the_value('speaker'); ?>
+			<?php $stitle = $podcast_mb->get_the_value('speakertitle');
+			if ( $stitle != '') { ?>, <span class="pods-stitle"><?php echo $stitle ?></span><?php } ?>
+            </span> 
+            <span class="pods-title"><a href="<?php the_permalink(); ?>" ><?php the_title(); ?></a></span>
         </div>
-        <!-- end podcast-info -->
-        
-        <div id="abstract">
-			<?php the_excerpt(); ?>
-        </div>
-        <!-- end abstract -->
+        <!-- /podcast-info -->
 	</div>
-    <!-- end entry-content -->
+    <!-- /entry-content -->
     <br clear="all" />
-	<?php // edit_post_link( __( 'Edit', 'mithpress' ), '<div class="edit-link">', '</div>' ); ?>
 
-</article><!-- end post-<?php the_ID(); ?> -->
+</article><!-- /post-<?php the_ID(); ?> -->

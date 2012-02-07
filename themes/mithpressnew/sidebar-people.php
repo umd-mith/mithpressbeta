@@ -8,32 +8,38 @@ $people_mb->the_meta();
 	<?php endif; // end sidebar widget area ?>
 		<?php
         $postslug = $post->post_name;
-        
         $args=array(
-           'showposts' => 5,
-           'author' => $postslug,
+           'posts_per_page' => 5,
+           'author_name' => $postslug,
         );
-        $posts=get_posts($args);
-        if ($posts) {
-          $author_id=$post->post_author;
-          $curuser = get_userdata($author_id);
-          $author_post_url=get_author_posts_url($curuser->ID); ?>
-<div id="recentposts_mithblog" class="widget widget_recentposts_thumbnail"> 
-	<h3>MITH Blog Posts</h3>
-    <aside id="" class="widget-body clear">
+		$the_query = new WP_Query( $args ); ?>
+                  
+	<?php if ( $the_query->have_posts() ) : ?>
+
+    <div id="recentposts_mithblog" class="widget widget_recentposts_thumbnail"> 
+        
+        <h3>MITH Blog Posts</h3>
+        
+        <aside id="" class="widget-body clear">
+            
             <ul id="mith-blog-feed">  
-          <?php foreach($posts as $post) {
-            setup_postdata($post); ?>
-            <li><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>" class="rpost clear">
-            	<span class="rpost-title"><?php the_title(); ?></span>
-                <span class="rpost-date"><?php the_time(__('M j, Y')) ?></span>
-           	</a></li>
-            <?php
-          } // foreach($posts
-        } // if ($posts ?>
+			<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                    
+                <li>
+                    <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>" class="rpost clear">
+                    <span class="rpost-title"><?php the_title(); ?></span>
+                    <span class="rpost-date"><?php the_time(__('M j, Y')) ?></span></a>
+                </li>
+            
+			<?php endwhile; 
+            wp_reset_query(); ?>
+             
             </ul>
-    </aside>
-</div><!-- end recentposts_mithblog -->
+        </aside>
+    </div>
+    <!-- /recentposts_mithblog -->
+	<?php endif; ?>
+
 
 <?php $twit = $people_mb->get_the_value('twitter');
 if ( $twit != '') { ?>
@@ -74,7 +80,7 @@ if ( $twit != '') { ?>
             <a href="http://www.twitter.com/#!/<?php echo $twit ?>" rel="nofollow" target="_blank" class="follow">Follow</a>
         </div>
     </aside>
-</div><!-- end recent_tweets -->
+</div><!-- /recent_tweets -->
 <?php } ?>
 
-</div><!-- end sidebar -->
+</div><!-- /sidebar -->

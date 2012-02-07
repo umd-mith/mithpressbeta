@@ -21,7 +21,7 @@ Template Name: Home
                   type: 'profile',
                   rpp: 20,
                   interval: 30000,
-                  width: '1000',
+                  width: '800',
                   height: 15,
                   theme: {
                     shell: {
@@ -55,7 +55,7 @@ Template Name: Home
 			
 			$args = array(
 				'post_type' => 'project',
-				'posts_per_page' => -1
+				'posts_per_page' => 6
 				);
 			$posts = new WP_Query( $args ); ?>
 			<?php 
@@ -73,13 +73,14 @@ Template Name: Home
             <article id="post-<?php the_ID(); ?>" <?php post_class($counter_class); ?>>
             
                 <div class="entry-content">
-                    <div id="project-info" class="append-bottom prepend-top">
-                    <a href="<?php the_permalink(); ?>" ><?php the_post_thumbnail('full'); ?></a>
+                    <div id="project-info" class="append-bottom">
+                    <?php $full_img = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full'); ?>
+                    <a href="<?php the_permalink(); ?>" ><img src="<?php echo $full_img[0] ?>" width="195px" /></a>
                     
                     </div>
-                </div><!-- .entry-content -->
+                </div><!-- /entry-content -->
             
-            </article><!-- end post-<?php the_ID(); ?> -->
+            </article><!-- /post-<?php the_ID(); ?> -->
     		<?php endwhile; endif; wp_reset_query(); ?>
             </div>
             <!-- /left-column -->
@@ -98,6 +99,7 @@ Template Name: Home
 				<?php while ( have_posts() ) : the_post(); ?>
 					<?php get_template_part( 'content', 'home-right'); ?>
 			<?php endwhile; endif; ?>
+			<?php wp_reset_query(); ?>
             </div>
             <!-- /right-column -->
 		</div>
@@ -105,8 +107,8 @@ Template Name: Home
 			</div>
 <!--end page content-->
 		</div>
-<!-- end #primary -->
+<!-- /primary -->
 </div>
-<!-- end page / start footer -->
+<!-- /page / start footer -->
 
 <?php get_footer(); ?>
