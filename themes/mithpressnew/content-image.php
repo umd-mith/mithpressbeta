@@ -21,12 +21,12 @@
 				<?php comments_popup_link( '<span class="leave-reply">' . __( "Reply", 'twentyeleven' ) . '</span>', _x( '1', 'comments number', 'twentyeleven' ), _x( '%', 'comments number', 'twentyeleven' ) ); ?>
 			</div>
 			<?php endif; ?>
-		</header><!-- .entry-header -->
+		</header><!-- /entry-header -->
 
 		<div class="entry-content">
 			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) ); ?>
 			<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>', 'after' => '</div>' ) ); ?>
-		</div><!-- .entry-content -->
+		</div><!-- /entry-content -->
 
 		<footer class="entry-meta">
 			<div class="entry-meta">
@@ -40,7 +40,7 @@
 						get_the_author()
 					);
 				?>
-			</div><!-- .entry-meta -->
+			</div><!-- /entry-meta -->
 			<div class="entry-meta">
 				<?php
 					/* translators: used between list items, there is a space after the comma */
@@ -63,8 +63,8 @@
 				<?php if ( comments_open() ) : ?>
 				<span class="comments-link"><?php comments_popup_link( '<span class="leave-reply">' . __( 'Reply', 'twentyeleven' ) . '</span>', __( '<strong>1</strong> Reply', 'twentyeleven' ), __( '<strong>%</strong> Replies', 'twentyeleven' ) ); ?></span>
 				<?php endif; // End if comments_open() ?>
-			</div><!-- .entry-meta -->
+			</div><!-- /entry-meta -->
 
 			<?php edit_post_link( __( 'Edit', 'twentyeleven' ), '<span class="edit-link">', '</span>' ); ?>
 		</footer><!-- #entry-meta -->
-	</article><!-- #post-<?php the_ID(); ?> -->
+	</article><!-- /post-<?php the_ID(); ?> -->

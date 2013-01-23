@@ -12,6 +12,7 @@ function mithpress_breadcrumbs() {
  
     global $post;
     $homeLink = get_bloginfo('url');
+	$blogLink = home_url('/blog/');
     echo '<a href="' . $homeLink . '">' . $home . '</a> ' . $delimiter . ' ';
  
     if ( is_category() ) {
@@ -21,7 +22,7 @@ function mithpress_breadcrumbs() {
       $thisCat = get_category($thisCat);
       $parentCat = get_category($thisCat->parent);
       if ($thisCat->parent != 0) echo(get_category_parents($parentCat, TRUE, ' ' . $delimiter . ' '));
-      echo $before . 'Archive by category "' . single_cat_title('', false) . '"' . $after;
+      echo $before . '<a href="' . $blogLink . '">Blog</a> ' . $delimiter . single_cat_title('', false) . ' Category Archive' . $after;
 	// display post type name on custom post type archive pages
 	} elseif ( is_post_type_archive() ) {
       echo $before . post_type_archive_title() . $after;
@@ -42,7 +43,7 @@ function mithpress_breadcrumbs() {
       if ( get_post_type() != 'post' ) {
         $post_type = get_post_type_object(get_post_type());
         $slug = $post_type->rewrite;
-        echo '<a href="' . $homeLink . '/' . $slug['slug'] . '/">' . $post_type->labels->singular_name . '</a> ' . $delimiter . ' ';
+        echo '<a href="' . $homeLink . '/' . $slug['slug'] . '/">' . $post_type->labels->name . '</a> ' . $delimiter . ' ';
         echo $before . get_the_title() . $after;
       } else {
 		echo 'Blog' . $delimiter . ' ';
@@ -53,7 +54,7 @@ function mithpress_breadcrumbs() {
  
     } elseif ( !is_single() && !is_page() && get_post_type() != 'post' && !is_404() ) {
       $post_type = get_post_type_object(get_post_type());
-      echo $before . $post_type->labels->singular_name . $after;
+      echo $before . $post_type->labels->name . $after;
  
     } elseif ( is_attachment() ) {
       $parent = get_post($post->post_parent);
@@ -94,7 +95,7 @@ function mithpress_breadcrumbs() {
  
     if ( get_query_var('paged') ) {
       if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) echo ' (';
-      echo __('Page') . ' ' . get_query_var('paged');
+      echo __(' (Page') . ' ' . get_query_var('paged') . ')';
       if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) echo ')';
     }
  

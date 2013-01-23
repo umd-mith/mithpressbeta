@@ -68,23 +68,27 @@
 		<td colspan="<?php echo $cols - 1; ?>" class="description">
 		
 			<?php if($showdata['time']) : ?>
-				<span class="gigpress-info-item"><span class="gigpress-info-label"><?php _e("Time", "gigpress"); ?>:</span> <?php echo $showdata['time']; ?></span>
+				<span class="gigpress-info-item"><span class="gigpress-info-label"><?php _e("Time", "gigpress"); ?>:</span> <?php echo $showdata['time']; ?>.</span>
 			<?php endif; ?>
 			
 			<?php if($showdata['price']) : ?>
-				<span class="gigpress-info-item"><span class="gigpress-info-label"><?php _e("Admission", "gigpress"); ?>:</span> <?php echo $showdata['price']; ?></span>
+				<span class="gigpress-info-item"><span class="gigpress-info-label"><?php _e("Admission", "gigpress"); ?>:</span> <?php echo $showdata['price']; ?>.</span>
 			<?php endif; ?>
 			
 			<?php if($showdata['admittance']) : ?>
-				<span class="gigpress-info-item"><span class="gigpress-info-label"><?php _e("Audience", "gigpress"); ?>:</span> <?php echo $showdata['admittance']; ?></span>
+				<span class="gigpress-info-item"><span class="gigpress-info-label"><?php _e("Age restrictions", "gigpress"); ?>:</span> <?php echo $showdata['admittance']; ?>.</span>
 			<?php endif; ?>
-						
+			
+			<?php if($showdata['ticket_phone']) : ?>
+				<span class="gigpress-info-item"><span class="gigpress-info-label"><?php _e("Box office", "gigpress"); ?>:</span> <?php echo $showdata['ticket_phone']; ?>.</span>
+			<?php endif; ?>
+			
 			<?php if($showdata['address']) : ?> 
-				<span class="gigpress-info-item"><span class="gigpress-info-label"><?php _e("Address", "gigpress"); ?>:</span> <?php echo $showdata['address']; ?></span>
+				<span class="gigpress-info-item"><span class="gigpress-info-label"><?php _e("Address", "gigpress"); ?>:</span> <?php echo $showdata['address']; ?>.</span>
 			<?php endif; ?>
 			
 			<?php if($showdata['venue_phone']) : ?>
-				<span class="gigpress-info-item"><span class="gigpress-info-label"><?php _e("Venue phone", "gigpress"); ?>:</span> <?php echo $showdata['venue_phone']; ?></span>
+				<span class="gigpress-info-item"><span class="gigpress-info-label"><?php _e("Venue phone", "gigpress"); ?>:</span> <?php echo $showdata['venue_phone']; ?>.</span>
 			<?php endif; ?>				
 			
 			<?php if($showdata['notes']) : ?>
@@ -95,10 +99,6 @@
 				<span class="gigpress-info-item"><?php echo $showdata['related_link']; ?></span> 
 			<?php endif; ?>
 			
-			<?php if($showdata['ticket_phone']) : ?>
-				<span class="gigpress-info-item"><span class="gigpress-info-label"><?php _e("Ticket office", "gigpress"); ?>:</span> <?php echo $showdata['ticket_phone']; ?></span>
-			<?php endif; ?>
-
 			<?php if($showdata['ticket_link']) : ?>
 				<span class="gigpress-info-item"><?php echo $showdata['ticket_link']; ?></span>
 			<?php endif; ?>

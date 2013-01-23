@@ -2,30 +2,22 @@
 
 <!-- BEGIN SLIDER -->
 <div id="featured"> 
-<?php $box1=get_page(get_option('mithpress_slide1'));
-	  $box2=get_page(get_option('mithpress_slide2'));
-	  $box3=get_page(get_option('mithpress_slide3')); 
-	  $box4=get_page(get_option('mithpress_slide4')); 
-?>
 
 <!-- Slide 1-->
-<?php 
-$slide1img = get_post_thumbnail_id($box1->ID); ?>
-<img src="<?php echo wp_get_attachment_url($slide1img); ?>" data-caption="#Caption1">
-<!-- Slide 2 -->
-<?php if ( get_option( 'mithpress_slide2' ) != null) { 
-$slide2img = get_post_thumbnail_id($box2->ID); ?>
-<img src="<?php echo wp_get_attachment_url($slide2img); ?>" data-caption="#Caption2">
+<?php if ( of_get_option('slide_upload_one') ) { ?>
+<img src="<?php echo of_get_option('slide_upload_one'); ?>" data-caption="#Caption1" />
 <?php } ?>
-<!-- Slide 3 -->
-<?php if ( get_option( 'mithpress_slide3' ) != null) { 
-$slide3img = get_post_thumbnail_id($box3->ID); ?>
-<img src="<?php echo wp_get_attachment_url($slide3img); ?>" data-caption="#Caption3">
+
+<?php if ( of_get_option('slide_upload_two') ) { ?>
+<img src="<?php echo of_get_option('slide_upload_two'); ?>" data-caption="#Caption2" />
 <?php } ?>
-<!-- Slide 4 -->
-<?php if ( get_option( 'mithpress_slide4' ) != null) { 
-$slide4img = get_post_thumbnail_id($box4->ID); ?>
-<img src="<?php echo wp_get_attachment_url($slide4img); ?>" data-caption="#Caption4">
+
+<?php if ( of_get_option('slide_upload_three') ) { ?>
+<img src="<?php echo of_get_option('slide_upload_three'); ?>" data-caption="#Caption3" />
+<?php } ?>
+
+<?php if ( of_get_option('slide_upload_four') ) { ?>
+<img src="<?php echo of_get_option('slide_upload_four'); ?>" data-caption="#Caption4" />
 <?php } ?>
 
 </div>
@@ -33,47 +25,59 @@ $slide4img = get_post_thumbnail_id($box4->ID); ?>
 <!-- Captions -->
 <?php 
 // caption 1
-if ( get_option( 'mithpress_slide1' ) != null) { ?>
+if ( of_get_option('slide_text_one') ) { ?>
 <span class="orbit-caption" id="Caption1">
-    <?php if ( get_option( 'mithpress_slide1_img' ) != null) { ?> 
-    	<img src="<?php echo get_option('mithpress_slide1_img'); ?>" border="0" class="caption-img" /><?php } ?>
-	<h2><?php echo $box1->post_title ?></h2>
-	<?php echo apply_filters('the_content', $box1->post_content);?>
-	<a href="<?php echo get_option('mithpress_slide1_linkurl')?>" class="readmore"><?php echo get_option('mithpress_slide1_linktxt'); ?></a>
+	<h2><?php echo of_get_option('slide_title_one', 'no entry'); ?></h2>
+	<div class="slide_txt"><?php echo of_get_option('slide_text_one', 'no entry' ); ?></div>
+    <?php if ( of_get_option('slide_link_one') ) { ?>
+    <div class="readmore"><a href="<?php echo of_get_option('slide_link_one'); ?>">More</a></div>
+    <?php } ?>
 </span>
-<?php }
+<?php } 
+
 // caption 2
-if ( get_option( 'mithpress_slide2' ) != null) { ?>
+if ( of_get_option('slide_text_two') ) { ?>
 <span class="orbit-caption" id="Caption2">
-    <?php if ( get_option( 'mithpress_slide2_img' ) != null) { ?> 
-    	<img src="<?php echo get_option('mithpress_slide2_img'); ?>" border="0" class="caption-img" /><?php } ?>
-	<h2><?php echo $box2->post_title ?></h2>
-	<?php echo apply_filters('the_content', $box2->post_content);?>
-	<a href="<?php echo get_option('mithpress_slide2_linkurl')?>" class="readmore"><?php echo get_option('mithpress_slide2_linktxt'); ?></a>
+	<h2><?php echo of_get_option('slide_title_two', 'no entry'); ?></h2>
+	<div class="slide_txt"><?php echo of_get_option('slide_text_two', 'no entry' ); ?></div>
+    <?php if ( of_get_option('slide_link_two') ) { ?>
+    <div class="readmore"><a href="<?php echo of_get_option('slide_link_two'); ?>">More</a></div>
+    <?php } ?>
 </span>
-<?php } 
+<?php  } 
+
 // caption 3
-if ( get_option( 'mithpress_slide3' ) != null) { ?>
+if ( of_get_option('slide_text_three') ) { ?>
 <span class="orbit-caption" id="Caption3">
-    <?php if ( get_option( 'mithpress_slide3_img' ) != null) { ?> 
-    	<img src="<?php echo get_option('mithpress_slide3_img'); ?>" border="0" class="caption-img" /><?php } ?>
-	<h2><?php echo $box3->post_title ?></h2>
-	<?php echo apply_filters('the_content', $box3->post_content);?>
-	<a href="<?php echo get_option('mithpress_slide3_linkurl')?>" class="readmore"><?php echo get_option('mithpress_slide3_linktxt'); ?></a>
+	<h2><?php echo of_get_option('slide_title_three', 'no entry'); ?></h2>
+	<div class="slide_txt"><?php echo of_get_option('slide_text_three', 'no entry' ); ?></div>
+    <?php if ( of_get_option('slide_link_three') ) { ?>
+    <div class="readmore"><a href="<?php echo of_get_option('slide_link_three'); ?>">More</a></div>
+    <?php } ?>
+</span>
+<?php  } 
+
+// caption 4
+if ( of_get_option('slide_text_four') ) { ?>
+<span class="orbit-caption" id="Caption4">
+	<h2><?php echo of_get_option('slide_title_four', 'no entry'); ?></h2>
+	<div class="slide_txt"><?php echo of_get_option('slide_text_four', 'no entry' ); ?></div>
+    <?php if ( of_get_option('slide_link_four') ) { ?>
+    <div class="readmore"><a href="<?php echo of_get_option('slide_link_four'); ?>">More</a></div>
+    <?php } ?>
 </span>
 <?php } 
-// caption 4
-if ( get_option( 'mithpress_slide4' ) != null) { ?>
-<span class="orbit-caption" id="Caption4">
-    <?php if ( get_option( 'mithpress_slide4_img' ) != null) { ?> 
-    	<img src="<?php echo get_option('mithpress_slide4_img'); ?>" border="0" class="caption-img" /><?php } ?>
-	<h2><?php echo $box4->post_title ?></h2>
-	<?php echo apply_filters('the_content', $box4->post_content);?>
-	<a href="<?php echo get_option('mithpress_slide4_linkurl')?>" class="readmore"><?php echo get_option('mithpress_slide4_linktxt'); ?></a>
+
+// caption 5
+if ( of_get_option('slide_text_five') ) { ?>
+<span class="orbit-caption" id="Caption5">
+	<h2><?php echo of_get_option('slide_title_five', 'no entry'); ?></h2>
+	<div class="slide_txt"><?php echo of_get_option('slide_text_five', 'no entry' ); ?></div>
+    <?php if ( of_get_option('slide_link_five') ) { ?>
+    <div class="readmore"><a href="<?php echo of_get_option('slide_link_five'); ?>">More</a></div>
+    <?php } ?>
 </span>
 <?php } ?>
 
-
-
-<!-- END SLIDER -->
+<!-- /SLIDER -->
 </div>

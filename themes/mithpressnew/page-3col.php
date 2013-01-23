@@ -27,5 +27,5 @@ Template Name: 3-Column
 </div>
 <div class="clear"></div>
 </div>
-<!-- end page / start footer -->
+<!-- /page / start footer -->
 <?php get_footer(); ?>

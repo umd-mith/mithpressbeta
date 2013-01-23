@@ -36,7 +36,7 @@ function register_cpt_project() {
         'show_in_nav_menus' => false,
         'publicly_queryable' => true,
         'query_var' => true,
-        'rewrite' => true,		
+        'rewrite' => array('slug' => 'projects'),
 		
         'exclude_from_search' => false,
         'has_archive' => true,
@@ -139,7 +139,7 @@ function register_cpt_podcast() {
         'has_archive' => true,
         'query_var' => true,
         'can_export' => true,
-        'rewrite' => true,
+        'rewrite' => array('slug'=>'podcasts'),
         'capability_type' => 'post',
 		
 		'taxonomies' => array('category', 'post_tag')
@@ -148,44 +148,47 @@ function register_cpt_podcast() {
     register_post_type( 'podcast', $args );
 }
 
+
 /* Podcast Columns */
 /*-------------------------------------------------------------------------------------------*/
 
-add_action('manage_podcast_posts_custom_column', 'manage_podcast_columns');
-add_filter('manage_edit-podcast_columns', 'edit_podcast_columns');
+add_filter( 'manage_edit-podcast_columns', 'register_podcast_columns' ) ;
+add_action( 'manage_podcast_posts_custom_column', 'manage_podcast_columns', 10, 2 );
 
- 
-function edit_podcast_columns($columns) //this function display the columns headings
-{
+function register_podcast_columns( $columns ) {
+
 	$columns = array(
-		"cb" => "<input type=\"checkbox\" />",
-		"title" => "Title",
-		"speaker" => "Speaker",
-		'id' => __('ID'),
+		'cb' => '<input type="checkbox" />',
+		'date' => __('Date'),
+		'speaker' => __('Speaker'),
+		"title" => __('Title'),
 	);
+
 	return $columns;
 }
- 
-function manage_podcast_columns($column)
-{
+
+function manage_podcast_columns( $column, $post_id ) {
 	global $post;
-		global $post;
-		switch ($column)
-		{
-			case "id":
-				echo $post->ID;
-				break;
-			case "pods_description":
-				the_excerpt();
-				break;
-			case "speaker":
-				$custom = get_post_custom();
-				echo $custom["speaker"][0];
-				break;
-		}
-	
+
+	switch( $column ) {
+
+		case 'speaker' :
+			/* Get the post meta. */
+			$speaker = get_post_meta( $post_id, 'speaker', true );
+
+			/* If no title is found, output a default message. */
+			if ( empty( $speaker ) )
+				echo __( 'n/a' );
+
+			else printf( $speaker );
+			break;
+
+		/* Just break out of the switch statement for everything else. */
+		default :
+			break;
 	}
-	
+}
+
 
 /*-------------------------------------------------------------------------------------------*/
 /* People Post Type */
@@ -230,14 +233,12 @@ function register_cpt_people() {
         'can_export' => true,
         'capability_type' => 'post',
 		
-		'taxonomies' => array('post_tag'),
+		'taxonomies' => array('staffgroup'),
 		
     );
 
     register_post_type( 'people', $args );
 }
-
-
 
 
 /* People Categories */
@@ -249,8 +250,6 @@ function register_taxonomy_staffgroup() {
     $labels = array( 
         'name' => _x( 'Staff Groups', 'staff group' ),
         'singular_name' => _x( 'Staff Group', 'staff group' ),
-        'search_items' => _x( 'Search Staff Groups', 'staff group' ),
-        'popular_items' => _x( 'Popular Staff Groups', 'staff group' ),
         'all_items' => _x( 'All Staff Groups', 'staff group' ),
         'parent_item' => _x( 'Parent Staff Group', 'staff group' ),
         'parent_item_colon' => _x( 'Parent Staff Group:', 'staff group' ),
@@ -267,7 +266,7 @@ function register_taxonomy_staffgroup() {
     $args = array( 
         'labels' => $labels,
         'public' => true,
-        'show_in_nav_menus' => false,
+        'show_in_nav_menus' => true,
         'show_ui' => true,
         'show_tagcloud' => false,
         'hierarchical' => true,
@@ -289,38 +288,59 @@ function register_taxonomy_staffgroup() {
 /* People Columns */
 /*-------------------------------------------------------------------------------------------*/
  
-add_filter( 'manage_edit-people_columns', 'edit_people_columns' ) ;
+add_filter( 'manage_edit-people_columns', 'register_people_columns' ) ;
 add_action( 'manage_people_posts_custom_column', 'manage_people_columns', 10, 2 );
 
-function edit_people_columns( $columns ) {
+function register_people_columns( $columns ) {
 
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
-		'title' => __( 'Name' ),
+		'title' => __('Name'),
+		'fname' => __('First'),
+		'lname' => __('Last'),
+		'stafftitle' => __( 'Title' ),
 		'staffgroup' => __( 'Staff Group' ),
 	);
 
 	return $columns;
 }
- 
 
 function manage_people_columns( $column, $post_id ) {
 	global $post;
 
 	switch( $column ) {
 
-		case 'title' :
-
+		case 'fname' :
 			/* Get the post meta. */
-			$title = get_post_meta( $post_id, 'title', true );
+			$fname = get_post_meta( $post_id, 'fname', true );
 
 			/* If no title is found, output a default message. */
-			if ( empty( $title ) )
+			if ( empty( $fname ) )
 				echo __( 'n/a' );
 
-			else
-				printf( $title );
+			else printf( $fname );
+			break;
 
+		case 'lname' :
+			/* Get the post meta. */
+			$lname = get_post_meta( $post_id, 'lname', true );
+
+			/* If no title is found, output a default message. */
+			if ( empty( $lname ) )
+				echo __( 'n/a' );
+
+			else printf( $lname );
+			break;
+
+		case 'stafftitle' :
+			/* Get the post meta. */
+			$stafftitle = get_post_meta( $post_id, 'stafftitle', true );
+
+			/* If no title is found, output a default message. */
+			if ( empty( $stafftitle ) )
+				echo __( 'n/a' );
+
+			else printf( $stafftitle );
 			break;
 
 		/* If displaying the 'staffgroup' column. */
@@ -341,16 +361,13 @@ function manage_people_columns( $column, $post_id ) {
 						esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'staffgroup', 'display' ) )
 					);
 				}
-
 				/* Join the terms, separating them with a comma. */
 				echo join( ', ', $out );
 			}
-
 			/* If no terms were found, output a default message. */
 			else {
 				_e( 'not assigned' );
 			}
-
 			break;
 
 		/* Just break out of the switch statement for everything else. */
@@ -358,6 +375,7 @@ function manage_people_columns( $column, $post_id ) {
 			break;
 	}
 }
+//add_action( "manage_posts_custom_column", "manage_people_columns", 10, 2 );
 
 /*-------------------------------------------------------------------------------------------*/
 /* Meta Box Title Changes */
@@ -408,17 +426,120 @@ function admin_custom_rewrites($translation, $text, $domain) {
 /*-------------------------------------------------------------------------------------------*/
 /* Create Sortable Columns */
 /*-------------------------------------------------------------------------------------------*/
-function sortable_columns() {
+/*function sortable_columns() {
   return array(
 	'staffgroup' => 'staffgroup',
     'speaker'  => 'speaker',
-	'project_date' =>	'project_date',
-	'project_status' =>  'project_status',
+	'title' => 'name',
+	//'fname' => 'fname',
+	'lname' => 'lname'
+  );
+}
+*/
+
+/* Podcast Columns */
+
+add_filter('manage_edit-podcast_sortable_columns', 'register_podcast_sortable_columns');
+function register_podcast_sortable_columns( ) {
+  return array(
+    'speaker'  => 'speaker',
+	'affiliation' => 'affiliation',
+	);
+}
+add_filter('request', 'handle_podcast_column_sorting');
+function handle_podcast_column_sorting( $vars ){
+  if( isset($vars['orderby']) && 'speaker' == $vars['orderby'] ){
+    $vars = array_merge( $vars, array(
+		'meta_key' => 'speaker',
+		'orderby' => 'meta_value',
+    ));
+  }
+  return $vars;
+}
+
+/* Project Columns */
+
+add_filter( "manage_edit-project_sortable_columns", "reguster_project_sortable_columns" );
+
+
+/* People Columns */
+
+add_filter('manage_edit-people_sortable_columns', 'register_people_sortable_columns');
+function register_people_sortable_columns( ) {
+  return array(
+	'staffgroup' => 'staffgroup',
+	'title' => 'name',
+	'fname' => 'fname',
+	'lname' => 'lname'
   );
 }
 
-add_filter( "manage_edit-podcast_sortable_columns", "sortable_columns" );
-add_filter( "manage_edit-project_sortable_columns", "sortable_columns" );
-add_filter( "manage_edit-people_sortable_columns", "sortable_columns" );
+add_filter('request', 'handle_people_column_sorting');
+function handle_people_column_sorting( $vars ){
+  if( isset($vars['orderby']) && 'fname' == $vars['orderby'] ){
+    $vars = array_merge( $vars, array(
+		'meta_key' => 'fname',
+		'orderby' => 'meta_value',
+    ));
+  }
+ elseif( isset($vars['orderby']) && 'lname' == $vars['orderby'] ){
+    $vars = array_merge( $vars, array(
+		'meta_key' => 'lname',
+		'orderby' => 'meta_value',
+    ));
+  }
+  return $vars;
+}
 
+/*-------------------------------------------------------------------------------------------*/
+/* Filter Custom Posts by Custom Taxonomy */
+/*-------------------------------------------------------------------------------------------
+// Filter the request to just give posts for the given taxonomy, if applicable.
+function taxonomy_filter_restrict_manage_posts() {
+    global $typenow;
+
+    // If you only want this to work for your specific post type,
+    // check for that $type here and then return.
+    // This function, if unmodified, will add the dropdown for each
+    // post type / taxonomy combination.
+
+    $post_types = get_post_types( array( '_builtin' => false ) );
+
+    if ( in_array( $typenow, $post_types ) ) {
+    	$filters = get_object_taxonomies( $typenow );
+
+        foreach ( $filters as $tax_slug ) {
+            $tax_obj = get_taxonomy( $tax_slug );
+            wp_dropdown_categories( array(
+                'show_option_all' => __('Show All '.$tax_obj->label ),
+                'taxonomy' 	  => $tax_slug,
+                'name' 		  => $tax_obj->name,
+                'orderby' 	  => 'name',
+                'selected' 	  => $_GET[$tax_slug],
+                'hierarchical' 	  => $tax_obj->hierarchical,
+                'show_count' 	  => false,
+                'hide_empty' 	  => true
+            ) );
+        }
+    }
+}
+add_action( 'restrict_manage_posts', 'taxonomy_filter_restrict_manage_posts' );
+
+function taxonomy_filter_post_type_request( $query ) {
+  global $pagenow, $typenow;
+
+  if ( 'edit.php' == $pagenow ) {
+    $filters = get_object_taxonomies( $typenow );
+    foreach ( $filters as $tax_slug ) {
+      $var = &$query->query_vars[$tax_slug];
+      if ( isset( $var ) ) {
+        $term = get_term_by( 'id', $var, $tax_slug );
+        $var = $term->slug;
+      }
+    }
+  }
+}
+
+add_filter( 'parse_query', 'taxonomy_filter_post_type_request' );
+*/
 ?>

@@ -1,0 +1,239 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Dynamic  To Top\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-07-31 17:40-0300\n"
+"PO-Revision-Date: 2011-07-31 18:52-0300\n"
+"Last-Translator: Matt Varone <plugins@mattvarone.com>\n"
+"Language-Team: Matt Varone\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;__e;_e\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-Country: ARGENTINA\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: inc/dynamic-to-top-options.php:50
+msgid "Behavior"
+msgstr "Comportamiento"
+
+#: inc/dynamic-to-top-options.php:51
+msgid "Appearance"
+msgstr "Apariencia"
+
+#: inc/dynamic-to-top-options.php:53
+msgid "Scroll time"
+msgstr "Duraci&oacute;n del desplazamiento"
+
+#: inc/dynamic-to-top-options.php:54
+msgid "Fade-in distance"
+msgstr "Distancia de fundido"
+
+#: inc/dynamic-to-top-options.php:55
+msgid "Easing"
+msgstr "Easing"
+
+#: inc/dynamic-to-top-options.php:56
+msgid "Position"
+msgstr "Posici&oacute;n"
+
+#: inc/dynamic-to-top-options.php:57
+msgid "Prevent on mobile"
+msgstr "Prevenir en m&oacute;viles"
+
+#: inc/dynamic-to-top-options.php:59
+msgid "Text version"
+msgstr "Versi&oacute;n de texto"
+
+#: inc/dynamic-to-top-options.php:60
+msgid "Button text"
+msgstr "Texto del bot&oacute;n"
+
+#: inc/dynamic-to-top-options.php:61
+msgid "Top/bottom padding"
+msgstr "Padding superior/inferior"
+
+#: inc/dynamic-to-top-options.php:62
+msgid "Sides padding"
+msgstr "Padding laterales"
+
+#: inc/dynamic-to-top-options.php:63
+msgid "Font size"
+msgstr "Tamaño fuente"
+
+#: inc/dynamic-to-top-options.php:64
+msgid "Text color"
+msgstr "Color de texto"
+
+#: inc/dynamic-to-top-options.php:65
+msgid "Bold Text"
+msgstr "Texto en negrita"
+
+#: inc/dynamic-to-top-options.php:66
+msgid "Text shadow"
+msgstr "Sombra del texto"
+
+#: inc/dynamic-to-top-options.php:67
+msgid "Text shadow color"
+msgstr "Color de la sombra de texto"
+
+#: inc/dynamic-to-top-options.php:68
+msgid "Background color"
+msgstr "Color del fondo"
+
+#: inc/dynamic-to-top-options.php:69
+msgid "Border color"
+msgstr "Color del borde"
+
+#: inc/dynamic-to-top-options.php:70
+msgid "Border width"
+msgstr "Ancho del borde"
+
+#: inc/dynamic-to-top-options.php:71
+msgid "Border radius"
+msgstr "Radio del borde"
+
+#: inc/dynamic-to-top-options.php:72
+msgid "Inset highlighting"
+msgstr "Insertar Resaltado"
+
+#: inc/dynamic-to-top-options.php:73
+msgid "Shadow"
+msgstr "Sombra"
+
+#: inc/dynamic-to-top-options.php:103
+msgid "Dynamic To Top Options"
+msgstr "Opciones de Dynamic To Top"
+
+#: inc/dynamic-to-top-options.php:105
+msgid "Welcome to the <strong>Dynamic To Top</strong> plugin settings. Click <a href=\"http://www.mattvarone.com/featured-content/dynamic-to-top/\" target=\"_blank\">here</a> to learn more about this plugin."
+msgstr "Bienvenido a la configuraci&oacute;n de <strong>Dynamic To Top</strong>. Para aprender mas de este plugin visite <a href=\"http://www.mattvarone.com/featured-content/dynamic-to-top/\" target=\"_blank\">esta p&aacute;gina</a>."
+
+#: inc/dynamic-to-top-options.php:113
+msgid "Save Changes"
+msgstr "Guardar Cambios"
+
+#: inc/dynamic-to-top-options.php:116
+msgid "<strong>Dynamic To Top</strong> plugin brought to you by"
+msgstr "<strong>Dynamic To Top</strong> plugin por "
+
+#: inc/dynamic-to-top-options.php:130
+msgid "Preview over"
+msgstr "Previsualizar sobre"
+
+#: inc/dynamic-to-top-options.php:130
+msgid "black"
+msgstr "negro"
+
+#: inc/dynamic-to-top-options.php:130
+msgid "grey"
+msgstr "gris"
+
+#: inc/dynamic-to-top-options.php:130
+msgid "white"
+msgstr "blanco"
+
+#: inc/dynamic-to-top-options.php:258
+msgid "Color for the button border."
+msgstr "Color para el borde del bot&oacute;n."
+
+#: inc/dynamic-to-top-options.php:274
+msgid "Background color for the button."
+msgstr "Color para el fondo del bot&oacute;n."
+
+#: inc/dynamic-to-top-options.php:290
+msgid "Button text color."
+msgstr "Color del texto del bot&oacute;n."
+
+#: inc/dynamic-to-top-options.php:306
+#: inc/dynamic-to-top-options.php:322
+msgid "Text shadow color."
+msgstr "Color de la sombra del texto."
+
+#: inc/dynamic-to-top-options.php:342
+msgid "<a href=\"http://gsgd.co.uk/sandbox/jquery/easing\" title=\"Easing type\">Easing type</a> used to scroll the page up."
+msgstr "Tipo de <a href=\"http://gsgd.co.uk/sandbox/jquery/easing\" title=\"Easing type\">Easing</a> usado para desplazar la p&aacute;gina."
+
+#: inc/dynamic-to-top-options.php:360
+msgid "Button position."
+msgstr "Posici&oacute;n del bot&oacute;n."
+
+#: inc/dynamic-to-top-options.php:378
+msgid "Time it takes for the page to scroll up. Less for faster. ( <span id=\"speed-val\"></span> Milliseconds )"
+msgstr "Tiempo que le lleva a la p&aacute;gina desplazarse. Menos para mas r&aacute;pido. ( <span id=\"speed-val\"></span> Milisegundos )"
+
+#: inc/dynamic-to-top-options.php:394
+msgid "Button text size. ( <span id=\"font-size-val\"></span> Em/s )"
+msgstr "Tamaño del texto. ( <span id=\"font-size-val\"></span> Em/s )"
+
+#: inc/dynamic-to-top-options.php:410
+msgid "Spacing on Top and Bottom. ( <span id=\"padding-top-bottom-val\"></span>px )"
+msgstr "Espaciado hacia arriba y abajo. ( <span id=\"padding-top-bottom-val\"></span>px )"
+
+#: inc/dynamic-to-top-options.php:426
+msgid "Spacing on Left and Right. ( <span id=\"padding-left-right-val\"></span>px )"
+msgstr "Espaciado a los laterales. ( <span id=\"padding-left-right-val\"></span>px )"
+
+#: inc/dynamic-to-top-options.php:442
+msgid "Button border width"
+msgstr "Ancho del borde del bot&oacute;n"
+
+#: inc/dynamic-to-top-options.php:458
+msgid "Button border radius"
+msgstr "Radio del borde del bot&oacute;n"
+
+#: inc/dynamic-to-top-options.php:476
+msgid "Distance from top to show the button. ( Pixels )"
+msgstr "Distancia a partir de la cual se debe mostrar el bot&oacute;n. ( Pixeles )"
+
+#: inc/dynamic-to-top-options.php:492
+msgid "To Top"
+msgstr "Ir Arriba"
+
+#: inc/dynamic-to-top-options.php:492
+msgid "Text displayed on the button."
+msgstr "Texto del bot&oacute;n."
+
+#: inc/dynamic-to-top-options.php:510
+#: inc/dynamic-to-top-options.php:526
+#: inc/dynamic-to-top-options.php:542
+#: inc/dynamic-to-top-options.php:558
+#: inc/dynamic-to-top-options.php:574
+#: inc/dynamic-to-top-options.php:590
+msgid "Yes"
+msgstr "Si"
+
+#: inc/dynamic-to-top-options.php:510
+msgid "Disable the button on mobile browsers."
+msgstr "Deshabilitar el bot&oacute;n en celulares y m&oacute;viles."
+
+#: inc/dynamic-to-top-options.php:526
+msgid "Show a text version instead of the arrow up icon."
+msgstr "Usar versi&oacute;n de texto."
+
+#: inc/dynamic-to-top-options.php:542
+msgid "Add CSS3 inset-highlight."
+msgstr "Usar CSS3 inset-highlight."
+
+#: inc/dynamic-to-top-options.php:558
+msgid "Add CSS3 shadow."
+msgstr "Usar sombras CSS3."
+
+#: inc/dynamic-to-top-options.php:574
+msgid "Make the text bold."
+msgstr "Hace el texto negrita."
+
+#: inc/dynamic-to-top-options.php:590
+msgid "Add a subtle text shadow."
+msgstr "Agrega una sombra sutil al texto."
+
+#: inc/dynamic-to-top-options.php:747
+msgid "close"
+msgstr "cerrar"
+
+#: inc/dynamic-to-top-options.php:747
+msgid "select a color"
+msgstr "seleccionar un color"
+

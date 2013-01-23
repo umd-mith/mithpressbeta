@@ -1,0 +1,379 @@
+/* Clearfix ----------- */
+
+.clearfix:after {
+    content: " ";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.clearfix {
+    display: inline-block;
+}
+
+html[xmlns] .clearfix {
+    display: block;
+}
+
+* html .clearfix {
+    height: 1%;
+}
+
+#optionsWrap {
+	width: 780px;
+	margin: 15px 0;
+	padding: 0 0 1px;
+	background: #f9f9f9;	
+}
+
+
+
+
+/* Header ----------- */
+#optionsHeader {
+	position: relative;	
+	background: #000;
+	padding-top: 25px;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	-moz-border-radius-topright: 10px;
+	-moz-border-radius-topleft: 10px;
+	-webkit-border-top-right-radius: 10px;
+	-webkit-border-top-left-radius: 10px;
+	background: #000 url(images/header_bkg.jpg) repeat-x bottom;
+}
+
+#themetrustLogo {
+	padding: 0 0 3px 30px;
+	display: block;
+	float: left;
+	width: 50%;
+}
+
+#themeVersion {
+	float: right;
+	width: 30%;
+	color: #747474;
+	padding: 5px 0 0 0;
+	margin: 0 30px 0 0;
+	text-shadow: -1px -1px 1px rgba(0,0,0,0.9);	
+	text-align: right;
+}
+
+#themeVersion a {
+	color: #747474;
+	text-decoration: none;
+}
+
+#themeVersion a:hover {
+	color: #fff;	
+}
+
+#optionsNav {
+	padding-top: 20px;
+}
+
+
+ul.tabs {
+	margin: 0;
+	padding: 0 0 0 30px;
+	float: left;
+	list-style: none;
+	height: 32px; /*--Set height of tabs--*/	
+	width: 100%;
+}
+ul.tabs li {
+	float: left;
+	margin: 0 7px 0 0;
+	padding: 0;
+	height: 31px; /*--Subtract 1px from the height of the unordered list--*/
+	line-height: 25px; /*--Vertically aligns the text within the tab--*/	
+	overflow: hidden;
+	position: relative;	
+}
+
+ul.tabs li a {
+	text-decoration: none;
+	color: #fff;
+	display: block;
+	font-size: 1.0em;
+	padding: 0 12px;	
+	outline: none;
+}
+
+ul.tabs li a:hover {
+	
+}
+
+html ul.tabs li.active, html ul.tabs li.active a:hover  { 
+	background: #eeeeee;
+	border-bottom: 1px solid #eeeeee; 
+	color: #464646;
+	background: transparent url(images/tab_bkg.jpg) repeat-x;
+	border-left: none;
+	margin-bottom: -1px; /*--Pull the list item down 1px--*/
+	overflow: hidden;
+	position: relative;	
+	border-top-right-radius: 7px;
+	border-top-left-radius: 7px;
+	-moz-border-radius-topright: 7px;
+	-moz-border-radius-topleft: 7px;
+	-webkit-border-top-right-radius: 7px;
+	-webkit-border-top-left-radius: 7px;
+	line-height: 31px;
+}
+
+html ul.tabs li.active a:link, html ul.tabs li.active a:visited  { /*--Makes sure that the active tab does not listen to the hover properties--*/
+	color: #464646;
+}
+
+#message {
+	padding: 0px 10px 2px 20px;	
+	margin: 0 15px 0px 5px;	
+	float: left;
+	width: 50%;	
+	background: transparent url(images/accept.png) 0 1px no-repeat;
+}
+
+/* Status Bar----------- */
+#statusBar {	
+	padding: 0 15px 20px 15px;	
+}
+
+#statusBar .button{
+	float: right;
+}
+
+.button.right {
+	float: right;
+	margin-right: 20px;
+}
+
+
+/* Options----------- */
+.optionContent {
+	margin: 0 15px;
+}
+
+.optionsContainer {
+	border-bottom-right-radius: 7px;
+	border-bottom-left-radius: 7px;
+	-moz-border-radius-bottomright: 7px;
+	-moz-border-radius-bottomleft: 7px;
+	-webkit-border-bottom-right-radius: 10px;
+	-webkit-border-bottom-left-radius: 10px;
+	background: #eeeeee;
+	padding: 25px 10px 20px 10px;
+	border: 1px solid #cecece;
+	margin-bottom: 20px;
+	border-top: none;
+	
+}
+
+.subOption {
+	border-top-right-radius: 7px;
+	border-top-left-radius: 7px;
+	-moz-border-radius: 7px;	
+	-webkit-border-radius: 7px;
+	background: #fff;
+	padding: 5px 30px 20px 30px;
+	border: 1px solid #cecece;
+	margin-bottom: 20px;
+	background: #fff url(images/options_container_bkg.jpg) repeat-x bottom;
+}
+
+.subOption p{	
+	margin-bottom: 20px;	
+}
+
+.subOptionGroup {
+	margin: 0 0 20px 0;
+}
+
+.subOption h3 {
+	font-size: 23px;
+}
+
+.inlineItem {
+	float: left;
+	display: block;	
+	margin: 0 25px 0 0;
+}
+
+.itemRow {
+	margin-bottom: 15px;	
+}
+
+.itemRow label {
+	float: left;
+}
+
+.itemRow input {
+	float: left;
+}
+
+.itemRow.divided {
+	background: transparent url(images/list_divider.png) repeat-x bottom;
+	padding: 0 0 15px 0;
+}
+
+.instructions {
+	font-style: italic;
+	color: #818181;
+	line-height: 1.6em;
+}
+
+label.singleLine{
+	width: 20%; 
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+label.wide {
+	width: 225px;
+	margin: 0;	
+}
+
+label.medium {
+	width: 125px;
+	margin: 0;	
+}
+
+label.small {
+	width: 50px;
+	margin: 0;	
+}
+
+.ttrustSelect {
+	width: 200px;
+}
+
+
+
+
+
+/* Appearence Options----------- */
+
+.logoContainer {
+	padding: 30px;
+	background: transparent url(images/logo_bkg.jpg) repeat left top;
+	overflow: hidden;
+}
+
+.colorHeading {
+	background: transparent url(images/color_icon.png) no-repeat;
+	padding: 0 0 0 40px;
+	line-height: 32px;
+}
+
+.logoHeading {
+	background: transparent url(images/logo_icon.png) no-repeat;
+	padding: 0 0 0 40px;
+	line-height: 32px;
+}
+
+.cssHeading {
+	background: transparent url(images/css_icon.png) no-repeat;
+	padding: 0 0 0 40px;
+	line-height: 32px;
+}
+
+/* Integration Options----------- */
+
+.rssHeading {
+	background: transparent url(images/rss_icon.png) no-repeat;
+	padding: 0 0 0 40px;
+	line-height: 32px;
+}
+
+.analyticsHeading {
+	background: transparent url(images/analytics_icon.png) no-repeat;
+	padding: 0 0 0 40px;
+	line-height: 32px;
+}
+
+/* Menu Options----------- */
+
+.menuExcludeList{
+	padding: 0px 0 0 0;
+}
+
+.menuExcludeList li{
+	display: block;
+	float: left;
+	margin: 0 20px 20px 0;
+	font-size: 14px;
+}
+
+.menuExcludeList input{	
+	margin: 0 5px 0 0;
+}
+
+.pagesHeading {
+	background: transparent url(images/page_icon.png) no-repeat;
+	padding: 0 0 0 40px;
+	line-height: 32px;
+}
+
+.categoriesHeading {
+	background: transparent url(images/category_icon.png) no-repeat;
+	padding: 0 0 0 40px;
+	line-height: 32px;
+}
+
+.homeHeading {
+	background: transparent url(images/home_icon.png) no-repeat;
+	padding: 0 0 0 40px;
+	line-height: 32px;
+}
+
+.slideshowHeading {
+	background: transparent url(images/slideshow_icon.png) no-repeat;
+	padding: 0 0 0 40px;
+	line-height: 32px;
+}
+
+
+/* Home Options ----------- */
+
+.ui-slider .ui-slider-handle { width: 10px;}
+
+.ui-slider  { width: 200px;}
+
+.sliderLabel {
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+.sliderHolder{
+	float: left;
+	margin: 0 0 0 0px;
+	padding: 3px 0 0 0;
+}
+
+.sliderValue{
+	float: left;
+	margin: 0 0 0 10px;
+	color: #77a900;
+}
+
+.sliderOff {
+	color: #c50000;
+}
+
+
+/* Ajax Upload ----------- */
+
+.ajaxLoading {
+	background: transparent url(images/loading_bar.gif) no-repeat;
+	width: 220px;
+	height: 19px;
+}
+
+.hide {
+	display: none;
+}

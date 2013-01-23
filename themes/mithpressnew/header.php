@@ -12,57 +12,65 @@
 <html <?php language_attributes(); ?>>
 <!--<![endif]-->
 
-<!--<html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>-->
-
 <head profile="http://gmpg.org/xfn/11">
-<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-<meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
+    <meta name="viewport" content="width=device-width" />
+    
+    <title><?php
+    /* Print the <title> tag based on what is being viewed.*/
+    global $page, $paged;
+    wp_title( '|', true, 'right' );
+    bloginfo( 'name' );
+    // Add a page number if necessary:
+    if ( $paged >= 2 || $page >= 2 )
+        echo ' | ' . sprintf( __( 'Page %s', 'mithpress' ), max( $paged, $page ) );
+    ?></title>
+    
+	<link rel="stylesheet" href="http://www.umd.edu/wrapper/css/xhtml-960px.css" />
+    <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/screen.css" type="text/css" media="screen, projection, print">
+    <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
+    <?php if (is_front_page() ) { ?>
+    <script src="<?php bloginfo('stylesheet_directory'); ?>/js/jquery.orbit-1.2.3.min.js" type="text/javascript"></script>
+    <?php } ?>
+        
+    <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
+    <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
+    
+    <?php if ( is_singular() && get_option( 'thread_comments' ) )
+            wp_enqueue_script( 'comment-reply' ); ?>
 
-	<title><?php
-	/* Print the <title> tag based on what is being viewed.*/
-	global $page, $paged;
-	wp_title( '|', true, 'right' );
-	bloginfo( 'name' );
-	// Add a page number if necessary:
-	if ( $paged >= 2 || $page >= 2 )
-		echo ' | ' . sprintf( __( 'Page %s', 'mithpress' ), max( $paged, $page ) );
-	?></title>
-
-<link rel="profile" href="http://gmpg.org/xfn/11" />
-
-<link rel="stylesheet" href="http://www.umd.edu/wrapper/css/xhtml-960px.css" />
-<!--/UMD Wrapper-->
-
-
-<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/screen.css" type="text/css" media="screen, projection">
-<!--<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/print.css" type="text/css" media="print">-->
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
-<!--<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/style.css" type="text/css" media="screen, projection">-->
-
-<!--/STYLES-->
-
-<script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/functions.js"></script>
-<!--[if lt IE 7]>
-<script defer type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/pngfix.js"></script>
-<![endif]-->
-<!--[if lt IE 9]>
-<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
-<![endif]-->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/grayscale.js"></script>
-
-<!--/SCRIPTS-->
-
-<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
-<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-
-<?php if ( is_singular() && get_option( 'thread_comments' ) )
-		wp_enqueue_script( 'comment-reply' ); ?>
-
-<?php wp_head(); ?>
-
+	<?php wp_head(); ?>
+    
+    <?php if (is_front_page() ) { ?>
+    <script type="text/javascript">
+       $(window).load(function() {
+          $('#featured').orbit({
+            animation: 'fade',               // fade, horizontal-slide, vertical-slide, horizontal-push
+            animationSpeed: 700,             // how fast animations are
+            advanceSpeed: 5000,
+            pauseOnHover: true,             // if you hover pauses the slider
+            startClockOnMouseOut: true,
+            startClockOnMouseOutAfter: 300,
+            });
+       });
+    </script>
+    <?php } ?>
+	<?php if (is_single() && 'post' == get_post_type() ) { ?>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+			fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	<?php } ?>
+    
 </head>
-<body <?php body_class(); ?>>
+<?php if(is_page()) { $page_slug = 'page-'.$post->post_name; } ?>
+
+<body <?php body_class($page_slug); ?>>
 <!-- start umd wrapper -->
 <div id="umd-wrapper">
 <div id="umd-frame">
@@ -72,11 +80,10 @@
 	</div>
 </div>
 </div>
-<!-- end umd wrapper top / start top -->
+<!-- /umd wrapper top / start top -->
 <div id="top-container">
 <header id="branding" role="banner">
-	<hgroup><div class="width-limit"><img src="<?php bloginfo('template_directory'); ?>/images/logo_mith_skinny.png" alt="MITH :: University of Maryland" />
-	<a href="<?php echo get_option('home'); ?>/" class="logo"></a>
+	<hgroup><div class="width-limit"><a href="<?php echo get_option('home'); ?>/" ><img src="<?php bloginfo('template_directory'); ?>/images/logo_mith_skinny.png" alt="MITH :: University of Maryland" /></a>
 	<!-- <div class="description"><?php bloginfo('description'); ?></div>-->
 	</div></hgroup>
 </header>
@@ -90,12 +97,12 @@
 	    <?php wp_nav_menu( array( 
 			'theme_location' => 'main-menu', 
 			'container_id' => 'primary-links',
-			'menu_class' => 'links', 
+			'menu_class' => 'links sf-menu', 
 			'link_before' => '<span class="icon"></span><span class="label">',
 			'link_after' => '</span>'
 		) ); ?>
 	</div>
 </nav>
-<!-- end nav (and #access) -->
+<!-- /nav (and #access) -->
 </div>
-<!-- end top / start page-->
+<!-- /top / start page-->

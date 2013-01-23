@@ -39,8 +39,8 @@ get_header(); ?>
 
 					<?php the_widget( 'WP_Widget_Tag_Cloud' ); ?>
 
-				</div><!-- .entry-content -->
-			</article><!-- #post-0 -->
+				</div><!-- /entry-content -->
+			</article><!-- /post-0 -->
 
 		</div><!-- #content -->
 	</div><!-- #primary -->

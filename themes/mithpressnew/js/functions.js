@@ -18,3 +18,25 @@ function clearInput(field_id, term_to_clear) {
 		document.getElementById(field_id).value = term_to_clear;
 	}
 } // end clearInput()
+
+$(function(){
+    $('#project-info a img').hover(
+    function() {
+         $(this).stop().fadeTo('fast', 0.8);
+    },
+    function(){
+        $(this).stop().fadeTo('fast', 1);
+    }
+  );
+});
+
+$(function(){
+    $('#person a img').hover(
+    function() {
+         $(this).stop().fadeTo('fast', 0.8);
+    },
+    function(){
+        $(this).stop().fadeTo('fast', 1);
+    }
+  );
+});

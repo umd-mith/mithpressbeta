@@ -141,6 +141,6 @@ $url = get_bloginfo('url');
 </div>
 <br clear="all" />
 </div>
-<!-- end page / start footer -->
+<!-- /page / start footer -->
 
 <?php get_footer(); ?>

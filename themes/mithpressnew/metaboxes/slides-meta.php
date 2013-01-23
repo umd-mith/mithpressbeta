@@ -52,4 +52,4 @@
 	<p class="meta-save"><button type="submit" class="button-primary" name="save"><?php _e('Update');?></button></p>
 
 
-</div><!-- .my_meta_control -->
+</div><!-- /my_meta_control -->

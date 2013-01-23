@@ -1,47 +1,107 @@
 <div class="my_meta_control">
- 
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-	Cras orci lorem, bibendum in pharetra ac, luctus ut mauris.</p>
- 
-	<label>Project Staff<span>(Enter in each person's name)</span></label>
- 
-	<?php while($metabox->have_fields('authors',3)): ?>
+<!-- PROJECT INFO -->
+
+	<label>Website/Blog</label>
 	<p>
-		<input type="text" name="<?php $metabox->the_name(); ?>" value="<?php $metabox->the_value(); ?>"/>
-	</p>
-	<?php endwhile; ?>
- 
-	<label>Info</label>
- 
+    	<?php $mb->the_field('website');?>
+		<input type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>"/>
+        <span>Enter official website/blog for project (if applicable). All other project links should be added below. Format: <strong>without</strong> "http://"</span>
+    </p> 
+    
+	<label>Contact Person</label>
 	<p>
-		<!-- instead of using helper methods, you can also use array notation: name="custom_meta[info]" -->
-		<input type="text" name="<?php $metabox->the_id(); ?>[info]" value="<?php if(!empty($meta['info'])) echo $meta['info']; ?>"/>
-		<span>Enter in the info</span>
-	</p>
+    	<?php $mb->the_field('contactname');?>
+		<input type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>"/>
+        <span>Name</span>
+    </p>
+    <p>
+    	<?php $mb->the_field('contactemail');?>
+		<input type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>"/>
+        <span>Email Address</span>
+    </p>
 
-	<label>Links <span>(Enter in the link title and url)</span></label>
- 
-	<?php while($metabox->have_fields('links', 5)): ?>
+	<label>Launch Date</label>
 	<p>
-		<?php $metabox->the_field('title'); ?>
-		<input type="text" name="<?php $metabox->the_name(); ?>" value="<?php $metabox->the_value(); ?>"/>
+    	<?php $mb->the_field('launchdate');?>
+		<input type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>"/>
+		<span>Enter official date of project launch. Format: November 11, 2011</span>
+    </p>
 
-		<input type="text" name="<?php $metabox->the_name('url'); ?>" value="<?php $metabox->the_value('url'); ?>"/>
+	<label>Twitter Account <span>(optional)</span></label>
+	<p>
+    	<?php $mb->the_field('twitter');?>
+		<input type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>"/>
+		<span>Enter twitter handle if project has its own Twitter account.</span>
+    </p>
 
-		<br/><?php $metabox->the_field('nofollow'); ?>
-		<input type="checkbox" name="<?php $metabox->the_name(); ?>" value="1"<?php if ($metabox->get_the_value()) echo ' checked="checked"'; ?>/> Use <code>nofollow</code>
+	<label>Twitter Hashtag <span>(optional)</span></label>
+	<p>
+    	<?php $mb->the_field('hashtag');?>
+		<input type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>"/>
+		<span>Enter hashtag for project (optional).</span>
+    </p>
+    <br clear="all" /> 
+</div>
 
-		<?php $selected = ' selected="selected"'; ?>
+<!-- PROJECT STAFF -->
+<div class="my_meta_control">
+ 
+	<a style="float:right; margin:0 10px;" href="#" class="dodelete-links button remove-all">Remove All</a>
+	 
+	<label>Project Staff<span>(current Staff associated with the project)</span></label>	
 
-		<br/><?php $metabox->the_field('target'); ?>
-		<select name="<?php $metabox->the_name(); ?>">
-		<option value=""></option>
-		<option value="_self"<?php if ($metabox->get_the_value() == '_self') echo $selected; ?>>_self</option>
-		<option value="_blank"<?php if ($metabox->get_the_value() == '_blank') echo $selected; ?>>_blank</option>
-		<option value="_parent"<?php if ($metabox->get_the_value() == '_parent') echo $selected; ?>>_parent</option>
-		<option value="_top"<?php if ($metabox->get_the_value() == '_top') echo $selected; ?>>_top</option>
+	<p>Add staff to project by selecting them from the dropdown. Add addtional staff by clicking the "Add Staff" button.</p> 
+
+	<?php
+
+		$people_query_args = array(
+			'post_type' => 'people',
+			'posts_per_page' => -1,
+			'orderby' => 'title',
+			'order' => 'ASC',
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'staffgroup',
+					'field' => 'slug',
+					'terms' => array( 'archive' ),
+					'operator' => 'NOT IN'
+				)
+			)
+		);
+
+		$people_query = new WP_Query( $people_query_args );
+
+		$staff_arr = array();
+
+		if ( $people_query->have_posts() ) 
+		{
+			while ( $people_query->have_posts() )
+			{
+				$people_query->the_post();
+
+				array_push( $staff_arr, array( 'id' => $post->ID , 'title' => $post->post_title, 'url' => get_permalink($post->ID) ) );
+			}
+		}
+	?>
+
+	<?php while($mb->have_fields_and_multi('links')): ?>
+	<?php $mb->the_group_open(); ?>
+	 
+		<?php $mb->the_field( 'projectstaff' ); ?>
+		<select name="<?php $mb->the_name(); ?>">
+			<option value="">Select...</option>
+			<?php foreach( $staff_arr as $staff ) { ?>
+				<option value="<?php echo $staff['id']; ?>"<?php $mb->the_select_state($staff['id']); ?> name="<?php echo $staff['title']; ?>"><?php echo $staff['title']; ?></option>
+			<?php } ?>
 		</select>
-	</p>
+   
+		<p class="remove-button"><a href="#" class="dodelete button remove">Remove Link</a></p>
+
+		<br clear="all" />  
+		
+	<?php $mb->the_group_close(); ?>
 	<?php endwhile; ?>
+ 
+    <p class="add-another-link"><a href="#" class="docopy-links button add-another">Add Link</a></p>
 
 </div>

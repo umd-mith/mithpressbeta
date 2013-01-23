@@ -1,75 +1,25 @@
 /* -------------------------------------------------------------- 
-  
-   Blueprint CSS Framework
-   [bjorkoy.com/blueprint]
-   
-   * Print Styles *
-   
-   This file creates CSS styles for printing documents. 
-   Include this in the <head> of every page. See the
-   Readme file in this directory for further instructions.
-   
-   Some additions you'll want to make, 
-   customized to your markup:
-   
-   #heder, #footer, #navigation { display:none; }
+     
+   * Print Styles *   
    
 -------------------------------------------------------------- */
 
-body {
-  font-family: Georgia, Times, serif;
-  line-height: 1.5;
-  color:#000;
-  background: none;
-  font-size: 11pt;
-}
+#umd-wrapper, nav.navigation { display:none; }
+#sidebar, footer { display:none; }
+#top-container { background-image: url(images/bg_header.png) !important; background-position: left top; height:156px; border-bottom: 1px solid #9e9e9e; margin-bottom: 18px; } 
 
-img { 
-  float:left; 
-  margin:1.5em 1.5em 1.5em 0;
-}
-p img.top { 
-  margin-top: 0; 
-}
+body, .page-content { overflow:visible; height:100%; }
 
-hr { 
-  background:#ccc; 
-  color:#ccc;
-  width:100%; 
-  height:2px; 
-  margin:2em 0; 
-  padding:0; 
-  border:none; 
-}
-blockquote { 
-  margin:1.5em 0; 
-  padding:1em; 
-  border:0.2em solid #ccc; 
-  font-style:italic; 
-  font-size:0.9em; 
-}
+.column, .span-1, .span-2, .span-3, .span-4, .span-5, .span-6, .span-7, .span-8, .span-9, .span-10, .span-11, .span-12, .span-13, .span-14, .span-15, .span-16, .span-17, .span-18, .span-19, .span-20, .span-21, .span-22, .span-23, .span-24 { float:left; margin-right:10px; }
+.span-5 { width:190px; }
+.span-16 { width:630px; }
+.span-22 { width:870px; }
 
-.small, .small p  { font-size: 0.9em; }
-.large, .large p  { font-size: 1.1em; }
-.quiet, .quiet p  { color: #999; }
-.hide             { display:none; }
+
+.edit-link, .dd_post_share, #nav-single { display:none; }
 
 a:link, a:visited {
 	background: transparent;
 	font-weight: bold;
 	text-decoration: underline;
 }
-
-a:link:after, a:visited:after {
-   content: " (" attr(href) ") ";
-   font-size: 90%;
-}
-
-/* If you're having trouble printing relative links, uncomment and customize this:
-   (note: This is valid CSS3, but it still won't go through the W3C CSS Validator) */ 
-
-/* a[href^="/"]:after {
-  content: " (http://www.yourdomain.com" attr(href) ") ";
-} */
-
-
