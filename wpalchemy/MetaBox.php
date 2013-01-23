@@ -5,7 +5,7 @@
  * @copyright	Copyright (c) 2009, Dimas Begunoff, http://farinspace.com
  * @license		http://en.wikipedia.org/wiki/MIT_License The MIT License
  * @package		WPAlchemy
- * @version		1.4.15
+ * @version		1.5.2
  * @link		http://github.com/farinspace/wpalchemy
  * @link		http://farinspace.com
  */
@@ -336,6 +336,16 @@ class WPAlchemy_MetaBox
 	var $hide_editor = FALSE;
 
 	/**
+	 * Used in conjunction with the "hide_editor" option, prevents the media
+	 * buttons from also being hidden.
+	 *
+	 * @since	1.5
+	 * @access	public
+	 * @var		bool optional
+	 */
+	var $use_media_buttons = FALSE;
+	
+	/**
 	 * Used to hide the meta box title, this option should be used when
 	 * instantiating the class.
 	 *
@@ -500,7 +510,9 @@ class WPAlchemy_MetaBox
 	}
 
 	/**
-	 * Used to correct double serialized data during post/page export/import
+	 * Used to correct double serialized data during post/page export/import,
+	 * additionally will try to fix corrupted serialized data by recalculating
+	 * string length values
 	 *
 	 * @since	1.3.16
 	 * @access	private
@@ -509,8 +521,29 @@ class WPAlchemy_MetaBox
 	{
 		if (WPALCHEMY_MODE_ARRAY == $this->mode AND $key == $this->id)
 		{
-			// maybe_unserialize fixes a wordpress bug which double serializes already serialized data during export/import
-			update_post_meta($post_id, $key, maybe_unserialize(stripslashes($value)));
+			// using $wp_import to get access to the raw postmeta data prior to it getting passed
+			// through "maybe_unserialize()" in "plugins/wordpress-importer/wordpress-importer.php"
+			// the "import_post_meta" action is called after "maybe_unserialize()"
+			
+			global $wp_import;
+
+			foreach ( $wp_import->posts as $post )
+			{
+				if ( $post_id == $post['post_id'] )
+				{
+					foreach( $post['postmeta'] as $meta )
+					{
+						if ( $key == $meta['key'] )
+						{
+							// try to fix corrupted serialized data, specifically "\r\n" being converted to "\n" during wordpress XML export (WXR)
+							// "maybe_unserialize()" fixes a wordpress bug which double serializes already serialized data during export/import
+							$value = maybe_unserialize( preg_replace( '!s:(\d+):"(.*?)";!es', "'s:'.strlen('$2').':\"$2\";'", stripslashes( $meta['value'] ) ) );
+							
+							update_post_meta( $post_id, $key,  $value );
+						}
+					}
+				}
+			}
 		}
 	}
 
@@ -606,7 +639,7 @@ class WPAlchemy_MetaBox
 
 		?>
 		<style type="text/css">
-			<?php if ($this->hide_editor): ?> #postdiv, #postdivrich { display:none; } <?php endif; ?>
+			<?php if ($this->hide_editor) { ?> #wp-content-editor-container, #post-status-info, <?php if ($this->use_media_buttons) { ?> #content-html, #content-tmce<?php } else { ?> #wp-content-wrap<?php } ?> { display:none; } <?php } ?>
 		</style>
 		<?php
 
@@ -1017,26 +1050,29 @@ class WPAlchemy_MetaBox
 	{
 		$uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : NULL ;
 
-		$uri_parts = parse_url($uri);
-
-		$file = basename($uri_parts['path']);
-
-		if ($uri AND in_array($file, array('post.php', 'post-new.php')))
+		if ( isset( $uri ) )
 		{
-			$post_id = WPAlchemy_MetaBox::_get_post_id();
+			$uri_parts = parse_url($uri);
 
-			$post_type = isset($_GET['post_type']) ? $_GET['post_type'] : NULL ;
+			$file = basename($uri_parts['path']);
 
-			$post_type = $post_id ? get_post_type($post_id) : $post_type ;
-
-			if (isset($post_type))
+			if ($uri AND in_array($file, array('post.php', 'post-new.php')))
 			{
-				return $post_type;
-			}
-			else
-			{
-				// because of the 'post.php' and 'post-new.php' checks above, we can default to 'post'
-				return 'post';
+				$post_id = WPAlchemy_MetaBox::_get_post_id();
+
+				$post_type = isset($_GET['post_type']) ? $_GET['post_type'] : NULL ;
+
+				$post_type = $post_id ? get_post_type($post_id) : $post_type ;
+
+				if (isset($post_type))
+				{
+					return $post_type;
+				}
+				else
+				{
+					// because of the 'post.php' and 'post-new.php' checks above, we can default to 'post'
+					return 'post';
+				}
 			}
 		}
 
@@ -1349,10 +1385,17 @@ class WPAlchemy_MetaBox
 						{
 							elem.parents('.wpa_group').remove();
 						}
+						
+						var the_group = elem.parents('.wpa_group');
+						
+						if(the_group && the_group.attr('class'))
+						{
+							the_name = the_group.attr('class').match(/wpa_group-([a-zA-Z0-9_-]*)/i);
 
-						the_name = elem.parents('.wpa_group').attr('class').match(/wpa_group-([a-zA-Z0-9_-]*)/i)[1];
+							the_name = (the_name && the_name[1]) ? the_name[1] : null ;
 
-						checkLoopLimit(the_name);
+							checkLoopLimit(the_name);
+						}
 
 						$.wpalchemy.trigger('wpa_delete');
 					}
@@ -1367,8 +1410,8 @@ class WPAlchemy_MetaBox
 
 				var the_name = $(this).attr('class').match(/docopy-([a-zA-Z0-9_-]*)/i)[1];
 
-				var the_group = $('.wpa_group-'+ the_name +':first.tocopy', p);
-				
+				var the_group = $('.wpa_group-'+ the_name +'.tocopy', p).first();
+
 				var the_clone = the_group.clone().removeClass('tocopy last');
 
 				var the_props = ['name', 'id', 'for', 'class'];
@@ -1407,7 +1450,7 @@ class WPAlchemy_MetaBox
 
 				if ($(this).hasClass('ontop'))
 				{
-					$('.wpa_group-'+ the_name +':first', p).before(the_clone);
+					$('.wpa_group-'+ the_name, p).first().before(the_clone);
 				}
 				else
 				{
@@ -1423,19 +1466,24 @@ class WPAlchemy_MetaBox
 			{
 				var elem = $('.docopy-' + name);
 
-				var the_match = $('.wpa_loop-' + name).attr('class').match(/wpa_loop_limit-([0-9]*)/i);
+				var the_class = $('.wpa_loop-' + name).attr('class');
 
-				if (the_match)
+				if (the_class)
 				{
-					var the_limit = the_match[1];
+					var the_match = the_class.match(/wpa_loop_limit-([0-9]*)/i);
 
-					if ($('.wpa_group-' + name).not('.wpa_group.tocopy').length >= the_limit)
+					if (the_match)
 					{
-						elem.hide();
-					}
-					else
-					{
-						elem.show();
+						var the_limit = the_match[1];
+
+						if ($('.wpa_group-' + name).not('.wpa_group.tocopy').length >= the_limit)
+						{
+							elem.hide();
+						}
+						else
+						{
+							elem.show();
+						}
 					}
 				}
 			}
@@ -2159,7 +2207,7 @@ class WPAlchemy_MetaBox
 	 
 		// authentication passed, save data
 	 
-		$new_data = $_POST[$this->id];
+		$new_data = isset( $_POST[$this->id] ) ? $_POST[$this->id] : NULL ;
 	 
 		WPAlchemy_MetaBox::clean($new_data);
 
